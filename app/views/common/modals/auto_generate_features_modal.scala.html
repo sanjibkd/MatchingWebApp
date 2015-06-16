@@ -1,0 +1,103 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Automatically Generate Features modal -->
+<div class="modal hide fade" id="auto_generate_features_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Automatically generate features</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getFunctionNames() == null || project.getFunctionNames().isEmpty()) {
+            <p class="text-center danger"><b>No functions found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty() && project.getFunctionNames() != null && !project.getFunctionNames().isEmpty()) {
+	      	<form class="form-horizontal" id="auto_generate_features_form"
+	      			data-target="#auto_generate_features_modal" method="post"
+	                action="@controllers.project.routes.FeatureController.autoGenerateFeatures(project.getName())" role="form">
+	        	
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table1_name_agf"><b>Table 1</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table1_name_agf" name="table1_name" project_name="@project.getName()">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table2_name_agf"><b>Table 2</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table2_name_agf" name="table2_name" project_name="@project.getName()">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset>
+	            <br />
+	            <div>
+	            <h5>Specify attribute pairings below. For every attribute pairing
+	            specified, EMS will automatically generate features based on the
+	            types (e.g., string, numeric) and characteristics (e.g., short
+	            string, long string) of the attributes.</h5>
+	            <table id="attribute_pairs_table">
+              		<tr id="row_agf_0">
+              			<th>Attribute 1 (from table 1)</th>
+              			<th>Attribute 2 (from table 2)</th>
+              		</tr>
+   					<tr id="row_agf_1">
+     					<td>  
+                        	<select class="attr1" id="attr1_1" name="attr1_1" style="width:250px">
+                            </select>  
+                       	</td>
+                       	<td>
+                       		<select class="attr2" id="attr2_1" name="attr2_1" style="width:250px">
+                            </select>
+                       	</td>
+                    </tr>
+				</table>
+				</div>
+				<br />
+				<div id="main_agf">
+					<center>
+        				<input type="button" id="btAdd_agf" value="Add Attribute Pair" class="bt" project_name="@project.getName()" />
+        				<input type="button" id="btRemove_agf" value="Remove Attribute Pair" class="bt" />
+        				<input type="button" id="btRemoveAll_agf" value="Remove All Attribute Pairs" class="bt" /><br />
+        			</center>
+    			</div>
+    			<br /><br />
+    				
+               	<div class="control-group">
+                	<div class="controls">
+                    	<input type="checkbox" name="save_to_disk" checked> Save the features to disk
+                    </div>
+                </div> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="auto_generate_features_form" class="btn btn-primary" type="submit">Add</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,42 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Delete matcher modal -->
+<div class="modal hide fade" id="delete_matcher_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Delete a matcher from disk</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getMatcherNames() == null || project.getMatcherNames().isEmpty()) {
+            <p class="text-center danger"><b>No matchers found</b></p>
+        }
+        @if(project.getMatcherNames() != null && !project.getMatcherNames().isEmpty()) {
+	      	<form class="form-horizontal" id="delete_matcher_form"
+	      			data-target="#delete_matcher_modal" method="post"
+	                action="@controllers.project.routes.MatcherController.deleteMatcher(project.getName())"
+	                role="form">
+	     
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="matcher_name_del"><b>Matcher Name</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="matcher_name_del" name="matcher_name">
+	                        	@for(matcherName <- project.getMatcherNames()) {
+	                               	<option value="@matcherName">@matcherName</option>
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="delete_matcher_form" class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

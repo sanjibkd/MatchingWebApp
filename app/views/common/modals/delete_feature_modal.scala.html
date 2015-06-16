@@ -1,0 +1,44 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Delete feature modal -->
+<div class="modal hide fade" id="delete_feature_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Delete a feature from disk</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getFeatureNames() == null || project.getFeatureNames().isEmpty()) {
+            <p class="text-center danger"><b>No features found</b></p>
+        }
+        @if(project.getFeatureNames() != null && !project.getFeatureNames().isEmpty()) {
+	      	<form class="form-horizontal" id="delete_feature_form"
+	      			data-target="#delete_feature_modal" method="post"
+	                action="@controllers.project.routes.FeatureController.deleteFeature(project.getName())"
+	                role="form">
+	     
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="feature_name_del"><b>Feature Name</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="feature_name_del" name="feature_name">
+	                        	@for(featureName <- project.getFeatureNames()) {
+	                               	<option value="@featureName">@featureName</option>
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset>
+	            <h5><font color="red">Warning: If you delete a feature, the rules
+	            	using that feature will not be usable.</font></h5> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="delete_feature_form" class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

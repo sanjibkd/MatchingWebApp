@@ -1,0 +1,104 @@
+@(projectName : String, table1Name : String, table2Name : String,
+	table1Tuples : List[com.walmart.productgenome.matching.models.data.Tuple],
+	table1Attributes : List[com.walmart.productgenome.matching.models.data.Attribute],
+	table2Tuples : List[com.walmart.productgenome.matching.models.data.Tuple],
+	table2Attributes : List[com.walmart.productgenome.matching.models.data.Attribute],
+	pairsTableName : String, pairIds : List[Object], scores : List[String],
+	statusMessage : String)
+	
+<div id="show_pairs">
+	<div id = "label_pairs_status">
+		@if(statusMessage != null && !statusMessage.isEmpty()) {
+    		<pre>
+    			@statusMessage <br />
+    			@if(table1Tuples == null || table1Tuples.isEmpty()) {
+    				<br />See <a href='@controllers.project.routes.RuleController.showRulesForLearnedModel(projectName, table1Name, table2Name, 0, "Stop")'>rules</a> learned from seed training data. The learned model has an average confidence of @scores.get(0)% on the monitoring set.
+    			}
+    			@if(table1Tuples != null && !table1Tuples.isEmpty()) {
+    				<br />See <a href='@controllers.project.routes.RuleController.showRulesForLearnedModel(projectName, table1Name, table2Name, 0, "Resume")'>rules</a> learned from seed training data. The learned model has an average confidence of @scores.get(0)% on the monitoring set.
+    			}
+    			@if(scores.size() > 1){
+    				@for(i <- 1 to scores.size()-1) {
+    					@if(table1Tuples == null || table1Tuples.isEmpty()) {
+    						<br />See <a href='@controllers.project.routes.RuleController.showRulesForLearnedModel(projectName, table1Name, table2Name, i, "Stop")'>rules</a> learned from round @i of active learning. The learned model has an average confidence of @scores.get(i)% on the monitoring set.
+    					}
+    					@if(table1Tuples != null && !table1Tuples.isEmpty()) {
+    						<br />See <a href='@controllers.project.routes.RuleController.showRulesForLearnedModel(projectName, table1Name, table2Name, i, "Resume")'>rules</a> learned from round @i of active learning. The learned model has an average confidence of @scores.get(i)% on the monitoring set.
+    					}
+    				}
+    			}
+    		</pre>
+		}
+	</div>
+		<h4> Label the following pairs (@table1Tuples.size())</h4>
+            @if(table1Tuples == null || table1Tuples.isEmpty()) {
+                <p class="text-center danger"><b>No more pairs to be labeled.</b></p>
+                <p class="text-center danger"><b>Active learning stopped. See <a href='@controllers.project.routes.RuleController.showRulesForLearnedModel(projectName, table1Name, table2Name, scores.size()-1, "Stop")'>rules</a>.</b></p>
+                <div>
+            		<button class="btn btn-success disabled" type="submit" value="Continue">Continue with next round</button>
+            		<button class="btn btn-warning disabled" type="submit" value="Stop">Pause and see rules</button>
+            		<button class="btn btn-danger disabled" type="submit" value="Stop">Stop and see rules</button>
+            	</div>
+            }
+            
+            @if(table1Tuples != null && !table1Tuples.isEmpty()) {
+            <form id="label_pairs_form" class="form-horizontal"
+            	action="@controllers.project.routes.RuleController.submitLabeledPairs(projectName,table1Name,table2Name)"
+            	method="post">
+            	@for(i <- 0 to table1Tuples.size()-1) {
+            	<div class="tuple-pair-row">
+            		<div class="tuple-pair-row-header">@pairsTableName tuple pair (Pair id: @pairIds.get(i))</div>
+					<div class="tuple-box">
+						<div class="tuple-box-header header_@i">@table1Name tuple</div>
+							<div class="tuple-box-body">
+								<table class="table table-bordered table-condensed table-hover tablesorter">
+									<tbody>
+										@for(j <- 0 to table1Attributes.size()-1) {
+											<tr>
+												<td>@table1Attributes.get(j).getName()</td>
+												<td>@table1Tuples.get(i).getAttributeValue(table1Attributes.get(j))</td>
+											</tr>
+										}
+									</tbody>
+								</table>
+							</div>
+					</div>
+					<div class="tuple-box">
+						<div class="tuple-box-header header_@i">@table2Name tuple</div>
+							<div class="tuple-box-body">
+								<table class="table table-bordered table-condensed table-hover tablesorter">
+									<tbody>
+										@for(j <- 0 to table2Attributes.size()-1) {
+											<tr>
+												<td>@table2Attributes.get(j).getName()</td>
+												<td>@table2Tuples.get(i).getAttributeValue(table2Attributes.get(j))</td>
+											</tr>
+										}
+									</tbody>
+								</table>
+							</div>
+					</div>
+					<div class="match-options-box">
+						<div class="match-options-box-body">
+							<div class="match-option-buttons">  
+								<input id="match_@i" name="match_option_@i" type="radio" value="1">
+								<label for="match_@i">Match</label>
+								<input id="non_match_@i" name="match_option_@i" type="radio" value="2">
+								<label for="non_match_@i">Non-match</label>
+								<input id="cannot_say_@i" name="match_option_@i" type="radio" value="3" checked>
+								<label for="cannot_say_@i">Cannot say</label>
+                   				<textarea id="comment_@i" name="comment_@i" rows="2" placeholder="Leave a comment (optional)"></textarea>
+           					</div>
+           				</div>
+           			</div>
+            	</div>
+            	<br><br>
+            	}
+            </form>
+            <div>
+            	<button id="label_pairs_continue_btn" form="label_pairs_form" class="btn btn-success" type="submit" name="submit_option" value="Continue">Continue with next round</button>
+            	<button id="label_pairs_pause_btn" form="label_pairs_form" class="btn btn-warning" type="submit" name="submit_option" value="Pause">Pause and see rules</button>
+            	<button id="label_pairs_stop_btn" form="label_pairs_form" class="btn btn-danger" type="submit" name="submit_option" value="Stop">Stop and see rules</button>
+            </div>
+            }
+</div>

@@ -1,0 +1,63 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Edit matcher using gui modal -->
+<div class="modal hide fade" id="edit_matcher_using_gui_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Edit a matcher</h4>
+      </div>
+      <div class="modal-body">
+    	<form class="form-horizontal" id="edit_matcher_using_gui_form"
+    		data-target="#edit_matcher_using_gui_modal" method="post" 
+    		action="@controllers.project.routes.MatcherController.editMatcherUsingGui(project.getName())"
+    		role="form">
+    
+       <fieldset>
+       		<div class="control-group">        
+	        	<label class="control-label" for="matcher"><b>Matcher Name</b></label>  
+            	<div class="controls">  
+                	<select id="matcher_name_ed_gui" name="matcher_name" project_name="@project.getName()">
+                         @for(matcherName <- project.getMatcherNames()){
+                         	<option value="@matcherName">@matcherName</option>
+                         }
+                    </select>  
+               	</div>
+            </div>
+       </fieldset>
+       <br />
+       <div>
+       	<h5>A matcher is a <u>disjunction</u> of rules. Select the rules below for this matcher.</h5>
+        <center>
+        	<table id="matcher_table_gui">
+       	   		<tr id="row_am_0_gui" style="display:none;">
+       				<th>Rules</th>
+         		</tr>
+			</table>
+		</center>
+	   </div>
+	   <br />
+	   <div>
+	   	<center>
+			<input type="button" id="btAdd_am_gui" value="Add Rule" class="bt" project_name="@project.getName()" />
+			<input type="button" id="btRemove_am_gui" value="Remove Rule" class="bt" />
+			<input type="button" id="btRemoveAll_am_gui" value="Remove All Rules" class="bt" /><br />
+		</center>
+	   </div>
+	   <br /><br />
+       <div class="control-group">
+   		<div class="controls">
+   			<input type="checkbox" name="save_to_disk" checked> Save the changes to disk
+        </div>
+       </div>  		          	                            
+                             
+    </form>
+      </div>
+      <div class="modal-footer">
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    	<button form="edit_matcher_using_gui_form" class="btn btn-primary" type="submit">Submit</button>
+	  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

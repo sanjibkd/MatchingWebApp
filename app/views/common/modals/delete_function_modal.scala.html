@@ -1,0 +1,44 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Delete function modal -->
+<div class="modal hide fade" id="delete_function_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Delete a function from disk</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getFunctionNames() == null || project.getFunctionNames().isEmpty()) {
+            <p class="text-center danger"><b>No functions found</b></p>
+        }
+        @if(project.getFunctionNames() != null && !project.getFunctionNames().isEmpty()) {
+	      	<form class="form-horizontal" id="delete_function_form"
+	      			data-target="#delete_function_modal" method="post"
+	                action="@controllers.project.routes.FunctionController.deleteFunction(project.getName())"
+	                role="form">
+	     
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="function_name_del"><b>Function Name</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="function_name_del" name="function_name">
+	                        	@for(functionName <- project.getFunctionNames()) {
+	                               	<option value="@functionName">@functionName</option>
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset>
+	            <h5><font color="red">Warning: If you delete a function, the features
+	            	using that function will not be usable.</font></h5>
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="delete_function_form" class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

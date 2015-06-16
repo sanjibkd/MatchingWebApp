@@ -1,0 +1,123 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Blocking using multiple attribute equivalence modal -->
+<div class="modal hide fade" id="blocking_multi_key_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Perform blocking using multiple attribute equivalence</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty()) {
+	      	<form class="form-horizontal" id="blocking_multi_key_form"
+	      			data-target="#blocking_multi_key_modal" method="post"
+	                action="@controllers.project.routes.ProjectController.blockMultiAttribute(project.getName())" role="form"
+	         >
+	        	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table1_name_bm"><b>Table 1</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table1_name_bm" name="table1_name" project_name="@project.getName()">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table2_name_bm"><b>Table 2</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table2_name_bm" name="table2_name" project_name="@project.getName()">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset>
+	            <br />
+	            <div>
+	            <h5><center>Specify attribute pairings for blocking below:</center></h5>
+	            <table id="blocking_attribute_pairs_table">
+              		<tr id="row_bm_0">
+              			<th>Blocking Attribute 1 (from table 1)</th>
+              			<th>Blocking Attribute 2 (from table 2)</th>
+              		</tr>
+   					<tr id="row_bm_1">
+     					<td>  
+                        	<select class="bm_attr1" id="bm_attr1_1" name="attr1_1" style="width:250px">
+                            </select>  
+                       	</td>
+                       	<td>
+                       		<select class="bm_attr2" id="bm_attr2_1" name="attr2_1" style="width:250px">
+                            </select>
+                       	</td>
+                    </tr>
+				</table>
+				</div>
+				<br />
+				<div id="main_bm">
+					<center>
+        				<input type="button" id="btAdd_bm" value="Add Attribute Pair" class="bt" project_name="@project.getName()" />
+        				<input type="button" id="btRemove_bm" value="Remove Attribute Pair" class="bt" />
+        				<input type="button" id="btRemoveAll_bm" value="Remove All Attribute Pairs" class="bt" /><br />
+        			</center>
+    			</div>
+    			<br /><br />
+	        	
+                <fieldset>               
+                   <div class="control-group">
+                       <label class="control-label" for="candset_name"><b>Output Candidate Set</b></label>
+                       <div class="controls">
+                           <input type="text" id="candset_name_bm" name="candset_name" required>
+                       </div>
+                   </div>
+                   <div class="control-group">        
+	                   	<label class="control-label" for="bm_attr1_names"><b>Table 1 attributes to be retained in the candidate set (id will be retained by default)</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="bm_attr1_names" name="attr1_names[]" multiple>
+                      		</select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="bm_attr2_names"><b>Table 2 attributes to be retained in the candidate set (id will be retained by default)</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="bm_attr2_names" name="attr2_names[]" multiple>
+                      		</select>  
+	                   	</div>
+	               	</div>
+                   <div class="control-group">
+                       <div class="controls">
+                           <input type="checkbox" name="candset_default" checked> Set this as default candidate set
+                       </div>
+                       <div class="controls">
+                           <input type="checkbox" name="save_to_disk" checked> Save the candidate set to disk
+                       </div>
+                   </div>
+                </fieldset>
+                 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button id="blocking_multi_key_btn" form="blocking_multi_key_form" class="btn btn-primary" type="submit">Block</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

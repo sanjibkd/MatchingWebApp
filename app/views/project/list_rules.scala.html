@@ -1,0 +1,56 @@
+@(ruleNames : List[String], ruleStrings : List[String],
+	precisions : List[Double], recalls : List[Double], f1s : List[Double],
+	accuracies : List[Double], projectName : String, table1Name : String,
+	table2Name : String, statusMessage : String)
+	
+<div id="list_rules">
+	<div id = "learned_rules_status">
+		@if(statusMessage != null && !statusMessage.isEmpty()) {
+    		<pre ><p>@statusMessage</p></pre>
+		}
+	</div>
+		<h3> Learned Rules (@ruleNames.size())</h3>
+		<h4> Select rules to keep in the project</h4>
+            @if(ruleNames == null || ruleNames.isEmpty()) {
+                <p class="text-center danger"><b>No rules learned</b></p>
+            }
+            
+            @if(ruleNames != null && !ruleNames.isEmpty()) {
+            <form id="select_rules_form" class="form-horizontal"
+            	action="@controllers.project.routes.RuleController.addRules(projectName,ruleNames.size())"
+            	method="post">
+            <table id="rules_table" class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                    	<th><input type="checkbox" id="toggle_all"> Select All</th>
+                        <th>Rule Name</th>
+                        <th>Rule String</th>
+                        <th>Precision (%)</th>
+                        <th>Recall (%)</th>
+                        <th>F1 (%)</th>
+                        <th>Accuracy (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(i <- 0 to ruleNames.size()-1) {
+                    <tr>
+                    	<td><input type="checkbox" class="toggle_rule" name="rule_checkbox_@i"></td>
+                        <td><input type="text" name="rule_name_@i" value="@ruleNames.get(i)" required></td>
+                        <td><input type="hidden" name="rule_string_@i" value="@ruleStrings.get(i)">@ruleStrings.get(i)</td>
+                        <td>@precisions.get(i)</td>
+                        <td>@recalls.get(i)</td>
+                        <td>@f1s.get(i)</td>
+                        <td>@accuracies.get(i)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="controls">
+            	<input type="checkbox" name="save_to_disk" checked> Save the rules to disk
+            </div>
+            </form>
+            <div>
+            	<button id="add_rules_btn" form="select_rules_form" class="btn btn-danger" type="submit">Add selected rules to project</button>
+            </div>
+            }
+</div>

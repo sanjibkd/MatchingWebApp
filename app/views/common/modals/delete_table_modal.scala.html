@@ -1,0 +1,42 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Delete table modal -->
+<div class="modal hide fade" id="delete_table_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Delete a table from disk</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty()) {
+	      	<form class="form-horizontal" id="delete_table_form"
+	      			data-target="#delete_table_modal" method="post"
+	                action="@controllers.project.routes.TableController.deleteTable(project.getName())"
+	                role="form">
+	        	
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table_name_del"><b>Table Name</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table_name_del" name="table_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                               	<option value="@tableName">@tableName</option>
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="delete_table_form" class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

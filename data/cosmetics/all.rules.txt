@@ -1,0 +1,4 @@
+rule_name,table1_name,table2_name,rule_string
+size_overlap,sephora,amazon,size_overlap >= 0.5
+brand_size_overlap,sephora,amazon,brandname_overlap >= 0.5 AND size_overlap >= 0.5
+all_rule_combined,sephora,amazon,size_overlap >= 0.5 AND productname_trigam >= 0.27

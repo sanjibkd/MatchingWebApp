@@ -1,0 +1,125 @@
+@(project: com.walmart.productgenome.matching.models.data.Project,
+	scores: List[String], modelIndex : Int, ruleNames : List[String], ruleStrings : List[String],
+	precisions : List[Double], recalls : List[Double], f1s : List[Double],
+	accuracies : List[Double], table1Name : String, table2Name : String,
+	labeledPairsName : String, evalPairsName : String, option : String)
+
+@if("Resume".equals(option)){	
+<div class="row-fluid">
+	<div class="span6 text-left">
+		<a class="btn btn-warning"
+			href="@controllers.project.routes.RuleController.resumeActiveLearning(project.getName(), table1Name, table2Name)"
+			role="button" align="left">Resume Active Learning
+		</a>
+	</div>
+	<div class="span6 text-right">
+		<a class="btn btn-danger" href='@controllers.project.routes.RuleController.showRulesForLearnedModel(project.getName(), table1Name, table2Name, modelIndex, "Stop")' role="button" align="right">Stop Active Learning
+		</a>
+	</div>
+</div>
+<br /><br />
+}	
+<div id='side-panel'>
+	<div style="border-bottom:5px solid #bcf">
+	<h4>Active Learning Summary</h4>
+	<table class="table table-bordered table-condensed table-hover tablesorter">
+		<thead>
+        	<tr>
+            	<th>Rules</th>
+                <th>Confidence (%)</th>
+            </tr>
+        </thead>
+		<tbody>
+		@for(i <- 0 to scores.size()-1) {
+			@if(i == modelIndex){
+				<tr bgcolor="#CCCCFF">
+			}
+			@if(i != modelIndex){
+				<tr>
+			}
+				<td><a href="@controllers.project.routes.RuleController.showRulesForLearnedModel(project.getName(), table1Name, table2Name, i, option)">Round @i rules</a></td>
+				<td>@scores.get(i)</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+	</div>
+	<div style="border-top:5px solid #bcf">
+	<h4>Evaluate Rules Using</h4>
+	<form id="eval_rules_al_form" class="form-horizontal"
+    	action="@controllers.project.routes.RuleController.evaluateActiveLearningRules(project.getName(),table1Name,table2Name,modelIndex,option)"
+        method="post">   
+       	<select id="eval_pairs_table" name="eval_pairs">
+        		@for(tableName <- project.getTableNames()){
+        			@if(tableName.equals(evalPairsName)){
+               			<option value="@tableName" selected>@tableName</option>
+               		}
+               		@if(!tableName.equals(evalPairsName)){
+               			<option value="@tableName">@tableName</option>
+               		}
+                }
+        </select>
+        <button class="btn btn-default" type="submit">Go</button>
+        @if(labeledPairsName.equals(evalPairsName)){
+        	<div id="disclaimer">
+				<font color="red"><u>Note:</u> @labeledPairsName is the set of pairs labeled during the
+				active learning rounds. This is a highly <u>optimistic</u> evaluation but
+				may give an upper bound on the quality of the rules on future data.</font>
+			</div>
+		}
+    </form>
+    </div>
+</div>
+
+<div id='rules-content'>
+  <h3> Showing <u>@ruleNames.size() rules</u> learned from <u>round @modelIndex</u>
+  of active learning</h3>
+            @if(ruleNames == null || ruleNames.isEmpty()) {
+                <p class="text-center danger"><b>No rules learned</b></p>
+            }
+            
+            @if(ruleNames != null && !ruleNames.isEmpty()) {
+            
+            <form id="select_rules_al_form" class="form-horizontal"
+            	action="@controllers.project.routes.RuleController.addActiveLearningRules(project.getName(),table1Name,table2Name,modelIndex,ruleNames.size(),option)"
+            	method="post">
+            <h4> Select the rules to keep in the project</h4>
+            <h5> <u>Note:</u> The rules have been evaluated on the
+				<a href="@controllers.browser.routes.BrowserController.getIndexNoCopy(project.getName(),evalPairsName)" target="_blank">@evalPairsName</a>.
+				You may evaluate the rules using a different set of labeled pairs
+				by specifying it in the side bar.</h5>
+            <table id="rules_table_al" class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                    	<th><input type="checkbox" id="toggle_all_al"> Select All</th>
+                        <th>Rule Name</th>
+                        <th>Rule String</th>
+                        <th>Precision (%)</th>
+                        <th>Recall (%)</th>
+                        <th>F1 (%)</th>
+                        <th>Accuracy (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(i <- 0 to ruleNames.size()-1) {
+                    <tr>
+                    	<td><input type="checkbox" class="toggle_rule_al" name="rule_checkbox_@i"></td>
+                        <td><input type="text" name="rule_name_@i" value="@ruleNames.get(i)" required></td>
+                        <td><input type="hidden" name="rule_string_@i" value="@ruleStrings.get(i)">@ruleStrings.get(i)</td>
+                        <td>@precisions.get(i)</td>
+                        <td>@recalls.get(i)</td>
+                        <td>@f1s.get(i)</td>
+                        <td>@accuracies.get(i)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="controls">
+            	<input type="checkbox" name="save_to_disk" checked> Save the rules to disk
+            </div>
+            </form>
+            <div>
+            	<button form="select_rules_al_form" class="btn btn-primary" type="submit">Add selected rules to project</button>
+            </div>
+            }
+</div>

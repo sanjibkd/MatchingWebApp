@@ -1,0 +1,150 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Learn rules using training data modal -->
+<div class="modal hide fade" id="learn_rules_using_training_data_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Learn rules using supervised learning</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getFeatureNames() == null || project.getFeatureNames().isEmpty()) {
+            <p class="text-center danger"><b>No features found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty() && project.getFeatureNames() != null && !project.getFeatureNames().isEmpty()) {
+	      	<form class="form-horizontal" id="learn_rules_using_training_data_form"
+	      			data-target="#learn_rules_using_training_data_modal" method="post"
+	                action="@controllers.project.routes.RuleController.learnRulesTrainingDataOptimized(project.getName())" role="form">
+	        	
+	           	<fieldset>
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="train_table"><b>Training Data</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="trainset_name_td" name="trainset_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultGold())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultGold())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="table1"><b>Table 1</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table1_name_td" name="table1_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table2"><b>Table 2</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table2_name_td" name="table2_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="feature"><b>Features</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="feature_names_td" name="feature_names[]" multiple>
+	                       		@for(featureName <- project.getFeatureNames()) {
+	                       			<option value="@featureName">@featureName</option>
+	                       		}
+                      		</select>  
+	                   	</div>
+	                   	<div class="controls">
+            				<input type="button" id="select_all_features_td" value="Select All">
+            				<input type="button" id="select_no_features_td" value="Select None">
+            			</div>
+	               	</div>
+	               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="model"><b>Model</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="model_name" name="model_name">
+	                       		<option value="J48">Decision Tree</option>
+	                       		<option value="RF" selected>Random Forest</option>
+                      		</select>  
+	                   	</div>
+	               	</div>
+	               	
+	               	<div class="control-group">
+	               		<label class="control-label" for="learning_options"><b>Testing Options</b></label>  
+    					<div class="controls">
+    						<input type="radio" name="options" id="option1" class="radioBtn" value="1" checked>
+    						<label for="option1" style="display:inline"> Use training data <font color="red">(Warning: this evaluation is highly optimistic!)</font></label><br>
+    						<input type="radio" name="options" id="option2" class="radioBtn" value="2">
+    						<label for="option2" style="display:inline"> Use test data</label><br>
+							<input type="radio" name="options" id="option3" class="radioBtn" value="3">
+							<label for="option3" style="display:inline">Split training data into train and test</label><br>
+        					<input type="radio" name="options" id="option4" class="radioBtn" value="4">
+							<label for="option4" style="display:inline">Use cross validation on training data</label><br>
+        				</div>
+	               	</div>
+	               	
+	               	<div class="control-group" id="test_data_div" style="display: none;">        
+	                   	<label class="control-label" for="test_table"><b>Test Data</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="testset_name_td" name="testset_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultGold())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultGold())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	
+	               	<div class="control-group" id="train_percent_div" style="display: none;">        
+	                   	<label class="control-label" for="train_percent"><b>Train percent (%)</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="train_percent" name="train_percent" value="67" required>
+	                   	</div>
+	               	</div>
+	               	
+	               	<div class="control-group" id="num_folds_div" style="display: none;">        
+	                   	<label class="control-label" for="num_folds"><b>Number of folds</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="num_folds" name="num_folds" value="10" required>
+	                   	</div>
+	               	</div>
+	               	        
+               	</fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="learn_rules_using_training_data_form" class="btn btn-primary" type="submit">Learn</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

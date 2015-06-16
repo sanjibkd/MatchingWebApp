@@ -1,0 +1,44 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Delete rule modal -->
+<div class="modal hide fade" id="delete_rule_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Delete a rule from disk</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getRuleNames() == null || project.getRuleNames().isEmpty()) {
+            <p class="text-center danger"><b>No rules found</b></p>
+        }
+        @if(project.getRuleNames() != null && !project.getRuleNames().isEmpty()) {
+	      	<form class="form-horizontal" id="delete_rule_form"
+	      			data-target="#delete_rule_modal" method="post"
+	                action="@controllers.project.routes.RuleController.deleteRule(project.getName())"
+	                role="form">
+	     
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="rule_name_del"><b>Rule Name</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="rule_name_del" name="rule_name">
+	                        	@for(ruleName <- project.getRuleNames()) {
+	                               	<option value="@ruleName">@ruleName</option>
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	            </fieldset>
+	            <h5><font color="red">Warning: If you delete a rule, the matchers
+	            	using that rule will not be usable.</font></h5> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="delete_rule_form" class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
