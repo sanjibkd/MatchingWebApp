@@ -1,0 +1,4 @@
+matcher_name,table1_name,table2_name,matcher_string
+manual_matcher_1,mpn_lev_rule
+manual_matcher_2,pt_jac_rule
+manual_matcher_3,model_lev_rule

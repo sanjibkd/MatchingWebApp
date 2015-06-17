@@ -1,0 +1,4 @@
+rule_name,rule_string
+mpn_lev_rule,samsung_amazon_Manufacturer_Part_Number_Manufacturer_Part_Number_LEVENSHTEIN >= 0.9
+pt_jac_rule,samsung_amazon_Brand_Brand_EXACT_MATCH == 1.0
+model_lev_rule,samsung_amazon_Model_Model_LEVENSHTEIN > 0.9

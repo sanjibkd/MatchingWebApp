@@ -1,0 +1,7 @@
+matcher_name,matcher_string
+manual_matcher,r1 OR r2 OR r3 OR r4 OR r5
+m1,r1
+m2,r2
+m3,r3
+m4,r4
+m5,r5

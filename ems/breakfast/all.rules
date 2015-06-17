@@ -1,0 +1,10 @@
+rule_name,rule_string
+title_jac_rule,title_jac > 0.5
+price_reldiff_rule,price_reldiff < 0.5
+title_size_rule,title_size == 1.0
+manual_matcher_rule,title_jac_jing >= 0.5 AND price_reldiff < 0.6 AND title_size == 1.0
+J48_0,EMS_price_price_NORM_ABS_DIFF <= 332.9602 AND EMS_title_title_TF_IDF <= 0.7 AND EMS_title_title_JACCARD > 0.375 AND EMS_title_title_MONGE_ELKAN > 0.47619
+J48_1,EMS_size_size_MONGE_ELKAN > 0.230769 AND EMS_price_price_NORM_ABS_DIFF <= 812.84155 AND EMS_title_title_TF_IDF > 0.7 AND EMS_price_price_LEVENSHTEIN <= 0.2
+J48_2,EMS_price_price_NORM_ABS_DIFF <= 812.84155 AND EMS_title_title_TF_IDF > 0.7 AND EMS_price_price_LEVENSHTEIN > 0.2
+J48_3,EMS_size_size_MONGE_ELKAN <= 0.230769 AND EMS_price_price_NORM_ABS_DIFF <= 812.84155 AND EMS_title_title_TF_IDF > 0.746203 AND EMS_price_price_LEVENSHTEIN <= 0.2 AND EMS_title_title_MONGE_ELKAN > 0.570732
+J48_4,EMS_size_size_MONGE_ELKAN <= 0.230769 AND EMS_price_price_NORM_ABS_DIFF <= 812.84155 AND EMS_title_title_TF_IDF > 0.7 AND EMS_price_price_LEVENSHTEIN <= 0.2 AND EMS_title_title_MONGE_ELKAN <= 0.484375

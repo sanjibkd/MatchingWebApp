@@ -1,0 +1,30 @@
+@info
+{
+    "table":{
+        "name":"mpn_candset",
+        "description":"",
+        "idAttrib":{
+            "name":"pairId",
+            "type":"INTEGER"
+        },
+        "projectName":"wgec_amazon_samsung",
+        "attributes":[
+            {
+                "name":"pairId",
+                "type":"INTEGER"
+            },
+            {
+                "name":"samsung.id",
+                "type":"TEXT"
+            },
+            {
+                "name":"amazon.id",
+                "type":"TEXT"
+            }
+        ]
+    }
+}
+
+@data
+pairId:INTEGER,samsung.id:TEXT,amazon.id:TEXT
+1,144,4854

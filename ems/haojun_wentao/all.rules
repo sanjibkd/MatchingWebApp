@@ -1,0 +1,83 @@
+rule_name,rule_string
+pages_title,pages_exact == 1.0 AND title_jac >= 0.55
+pages_date,pages_exact == 1.0 AND date_exact == 1.0
+pages_publisher,pages_exact == 1.0 AND publisher_trigram >= 0.4
+RF1,title_jac >= 0.94 AND pages_exact >= 0.5
+RF2,date_exact >= 0.5 AND title_jac >= 0.52 AND pages_exact >= 0.5
+RF5,publisher_trigram < 0.49 AND date_exact < 0.5 AND title_jac >= 0.52 AND pages_exact >= 0.5
+RF9,publisher_trigram < 0.49 AND date_exact < 0.5 AND title_jac >= 0.61 AND pages_exact >= 0.5
+RF13,publisher_trigram >= 0.58 AND date_exact < 0.5 AND title_jac >= 0.64 AND pages_exact >= 0.5
+RF17,publisher_trigram >= 0.58 AND date_exact < 0.5 AND title_jac >= 0.86 AND pages_exact >= 0.5
+RF18,publisher_trigram < 0.41 AND title_jac >= 0.82 AND pages_exact >= 0.5
+RF30,publisher_trigram >= 0.51 AND date_exact < 0.5 AND title_jac >= 0.64 AND pages_exact >= 0.5
+RF35,publisher_trigram < 0.4 AND date_exact < 0.5 AND title_jac >= 0.64 AND pages_exact >= 0.5
+RF40,publisher_trigram < 0.4 AND date_exact < 0.5 AND title_jac >= 0.86 AND pages_exact >= 0.5
+RF41,publisher_trigram < 0.39 AND date_exact < 0.5 AND title_jac >= 0.82 AND pages_exact >= 0.5
+RF45,date_exact >= 0.5 AND title_jac >= 0.62 AND pages_exact >= 0.5
+RF48,date_exact >= 0.5 AND title_jac >= 0.86 AND pages_exact >= 0.5
+RF49,date_exact >= 0.5 AND title_jac >= 0.61 AND pages_exact >= 0.5
+RF51,date_exact >= 0.5 AND title_jac >= 0.82 AND pages_exact >= 0.5
+RF54,publisher_trigram >= 0.66 AND title_jac >= 0.93 AND pages_exact >= 0.5
+RF57,date_exact >= 0.5 AND pages_exact >= 0.5
+RF58,publisher_trigram < 0.39 AND date_exact < 0.5 AND title_jac >= 0.93 AND pages_exact >= 0.5
+RF_train_2,date_exact >= 0.5 AND title_jac >= 0.52 AND pages_exact >= 0.5
+RF_train_6,publisher_trigram < 0.41 AND title_jac >= 0.82 AND pages_exact >= 0.5
+RF_train_4,date_exact >= 0.5 AND title_jac >= 0.62 AND pages_exact >= 0.5
+RF_train_5,date_exact >= 0.5 AND title_jac >= 0.61 AND pages_exact >= 0.5
+RF_train_1,publisher_trigram >= 0.66 AND title_jac >= 0.93 AND pages_exact >= 0.5
+RF_train_3,date_exact >= 0.5 AND pages_exact >= 0.5
+RF_test_2,date_exact >= 0.5 AND title_jac >= 0.52 AND pages_exact >= 0.5
+RF_test_3,publisher_trigram < 0.41 AND title_jac >= 0.82 AND pages_exact >= 0.5
+RF_test_4,date_exact >= 0.5 AND title_jac >= 0.62 AND pages_exact >= 0.5
+RF_test_5,date_exact >= 0.5 AND title_jac >= 0.61 AND pages_exact >= 0.5
+RF_test_1,publisher_trigram >= 0.66 AND title_jac >= 0.93 AND pages_exact >= 0.5
+RF_test_6,date_exact >= 0.5 AND pages_exact >= 0.5
+RF_split_6,publisher_trigram < 0.41 AND title_jac >= 0.61 AND pages_exact >= 0.5
+RF_split_1,title_jac >= 0.62 AND pages_exact >= 0.5
+RF_split_3,publisher_trigram < 0.85 AND title_jac >= 0.62 AND pages_exact >= 0.5
+RF_split_5,publisher_trigram < 0.8 AND date_exact < 0.5 AND title_jac >= 0.79 AND pages_exact >= 0.5
+RF_split_2,title_jac >= 0.63 AND pages_exact >= 0.5
+RF_split_4,publisher_trigram >= 0.46 AND title_jac >= 0.61 AND pages_exact >= 0.5
+AL_RF_0,EMS_date_date_JARO_SIMILARITY >= 0.74 AND EMS_pages_pages_LEVENSHTEIN >= 0.5 AND EMS_title_title_MONGE_ELKAN >= 0.96 AND EMS_date_date_TRIGRAM < 0.38
+AL_RF_1,EMS_date_date_LEVENSHTEIN >= 0.75 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.91
+AL_RF_2,EMS_pages_pages_JARO_SIMILARITY < 0.28 AND EMS_series_series_JACCARD < 0.57 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.98 AND EMS_date_date_JARO_WINKLER_SIMILARITY < 0.91 AND EMS_publisher_publisher_MONGE_ELKAN < 0.43
+AL_RF_3,EMS_date_date_LEVENSHTEIN >= 0.75 AND EMS_publisher_publisher_NEEDLEMAN_WUNCH_SIMILARITY < 0.59 AND EMS_title_title_JACCARD >= 0.71 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.64
+AL_RF_5,EMS_title_title_MONGE_ELKAN < 0.97 AND EMS_date_date_TRIGRAM >= 0.79
+AL_RF_8,EMS_pages_pages_JARO_SIMILARITY < 0.94 AND EMS_series_series_JACCARD >= 0.57 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.98 AND EMS_date_date_JARO_WINKLER_SIMILARITY < 0.91
+AL_RF_9,EMS_authors_authors_MONGE_ELKAN < 0.44 AND EMS_date_date_LEVENSHTEIN < 0.95 AND EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.41 AND EMS_date_date_JARO_SIMILARITY >= 0.77 AND EMS_pages_pages_JARO_SIMILARITY < 0.89 AND EMS_pages_pages_TRIGRAM >= 0.1 AND EMS_series_series_JACCARD < 0.62 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.48 AND EMS_edition_edition_SOUNDEX < 0.96
+AL_RF_10,EMS_date_date_LEVENSHTEIN >= 0.75 AND EMS_pages_pages_JARO_SIMILARITY >= 0.28 AND EMS_series_series_JACCARD < 0.27 AND EMS_title_title_MONGE_ELKAN >= 0.99
+AL_RF_11,EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY < 0.98 AND EMS_date_date_JARO_WINKLER_SIMILARITY < 0.84 AND EMS_pages_pages_JARO_WINKLER_SIMILARITY >= 0.79 AND EMS_publisher_publisher_MONGE_ELKAN >= 0.36
+AL_RF_12,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_series_series_JACCARD < 0.27 AND EMS_title_title_MONGE_ELKAN >= 0.99 AND EMS_date_date_TRIGRAM >= 0.45
+AL_RF_13,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_series_series_JACCARD < 0.27 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.91 AND EMS_title_title_MONGE_ELKAN >= 0.99 AND EMS_date_date_TRIGRAM < 0.45
+AL_RF_14,EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.84 AND EMS_pages_pages_JARO_WINKLER_SIMILARITY >= 0.79 AND EMS_publisher_publisher_MONGE_ELKAN >= 0.36
+AL_RF_15,EMS_date_date_JARO_SIMILARITY >= 0.77 AND EMS_pages_pages_JARO_SIMILARITY >= 0.89 AND EMS_series_series_JACCARD < 0.62 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.51 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.48
+AL_RF_16,EMS_pages_pages_LEVENSHTEIN >= 0.42 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.5 AND EMS_title_title_MONGE_ELKAN >= 0.96
+AL_RF_17,EMS_date_date_LEVENSHTEIN >= 0.65 AND EMS_date_date_EXACT_MATCH < 0.5 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.94
+AL_RF_18,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_title_title_JACCARD >= 0.83 AND EMS_date_date_JARO_WINKLER_SIMILARITY < 0.95 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.91
+AL_RF_19,EMS_title_title_JACCARD >= 0.88 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.86 AND EMS_language_language_JARO_SIMILARITY >= 0.3
+AL_RF_21,EMS_date_date_JARO_SIMILARITY >= 0.7 AND EMS_pages_pages_TRIGRAM >= 0.1 AND EMS_publisher_publisher_TRIGRAM >= 0.1 AND EMS_pages_pages_LEVENSHTEIN < 0.42 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.5 AND EMS_authors_authors_JACCARD >= 0.83 AND EMS_edition_edition_SOUNDEX < 0.5 AND EMS_title_title_MONGE_ELKAN >= 0.96
+AL_RF_23,EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.24 AND EMS_date_date_LEVENSHTEIN < 0.65 AND EMS_date_date_EXACT_MATCH < 0.5 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.85 AND EMS_title_title_MONGE_ELKAN >= 0.96
+AL_RF_24,EMS_title_title_JACCARD >= 0.88 AND EMS_pages_pages_LEVENSHTEIN >= 0.67 AND EMS_date_date_JARO_WINKLER_SIMILARITY < 0.86 AND EMS_language_language_JARO_SIMILARITY >= 0.3
+AL_RF_25,EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.99 AND EMS_title_title_MONGE_ELKAN < 0.96
+AL_RF_26,EMS_date_date_LEVENSHTEIN >= 0.75 AND EMS_date_date_JARO_SIMILARITY >= 0.97 AND EMS_publisher_publisher_NEEDLEMAN_WUNCH_SIMILARITY < 0.59 AND EMS_title_title_JACCARD < 0.71 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.64
+AL_RF_27,EMS_pages_pages_JARO_SIMILARITY >= 0.28 AND EMS_title_title_MONGE_ELKAN >= 0.96 AND EMS_date_date_TRIGRAM >= 0.38
+AL_RF_29,EMS_date_date_LEVENSHTEIN >= 0.95 AND EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.41 AND EMS_date_date_JARO_SIMILARITY >= 0.77 AND EMS_pages_pages_JARO_SIMILARITY < 0.89 AND EMS_series_series_JACCARD < 0.62 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.48 AND EMS_edition_edition_SOUNDEX < 0.96
+AL_RF_30,EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.41 AND EMS_series_series_MONGE_ELKAN >= 0.78 AND EMS_date_date_JARO_SIMILARITY >= 0.77 AND EMS_pages_pages_JARO_SIMILARITY < 0.89 AND EMS_title_title_JACCARD >= 0.83 AND EMS_series_series_JACCARD < 0.62 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.48 AND EMS_edition_edition_SOUNDEX >= 0.96
+AL_RF_31,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_pages_pages_JARO_SIMILARITY >= 0.89 AND EMS_title_title_JACCARD >= 0.89 AND EMS_series_series_JACCARD < 0.46 AND EMS_date_date_TRIGRAM < 0.43
+AL_RF_32,EMS_title_title_JACCARD >= 0.89 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.59 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.84 AND EMS_publisher_publisher_MONGE_ELKAN >= 0.16
+AL_RF_33,EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY < 0.41 AND EMS_date_date_JARO_SIMILARITY >= 0.77 AND EMS_pages_pages_JARO_SIMILARITY < 0.89 AND EMS_series_series_JACCARD < 0.62 AND EMS_authors_authors_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.48
+AL_RF_34,EMS_date_date_EXACT_MATCH >= 0.5 AND EMS_edition_edition_TRIGRAM < 0.5 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.71 AND EMS_title_title_MONGE_ELKAN < 0.96
+AL_RF_35,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_title_title_JACCARD >= 0.89 AND EMS_series_series_JACCARD >= 0.46 AND EMS_date_date_TRIGRAM < 0.43
+AL_RF_38,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_title_title_JACCARD >= 0.89 AND EMS_date_date_TRIGRAM >= 0.43
+AL_RF_39,EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.24 AND EMS_pages_pages_JARO_SIMILARITY < 0.28 AND EMS_edition_edition_TRIGRAM >= 0.5 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.83 AND EMS_title_title_MONGE_ELKAN >= 0.96 AND EMS_date_date_TRIGRAM >= 0.38
+AL_RF_40,EMS_date_date_LEVENSHTEIN >= 0.65 AND EMS_date_date_EXACT_MATCH < 0.5 AND EMS_pages_pages_TRIGRAM >= 0.3 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY < 0.94
+AL_RF_41,EMS_publisher_publisher_TRIGRAM >= 0.1 AND EMS_pages_pages_LEVENSHTEIN < 0.42 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.5 AND EMS_edition_edition_SOUNDEX >= 0.5 AND EMS_title_title_MONGE_ELKAN >= 0.96
+AL_RF_44,EMS_publisher_publisher_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.24 AND EMS_pages_pages_JARO_SIMILARITY < 0.28 AND EMS_edition_edition_TRIGRAM < 0.5 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY >= 0.83 AND EMS_title_title_MONGE_ELKAN >= 0.96 AND EMS_date_date_TRIGRAM >= 0.46
+AL_RF_45,EMS_authors_authors_TRIGRAM >= 0.24 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY < 0.59 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.93
+AL_RF_47,EMS_date_date_EXACT_MATCH >= 0.5
+AL_RF_50,EMS_date_date_LEVENSHTEIN < 0.75 AND EMS_date_date_JARO_WINKLER_SIMILARITY >= 0.95
+AL_RF_52,EMS_date_date_LEVENSHTEIN >= 0.75 AND EMS_publisher_publisher_NEEDLEMAN_WUNCH_SIMILARITY >= 0.59
+AL_RF_53,EMS_pages_pages_JARO_SIMILARITY >= 0.94 AND EMS_publisher_publisher_TRIGRAM >= 0.47 AND EMS_authors_authors_TRIGRAM < 0.72 AND EMS_date_date_JARO_WINKLER_SIMILARITY < 0.91
+AL_RF_54,EMS_date_date_JARO_SIMILARITY < 0.77 AND EMS_publisher_publisher_NEEDLEMAN_WUNCH_SIMILARITY >= 0.76 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY < 0.53
+AL_RF_55,EMS_date_date_LEVENSHTEIN >= 0.65 AND EMS_date_date_EXACT_MATCH < 0.5 AND EMS_pages_pages_TRIGRAM < 0.3 AND EMS_title_title_JACCARD >= 0.93 AND EMS_authors_authors_NEEDLEMAN_WUNCH_SIMILARITY < 0.94 AND EMS_date_date_TRIGRAM >= 0.46
+AL_RF_1_testing,EMS_date_date_EXACT_MATCH >= 0.5

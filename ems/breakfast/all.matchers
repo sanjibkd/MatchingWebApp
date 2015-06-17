@@ -1,0 +1,4 @@
+matcher_name,matcher_string
+manual_matcher,title_jac_rule OR price_reldiff_rule OR title_size_rule
+manual_matcher1,manual_matcher_rule
+j48_matcher,J48_1 OR J48_2 OR J48_3 OR J48_4

@@ -1,0 +1,15 @@
+matcher_name,matcher_string
+manual_matcher,exactNameMatchRule OR approxDateAndJaccardName
+manual_matcher1,exactNameMatchRule1 OR approxDateAndJaccardName1
+AL_RF_17_matcher,AL_RF_17
+AL_RF_14_matcher,AL_RF_14
+AL_RF_13_matcher,AL_RF_13
+AL_RF_19_matcher,AL_RF_19
+AL_RF_12_matcher,AL_RF_12
+AL_RF_22_matcher,AL_RF_22
+AL_RF_1_matcher,AL_RF_1
+AL_RF_7_matcher,AL_RF_7
+AL_RF_9_matcher,AL_RF_9
+AL_RF_25_matcher,AL_RF_25
+m1,exactNameMatchRule
+m2,approxDateAndJaccardName

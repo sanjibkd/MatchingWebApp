@@ -1,0 +1,37 @@
+@info
+{
+    "table":{
+        "name":"seed",
+        "description":"",
+        "idAttrib":{
+            "name":"pairID",
+            "type":"INTEGER"
+        },
+        "projectName":"video_games",
+        "attributes":[
+            {
+                "name":"pairID",
+                "type":"INTEGER"
+            },
+            {
+                "name":"theGamesDbId",
+                "type":"INTEGER"
+            },
+            {
+                "name":"MobyGamesId",
+                "type":"INTEGER"
+            },
+            {
+                "name":"label",
+                "type":"INTEGER"
+            }
+        ]
+    }
+}
+
+@data
+pairID:INTEGER,theGamesDbId:INTEGER,MobyGamesId:INTEGER,label:INTEGER
+17585,3551,4890,0
+3574,64,5585,0
+28701,3593,4026,1
+9325,1928,5664,1

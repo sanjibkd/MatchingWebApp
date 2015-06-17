@@ -1,0 +1,15 @@
+rule_name,rule_string
+exactNameMatchRule,exactNameMatch == 1.0
+approxDateAndJaccardName,normalizedTimestampDifference <= 3.0E-4 AND jaccardName >= 0.3
+approxDateAndJaccardName1,normalizedTimestampDifference1 <= 0.3 AND jaccardName1 >= 0.3
+exactNameMatchRule1,exactNameMatch1 == 1.0
+AL_RF_1,EMS_name_name_JACCARD >= 0.55 AND EMS_releaseDate_Released_SMITH_WATERMAN_SIMILARITY >= 0.38 AND EMS_timestamp_timestamp_EXACT_MATCH >= 0.5
+AL_RF_7,EMS_publisher_Published_by_TRIGRAM < 0.48 AND EMS_name_name_JACCARD >= 0.93
+AL_RF_9,EMS_publisher_Published_by_TRIGRAM >= 0.48 AND EMS_releaseDate_Released_SMITH_WATERMAN_SIMILARITY >= 0.43 AND EMS_name_name_NEEDLEMAN_WUNCH_SIMILARITY >= 0.82
+AL_RF_12,EMS_name_name_TRIGRAM >= 0.96
+AL_RF_13,EMS_name_name_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.98 AND EMS_name_name_NEEDLEMAN_WUNCH_SIMILARITY >= 0.85
+AL_RF_14,EMS_name_name_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.89 AND EMS_releaseDate_Released_SMITH_WATERMAN_SIMILARITY >= 0.38 AND EMS_name_name_NEEDLEMAN_WUNCH_SIMILARITY >= 0.8
+AL_RF_17,EMS_name_name_JACCARD >= 0.93
+AL_RF_19,EMS_releaseDate_Released_SMITH_WATERMAN_GOTOH_SIMILARITY >= 0.59 AND EMS_name_name_MONGE_ELKAN >= 0.89
+AL_RF_22,EMS_timestamp_timestamp_NORM_ABS_DIFF >= 0.0 AND EMS_name_name_TRIGRAM >= 0.95 AND EMS_releaseDate_Released_SMITH_WATERMAN_SIMILARITY >= 0.38
+AL_RF_25,EMS_genres_Genre_EXACT_MATCH < 0.5 AND EMS_timestamp_timestamp_NORM_ABS_DIFF >= 0.0 AND EMS_name_name_TRIGRAM >= 0.88

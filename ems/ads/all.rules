@@ -1,0 +1,6 @@
+rule_name,rule_string
+r1,year_exact == 1.0 AND title_model_swg >= 0.85 AND title_make_swg >= 0.85
+r2,year_exact == 1.0 AND attr_title_model_swg >= 0.85 AND attr_title_make_swg >= 0.85
+r3,title_year_swg >= 0.9 AND title_make_swg >= 0.85 AND title_model_swg >= 0.85
+r4,attr_title_year_swg >= 0.9 AND attr_title_make_swg >= 0.85 AND attr_title_model_swg >= 0.85
+r5,attr_title_year_swg >= 0.9 AND title_model_swg >= 0.85 AND title_make_swg >= 0.85

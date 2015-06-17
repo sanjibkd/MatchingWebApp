@@ -1,0 +1,410 @@
+@info
+{
+    "table":{
+        "name":"gold",
+        "description":"",
+        "idAttrib":{
+            "name":"pairId",
+            "type":"INTEGER"
+        },
+        "projectName":"breakfast",
+        "attributes":[
+            {
+                "name":"pairId",
+                "type":"INTEGER"
+            },
+            {
+                "name":"tableA.id",
+                "type":"INTEGER"
+            },
+            {
+                "name":"tableB.id",
+                "type":"INTEGER"
+            },
+            {
+                "name":"tableA.title",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableA.price",
+                "type":"FLOAT"
+            },
+            {
+                "name":"tableA.brand",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableA.weight",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableA.size",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableB.title",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableB.price",
+                "type":"FLOAT"
+            },
+            {
+                "name":"tableB.description",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableB.variation_size",
+                "type":"TEXT"
+            },
+            {
+                "name":"tableB.size",
+                "type":"TEXT"
+            },
+            {
+                "name":"label",
+                "type":"INTEGER"
+            }
+        ]
+    }
+}
+
+@data
+pairId:INTEGER,tableA.id:INTEGER,tableB.id:INTEGER,tableA.title:TEXT,tableA.price:FLOAT,tableA.brand:TEXT,tableA.weight:TEXT,tableA.size:TEXT,tableB.title:TEXT,tableB.price:FLOAT,tableB.description:TEXT,tableB.variation_size:TEXT,tableB.size:TEXT,label:INTEGER
+445,1,445,fiber one honey clusters cereal  14.25 oz,3.98,Fiber One,14.25,NA,barbara's bakery high fiber cereal  original 12 oz,8.74,barbara's bakery high,12,NA,0
+3341,1,3341,fiber one honey clusters cereal  14.25 oz,3.98,Fiber One,14.25,NA,chex cereal  honey nut  13.8 oz,12.79,"chex cereal ",13.8,NA,0
+5385,2,1220,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,kellogg's special k cereal bar  strawberry  .81 oz  12/box,15.48,kellogg's special k,81,NA,0
+5744,2,1579,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,special k cereal bar  strawberry;blueberry  .81 oz  12/box,16.98,special k cereal,81,NA,0
+5802,2,1637,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,kellogg's special k red berries cereal 14.7 oz,9.95,kellogg's special k,14.7,NA,0
+5945,2,1780,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,kellogg's special k cereal  vanilla almond  12.4 ounce (pack of 12),59.99,kellogg's special k,12.4,12.0,0
+7150,2,2985,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,special k cereal bar  strawberry  .81 oz  12/box,12.81,special k cereal,81,NA,0
+7580,2,3415,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,kellogg's special k cereal bars hazelnut & almond (5x21g),7.19,kellogg's special k,NA,NA,0
+7920,2,3755,special k vanilla almond cereal  12.4 oz,2.98,Kellogg's Special K,12.4,NA,special k cereal  chocolatey delight  13.4 oz,8.97,special k cereal,13.4,NA,0
+8789,3,459,cascadian farm organic oats and honey granola  16 oz,3.0,Cascadian Farms,16,NA,cascadian farm organic granola  oatmeal rasin 6.24 oz. (case of 12),79.51,cascadian farm organic,6.24,NA,0
+10230,3,1900,cascadian farm organic oats and honey granola  16 oz,3.0,Cascadian Farms,16,NA,cascadian farm organic granola bars  oats and cocoa crunchy  7.1 oz,10.39,cascadian farm organic,7.1,NA,0
+10712,3,2382,cascadian farm organic oats and honey granola  16 oz,3.0,Cascadian Farms,16,NA,cascadian farm organic crunchy granola bars  peanut butter  7.1 ounce,5.8,cascadian farm organic,7.1,NA,0
+11354,3,3024,cascadian farm organic oats and honey granola  16 oz,3.0,Cascadian Farms,16,NA,cascadian farm organic peanut butter chip chewy granola bars  7.4 oz,10.19,cascadian farm organic,7.4,NA,0
+11764,3,3434,cascadian farm organic oats and honey granola  16 oz,3.0,Cascadian Farms,16,NA,cascadian farm organic fruitful o's cereal  10.19 oz,13.15,cascadian farm organic,10.19,NA,0
+11766,3,3436,cascadian farm organic oats and honey granola  16 oz,3.0,Cascadian Farms,16,NA,cascadian farm chocolate chip organic chewy granola bars  7.4 oz,13.98,cascadian farm chocolate,7.4,NA,0
+23313,6,2488,go raw granola 1lb pack of 6,85.52,Go Raw,NA,6.0,go raw 100% organic bars variety pack of 12,16.95,go raw 100%,NA,12.0,0
+23831,6,3006,go raw granola 1lb pack of 6,85.52,Go Raw,NA,6.0,go raw live granola bar (10x1.8 oz.),-1.0,go raw live,1.8,NA,0
+31029,8,1874,kellogg's pop-tarts frosted strawberry & frosted brown sugar cinnamon toaster pastries  48 count  86.2 oz,9.98,Kellogg's Poptarts,86.2,NA,kellogg's pop tarts frosted brown sugar cinnamon  12 count (pack of 3),14.99,kellogg's pop tarts,NA,3.0,0
+50427,13,447,great value corn flakes cereal  18 oz,-1.0,Great Value,18,NA,great value chewy fiber bars  5-1.4 oz (40g),14.0,great value chewy,1.4,NA,0
+58715,15,405,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,annie's organic peanutty granola bars 6.9 oz (pack of 6),33.35,annie's organic peanutty,6.9,6.0,0
+58748,15,438,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,nature's path organic optimum slim 14.0 oz (pack of 6),52.56,nature's path organic,14.0,6.0,0
+59158,15,848,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,skout  organic apple - cinnamon trailbar 1.8 oz (pack of 12),27.33,skout  organic,1.8,12.0,0
+61074,15,2764,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,jimmybar how bout dem apples   1.6 oz (pack of 6),16.95,jimmybar how bout,1.6,6.0,0
+61347,15,3037,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,jimmybar super hip chocolate chip  1.6 oz (pack of 6),16.95,jimmybar super hip,1.6,6.0,0
+61413,15,3103,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,jimmybar peanut butter clutter  1.6 oz (pack of 6),16.95,jimmybar peanut butter,1.6,6.0,0
+62260,15,3950,country choice organic irish style oats  24 oz (pack of 6),25.58,Country Choice,24,6.0,walden farms  drssng cf russian  12 oz (pack of 6),30.96,"walden farms ",12,6.0,0
+63916,16,1441,kind healthy grains maple quinoa clusters with chia seeds  11 oz,-1.0,Kind,11,NA,kind healthy grains cinnamon oat clusters w flax seeds 11oz,10.01,kind healthy grains,11,NA,0
+66206,16,3731,kind healthy grains maple quinoa clusters with chia seeds  11 oz,-1.0,Kind,11,NA,kind peanut butter whole grain clusters  11 oz,7.99,kind peanut butter,11,NA,0
+71683,18,878,quaker chocolate chip instant oatmeal  1.23 oz  10 count,-1.0,Quaker Oatmeal,1.23,NA,quaker chewy granola bars  chocolate chip  18 count,4.49,quaker chewy granola,NA,NA,0
+72895,18,2090,quaker chocolate chip instant oatmeal  1.23 oz  10 count,-1.0,Quaker Oatmeal,1.23,NA,quaker chewy chocolate chip granola bars  0.84 oz  24 count,14.99,quaker chewy chocolate,0.84,NA,0
+75471,19,501,sprout rise organic purple berry & carrot morning multigrain crunch bites  0.75 oz  5 count,-1.0,SPROUT,0.75,NA,sprout rise morning multigrain crunch bites  red berry and beet  3.75 ounce,6.6,sprout rise morning,3.75,NA,0
+75511,19,541,sprout rise organic purple berry & carrot morning multigrain crunch bites  0.75 oz  5 count,-1.0,SPROUT,0.75,NA,sprout rise morning multigrain crunch bites  orange fruit and carrot  3.75 ounce,8.76,sprout rise morning,3.75,NA,0
+78319,19,3349,sprout rise organic purple berry & carrot morning multigrain crunch bites  0.75 oz  5 count,-1.0,SPROUT,0.75,NA,sprout rise morning multigrain crunch bites  purple berry and carrot  3.75 ounce,6.6,sprout rise morning,3.75,NA,1
+79581,20,446,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature valley granola bars  crunchy  oats 'n honey8.9 oz (pack of 2),9.5,nature valley granola,8.9,2.0,0
+80278,20,1143,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature valley oats 'n honey crunchy granola bars  1.5 oz  18 count,12.71,nature valley oats,1.5,NA,0
+80296,20,1161,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature granola bars crunchy oats 'n honey 17.8 oz (pack of 18),150.44,nature granola bars,17.8,18.0,0
+80313,20,1178,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature valley granola bars; crunchy oats 'n honey  1.5-oz.  28/box,95.96,nature valley granola,NA,NA,0
+80373,20,1238,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,honey bunches of oats granola crunchy honey roasted 11 oz. (2 pack),13.49,honey bunches of,11,NA,1
+80940,20,1805,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,honey bunches of oats granola crunchy raspberry 2pack (11oz each bag),10.99,honey bunches of,11,NA,1
+82104,20,2969,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature crunchy granola bars oats 'n honey 8.9 oz (pack of 24),111.69,nature crunchy granola,8.9,24.0,0
+82639,20,3504,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature's valley granola bars  crunchy oats n honey  60 count,15.89,nature's valley granola,NA,NA,0
+82759,20,3624,post honey bunches of oats crunchy raspberry granola  11 oz,-1.0,Generic,11,NA,nature valley crunchy granola bars oats 'n honey  96-count,25.99,nature valley crunchy,NA,NA,0
+88374,22,909,natures path cereal 10oz pack of 12,76.23,NATURES PATH,10,12.0,2.50oz sc&onion pringles pack of 12,18.27,2.50oz sc&onion pringles,2.50,12.0,0
+88959,22,1494,natures path cereal 10oz pack of 12,76.23,NATURES PATH,10,12.0,2.50oz bbq pringles pack of 12,18.27,2.50oz bbq pringles,2.50,12.0,0
+92077,23,447,great value quick farina hot cereal  28 oz,-1.0,Great Value,28,NA,great value chewy fiber bars  5-1.4 oz (40g),14.0,great value chewy,1.4,NA,0
+108592,27,302,quaker real medleys cherry pistachio oatmeal  2.57 oz,-1.0,Quaker Oatmeal,2.57,NA,quaker real medleys bars  cherry pistachio  13.4 ounce,12.72,quaker real medleys,13.4,NA,0
+111485,27,3195,quaker real medleys cherry pistachio oatmeal  2.57 oz,-1.0,Quaker Oatmeal,2.57,NA,quaker breakfast cookies  oatmeal raisin  10.1 oz,4.99,quaker breakfast cookies,10.1,NA,0
+115650,28,3195,quaker real medleys apple walnut oatmeal  2.64 oz,-1.0,Quaker,2.64,NA,quaker breakfast cookies  oatmeal raisin  10.1 oz,4.99,quaker breakfast cookies,10.1,NA,0
+115737,28,3282,quaker real medleys apple walnut oatmeal  2.64 oz,-1.0,Quaker,2.64,NA,quaker real medleys bars  apple nut harvest  13.4 ounce,13.85,quaker real medleys,13.4,NA,0
+117529,29,909,erewhon cereal 10oz pack of 12,71.48,Erewhon,10,12.0,2.50oz sc&onion pringles pack of 12,18.27,2.50oz sc&onion pringles,2.50,12.0,0
+118114,29,1494,erewhon cereal 10oz pack of 12,71.48,Erewhon,10,12.0,2.50oz bbq pringles pack of 12,18.27,2.50oz bbq pringles,2.50,12.0,0
+122833,30,2048,kellogg's pop-tarts frosted strawberry toaster pastries  16 count  29.3 oz,3.5,Kellogg's Poptarts,29.3,NA,kellogg's nutri-grain bars  strawberry  16 count,4.78,kellogg's nutri-grain bars,NA,NA,0
+136475,33,3195,quaker real medleys summer berry oatmeal  2.24 oz,-1.0,Quaker Oatmeal,2.24,NA,quaker breakfast cookies  oatmeal raisin  10.1 oz,4.99,quaker breakfast cookies,10.1,NA,0
+140640,34,3195,quaker apples & cranberries instant oatmeal  1.79 oz,-1.0,Quaker Oatmeal,1.79,NA,quaker breakfast cookies  oatmeal raisin  10.1 oz,4.99,quaker breakfast cookies,10.1,NA,0
+146068,36,293,natures path granola 11oz pack of 8,60.36,NATURES PATH,11,8.0,natures path hempplus granola  11.5 oz,32.92,natures path hempplus,11.5,NA,0
+154250,38,145,two moms in the raw granola 4ea pack of 6,71.48,Two Moms In The Raw,NA,6.0,two moms in the raw gojiberry bar (24x2oz ),95.28,two moms in,2,NA,1
+158415,39,145,two moms in the raw granola 4ea pack of 6,74.34,Two Moms In The Raw,NA,6.0,two moms in the raw gojiberry bar (24x2oz ),95.28,two moms in,2,NA,1
+167509,41,909,ancient harvest quinoa 6.5oz pack of 12,54.14,Ancient Harvest,6.5,12.0,2.50oz sc&onion pringles pack of 12,18.27,2.50oz sc&onion pringles,2.50,12.0,0
+168094,41,1494,ancient harvest quinoa 6.5oz pack of 12,54.14,Ancient Harvest,6.5,12.0,2.50oz bbq pringles pack of 12,18.27,2.50oz bbq pringles,2.50,12.0,0
+170961,42,196,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,nature valley granola bars oats & honey 6 oz box,9.72,nature valley granola,6,NA,0
+172415,42,1650,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,nature valley sweet & salty nut peanut of 1.2 oz -48 bars,24.85,nature valley sweet,1.2,NA,0
+172440,42,1675,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,pampa fruit & grain bars strawberry  6 oz (pack of 14),43.2,pampa fruit &,6,14.0,0
+174035,42,3270,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,peanut sweet & salty chewy granola bars 10 count (8 boxes),33.0,peanut sweet &,NA,NA,0
+174208,42,3443,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,fiber one - oats & chocolate  20 x 1.4 oz bars,7.87,fiber one -,1.4,NA,0
+174326,42,3561,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,nature valley sweet and salty nut granola bars  cashew  6 count,2.98,nature valley sweet,NA,NA,0
+174805,42,4040,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,nature valley sweet & salty peanut granola bar  7.4 oz,-1.0,nature valley sweet,7.4,NA,0
+174914,42,4149,mariani sweet & salty honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,zoneperfect sweet & salty cashew pretzel nutrition bars  5 count,12.77,zoneperfect sweet &,NA,NA,0
+176979,43,2049,quaker soft baked bars banana nut bread  7.4oz  7.4 oz,2.18,Quaker,7.4,NA,quaker banana nut bread soft baked bars   7.4 oz (pack of 12),46.49,quaker banana nut,7.4,12.0,0
+177038,43,2108,quaker soft baked bars banana nut bread  7.4oz  7.4 oz,2.18,Quaker,7.4,NA,nakd banana bread raw fruit  oat & nut wholefood bars (4x30g),-1.0,nakd banana bread,NA,NA,0
+177223,43,2293,quaker soft baked bars banana nut bread  7.4oz  7.4 oz,2.18,Quaker,7.4,NA,quaker cinnamon pecan bread soft baked bars   7.4 oz (pack of 12),70.36,quaker cinnamon pecan,7.4,12.0,0
+177412,43,2482,quaker soft baked bars banana nut bread  7.4oz  7.4 oz,2.18,Quaker,7.4,NA,quaker soft baked cereal bar  banana nut bread  7.4-ounce packages (pack of 6),13.08,quaker soft baked,NA,6.0,0
+178240,43,3310,quaker soft baked bars banana nut bread  7.4oz  7.4 oz,2.18,Quaker,7.4,NA,quaker chewy dipps granola bars  caramel nut  6.52 oz,9.46,quaker chewy dipps,6.52,NA,0
+182516,44,3421,mariani sweet & salty honey bar  1.4 oz,-1.0,Mariani,1.4,NA,bar  almond & apricot  1.4 oz ( value bulk multi-pack),50.12,bar  almond,1.4,NA,0
+182687,44,3592,mariani sweet & salty honey bar  1.4 oz,-1.0,Mariani,1.4,NA,chatfield's bar mixed nut & frt honey 1.4 oz (pack of 12),21.6,chatfield's bar mixed,1.4,12.0,0
+183135,44,4040,mariani sweet & salty honey bar  1.4 oz,-1.0,Mariani,1.4,NA,nature valley sweet & salty peanut granola bar  7.4 oz,-1.0,nature valley sweet,7.4,NA,0
+184371,45,1111,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,kellogg's  nutri-grain apple cinnamon cereal bars  8 ct  10.4 oz,12.39,kellogg's  nutri-grain,10.4,NA,0
+185099,45,1839,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,kellogg's nutri-grain bar  toffee crunch  5 - 1.48 oz pouches  net wt. 7.4 ounce,7.32,kellogg's nutri-grain bar,1.48,NA,0
+185242,45,1982,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,nature valley crunchy apple crisp granola bars  1.5 oz  6 count,-1.0,nature valley crunchy,1.5,NA,0
+185552,45,2292,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,kellogg's nutri grain fruit crunch  apple cobbler  7.4 oz boxes (3 pack),21.05,kellogg's nutri grain,7.4,NA,0
+185696,45,2436,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,nature valley crunchy pecan crunch granola bars  1.5 oz  6 count,-1.0,nature valley crunchy,1.5,NA,0
+186044,45,2784,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,nutri-grain fruit crunch  apple cobbler  2 bar pouches  1.48 oz  5-count,6.22,nutri-grain fruit crunch,1.48,NA,0
+186108,45,2848,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,kellogg's nutri-grain fruit crunch  apple cobbler  7.4-oz boxes (pack of 6),31.4,kellogg's nutri-grain fruit,NA,6.0,0
+186617,45,3357,kellogg's nutri-grain fruit crunch apple cobbler granola bars  1.48 oz  5 count,2.78,Nutri-Grain,1.48,NA,betty lou's jumbo fruit bars  cinnamon apple  2 oz - 5 pack,144.44,betty lou's jumbo,2,NA,0
+188268,46,843,quaker soft baked bars cinnamon pecan bread  7.4 oz,2.18,Quaker,7.4,NA,quaker soft baked bar  cinnamon pecan bread  7.4-ounce (pack of 6),13.08,quaker soft baked,NA,6.0,0
+189474,46,2049,quaker soft baked bars cinnamon pecan bread  7.4 oz,2.18,Quaker,7.4,NA,quaker banana nut bread soft baked bars   7.4 oz (pack of 12),46.49,quaker banana nut,7.4,12.0,0
+189718,46,2293,quaker soft baked bars cinnamon pecan bread  7.4 oz,2.18,Quaker,7.4,NA,quaker cinnamon pecan bread soft baked bars   7.4 oz (pack of 12),70.36,quaker cinnamon pecan,7.4,12.0,0
+191849,47,259,mariani trail mix honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,nature valley dark chocolate cherry trail mix bars  6 ct,-1.0,nature valley dark,NA,NA,0
+192087,47,497,mariani trail mix honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,kashi trail mix chewy granola bars  18 count,38.73,kashi trail mix,NA,NA,0
+193417,47,1827,mariani trail mix honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,nature valley trail mix fruit & nut chewy granola bars  1.2 oz  6 count,-1.0,nature valley trail,1.2,NA,0
+193435,47,1845,mariani trail mix honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,kashi  tlc chewy trail mix granola bars  6 ct  7.4 oz,8.99,kashi  tlc,7.4,NA,0
+195865,48,110,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,18 rabbits cherry dark chocolate & almond 1.6 oz (pack of 12),27.5,18 rabbits cherry,1.6,12.0,0
+195871,48,116,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,nature valley almond crunch granola bars 7.2 oz (pack of 12),74.57,nature valley almond,7.2,12.0,0
+196027,48,272,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,nature granola bars roasted nut almond crunch 7.2 oz (pack of 24),119.44,nature granola bars,7.2,24.0,0
+196160,48,405,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,annie's organic peanutty granola bars 6.9 oz (pack of 6),33.35,annie's organic peanutty,6.9,6.0,0
+196544,48,789,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,quaker chewy granola bar  variety pack  8-count (pack of 6),14.64,quaker chewy granola,NA,6.0,0
+196835,48,1080,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,nature granola bars crunchy roasted almond 8.9 oz (pack of 24),113.57,nature granola bars,8.9,24.0,0
+196874,48,1119,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,udi's gluten free au naturel granola (pack of 6),39.99,udi's gluten free,NA,6.0,0
+197040,48,1285,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,nutritious living hi-lo vanilla almond cereal  10-ounce units (pack of 6),37.24,nutritious living hi-lo,NA,6.0,0
+197397,48,1642,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,0
+197430,48,1675,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,pampa fruit & grain bars strawberry  6 oz (pack of 14),43.2,pampa fruit &,6,14.0,0
+197671,48,1916,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,sunbelt oat & honey chewy granola bars  8 oz (pack of 3),11.0,sunbelt oat &,8,3.0,0
+197764,48,2009,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,kashi honey almond flax chewy granola bars net wt 7.4 oz (pack of 6),41.88,kashi honey almond,7.4,6.0,0
+198043,48,2288,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,quaker warm & crunchy granola cranberry almond 13.5 oz (pack of 6),51.53,quaker warm &,13.5,6.0,0
+198519,48,2764,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,jimmybar how bout dem apples   1.6 oz (pack of 6),16.95,jimmybar how bout,1.6,6.0,0
+198686,48,2931,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,udi's granola bar  cranberry almond  gluten-free 1.23 oz. 5-count (pack of 6),40.99,udi's granola bar,1.23,6.0,0
+198727,48,2972,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,nature valley granola thins  10 bars (pack of 6),9.44,nature valley granola,NA,6.0,0
+198792,48,3037,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,jimmybar super hip chocolate chip  1.6 oz (pack of 6),16.95,jimmybar super hip,1.6,6.0,0
+198800,48,3045,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,ratio protein bars  granola  2.33 ounce (pack of 6),32.4,ratio protein bars,2.33,6.0,0
+198846,48,3091,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,annie's homegrown berry berry granola bar 6.9 oz (pack of 6),27.95,annie's homegrown berry,6.9,6.0,0
+198858,48,3103,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,jimmybar peanut butter clutter  1.6 oz (pack of 6),16.95,jimmybar peanut butter,1.6,6.0,0
+198870,48,3115,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,coconut secret coconut bar  almond  1.75-ounce (pack of 6),36.97,coconut secret coconut,NA,6.0,0
+198876,48,3121,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,granola bar og2 trail mi 6.2 oz (pack of 6),38.01,granola bar og2,6.2,6.0,0
+198981,48,3226,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,kind plus antioxidants  cranberry & almond snack bar (pack of 2),55.99,kind plus antioxidants,NA,2.0,0
+199005,48,3250,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,snacklemouth granola nut cluster  almond berry 5.5 oz. (pack of 15),63.93,snacklemouth granola nut,5.5,15.0,0
+199093,48,3338,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,atkins advantage peanut fudge granola bar 8.5 oz (pack of 6),74.99,atkins advantage peanut,8.5,6.0,0
+199319,48,3564,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,achva vanilla sesame havla  16-ounce containers (pack of 6),41.99,achva vanilla sesame,NA,6.0,0
+199399,48,3644,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,nature valley sweet & salty nut granola bars  almond  7.4 oz  (pack of 3),21.0,nature valley sweet,7.4,3.0,0
+199610,48,3855,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,boulder granola granola  cranberry  3 ounce (pack of 6),16.15,boulder granola granola,3,6.0,0
+199705,48,3950,udi's vanilla & almond granola  13 oz (pack of 6),27.39,Udi's,13,6.0,walden farms  drssng cf russian  12 oz (pack of 6),30.96,"walden farms ",12,6.0,0
+204158,50,73,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,betty lou's gluten free fruit bars apple cinnamon -- 2 oz,17.23,betty lou's gluten,2,NA,0
+204532,50,447,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value chewy fiber bars  5-1.4 oz (40g),14.0,great value chewy,1.4,NA,0
+204731,50,646,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,nakd apple pie raw fruit  oat & nut wholefood bars (4x30g),8.99,nakd apple pie,NA,NA,0
+205196,50,1111,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,kellogg's  nutri-grain apple cinnamon cereal bars  8 ct  10.4 oz,12.39,kellogg's  nutri-grain,10.4,NA,0
+205321,50,1236,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,gerber graduates apple cinnamon fruit & cereal bars  8-count bars (pack of 6),27.95,gerber graduates apple,NA,6.0,0
+205760,50,1675,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,pampa fruit & grain bars strawberry  6 oz (pack of 14),43.2,pampa fruit &,6,14.0,0
+205820,50,1735,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,wgmns cereal bars  fruit & grain  apple cinnamon  10.4 oz. (pack of 6),27.5,wgmns cereal bars,10.4,6.0,0
+206334,50,2249,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,kind fruit & nut bars apple cinnamon and pecan 12 count,23.99,kind fruit &,NA,NA,0
+207069,50,2984,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value chewy granola bars  18- 0.84 oz (24g),29.99,great value chewy,0.84,NA,0
+207192,50,3107,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value chewy granola bars  6-1.23 oz (35g) each,4.99,great value chewy,1.23,NA,0
+207400,50,3315,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,that's it apple & banana fruit bars 12/1.2 oz,24.16,that's it apple,1.2,NA,0
+207442,50,3357,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,betty lou's jumbo fruit bars  cinnamon apple  2 oz - 5 pack,144.44,betty lou's jumbo,2,NA,0
+207578,50,3493,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,sunbelt bakery's apple cinnamon fruit & grain bars 8-count (8 boxes),33.0,sunbelt bakery's apple,NA,NA,0
+207788,50,3703,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value mixed berry fruit & grain bars  10.4 oz,11.98,great value mixed,10.4,NA,0
+207872,50,3787,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,jordans frusli cereal bars apple  sultana & cinnamon (6x30g),7.99,jordans frusli cereal,NA,NA,0
+208001,50,3916,great value apple cinnamon fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,bimbo  multi grain apple cinnamon cereal bar  9 oz,10.0,bimbo  multi,9,NA,0
+210842,51,2592,meta health bar cinnamon oatmeal raisin health bars  1.41 oz  6 count,7.47,Meta,1.41,NA,general mills cinnamon toast crunch cereal bars  0.85 oz  6 count,29.88,general mills cinnamon,0.85,NA,0
+211217,51,2967,meta health bar cinnamon oatmeal raisin health bars  1.41 oz  6 count,7.47,Meta,1.41,NA,meta 3-in-1 multihealth fiber health bar  cinnamon oatmeal raisin (10 ct),19.85,meta 3-in-1 multihealth,NA,NA,0
+213207,52,792,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,kellogg's special k cereal bar  chocolate covered strawberry  4.86 ounce,5.45,kellogg's special k,4.86,NA,0
+213635,52,1220,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,kellogg's special k cereal bar  strawberry  .81 oz  12/box,15.48,kellogg's special k,81,NA,0
+213952,52,1537,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,nutri-grain cereal bars  strawberry  10.4 oz  (pack of 3),19.99,nutri-grain cereal bars,10.4,3.0,0
+214463,52,2048,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,kellogg's nutri-grain bars  strawberry  16 count,4.78,kellogg's nutri-grain bars,NA,NA,1
+214948,52,2533,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,kellogg's  nutri-grain raspberry cereal bars  8 ct  10.4 oz,11.49,kellogg's  nutri-grain,10.4,NA,0
+215133,52,2718,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,kellogg's nutri-grain cereal bars  36 count,16.59,kellogg's nutri-grain cereal,NA,NA,0
+215240,52,2825,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,kellogg's  nutri-grain blueberry cereal bars  8 ct  10.4 oz,8.98,kellogg's  nutri-grain,10.4,NA,0
+215400,52,2985,kellogg's nutri-grain strawberry cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,special k cereal bar  strawberry  .81 oz  12/box,12.81,special k cereal,81,NA,0
+218035,53,1455,mariani cranberry honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,bar  cranberry and almond  1.4 oz - 12 bars (24-pack),39.99,bar  cranberry,1.4,NA,0
+219314,53,2734,mariani cranberry honey bars  1.4 oz  6 count,-1.0,Mariani,1.4,NA,bar  cranberry and almond  1.4 oz - 12 bars (48-pack),63.94,bar  cranberry,1.4,NA,0
+225357,55,447,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value chewy fiber bars  5-1.4 oz (40g),14.0,great value chewy,1.4,NA,0
+226585,55,1675,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,pampa fruit & grain bars strawberry  6 oz (pack of 14),43.2,pampa fruit &,6,14.0,0
+227460,55,2550,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,nakd berry cheeky fruit  oat & nut bars (4x30g),8.99,nakd berry cheeky,NA,NA,0
+227894,55,2984,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value chewy granola bars  18- 0.84 oz (24g),29.99,great value chewy,0.84,NA,0
+228017,55,3107,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value chewy granola bars  6-1.23 oz (35g) each,4.99,great value chewy,1.23,NA,0
+228472,55,3562,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,wgmns cereal bars  fruit & grain  mixed berry  10.4 oz. (pack of 6),25.98,wgmns cereal bars,10.4,6.0,0
+228533,55,3623,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,soyjoy all natural fruit & soy bars  berry  12 pk,12.99,soyjoy all natural,NA,NA,0
+228613,55,3703,great value mixed berry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value mixed berry fruit & grain bars  10.4 oz,11.98,great value mixed,10.4,NA,0
+229596,56,521,kellogg's nutri-grain apple cinnamon cereal bars  16ct,10.19,Nutri-Grain,NA,NA,kellogg's nutrigrain cereal bar apple cinnamon,15.99,kellogg's nutrigrain cereal,NA,NA,1
+230943,56,1868,kellogg's nutri-grain apple cinnamon cereal bars  16ct,10.19,Nutri-Grain,NA,NA,kellogg's nutri-grain cereal bars  apple cinnamon  16-count bars (pack of 3),36.61,kellogg's nutri-grain cereal,NA,3.0,0
+233880,57,640,nabisco belvita golden oat breakfast biscuits  1.76 oz  5 count,2.98,Generic,1.76,NA,belvita breakfast biscuits  1.76 oz pack  golden oat  64/carton,75.41,belvita breakfast biscuits,1.76,NA,0
+240652,58,3247,kellogg's special k protein chocolate peanut butter meal bar  1.59 oz  8 count,13.74,Kellogg's,1.59,NA,special k protein meal bar  chocolate peanut butter  6-count bars (pack of 6),57.44,special k protein,NA,6.0,0
+241415,58,4010,kellogg's special k protein chocolate peanut butter meal bar  1.59 oz  8 count,13.74,Kellogg's,1.59,NA,-- special k protein meal bar  chocolate/peanut butter  1.59 oz  8/box,21.98,-- special k,1.59,NA,1
+247063,60,1328,great value fiber bars oats & peanut butter  5 ct,2.0,Great Value,NA,NA,general mills fiber one oat & peanut butter chewy bars 16ct,32.89,general mills fiber,NA,NA,0
+255953,62,1888,honey nut cheerios milk 'n cereal bars  1.4 oz  6 count,2.5,Honey Nut Cheerios,1.4,NA,cheerios honey nut   milk 'n cereal bars  6-count boxes (pack of 10),37.06,cheerios honey nut,NA,10.0,0
+258802,63,572,kellogg's special k blueberry pastry crisps  0.88 oz  9 count,8.07,Kellogg's,0.88,NA,kellogg's special k pastry crisps strawberry/blueberry variety 26.4oz (3 boxes),58.0,kellogg's special k,26.4,NA,0
+258929,63,699,kellogg's special k blueberry pastry crisps  0.88 oz  9 count,8.07,Kellogg's,0.88,NA,special k blueberry pastry crisps (9 pack),8.96,special k blueberry,NA,NA,1
+261617,63,3387,kellogg's special k blueberry pastry crisps  0.88 oz  9 count,8.07,Kellogg's,0.88,NA,kellogg's special k fruit crisps bars  blueberry  5 ct,4.99,kellogg's special k,NA,NA,0
+264267,64,1872,milk n' cereal bars variety pack  6 ct,2.5,General Mills,NA,NA,milk n cereal bars 6 bars variety pack 9 oz,9.99,milk n cereal,9,NA,1
+267159,65,599,larabar uber cherry cobbler fruit & nut bar  1.42 of (pack of 15),23.65,Larabar,NA,15.0,wai lana fruit & nut bar - tropical macadamia  2-ounce bars (pack of 12),40.15,wai lana fruit,NA,12.0,0
+269922,65,3362,larabar uber cherry cobbler fruit & nut bar  1.42 of (pack of 15),23.65,Larabar,NA,15.0,larabar ubar bar  1.42 ounce - cherry cobbler (15 pack),29.88,larabar ubar bar,1.42,NA,1
+271874,66,1149,great value blueberry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,wgmns cereal bars  fruit & grain  blueberry  10.4 oz. (pack of 6),24.98,wgmns cereal bars,10.4,6.0,0
+274428,66,3703,great value blueberry fruit & grain bars  10.4 oz,2.0,Great Value,10.4,NA,great value mixed berry fruit & grain bars  10.4 oz,11.98,great value mixed,10.4,NA,0
+280774,68,1719,fiber one strawberry streusel bars  1.42 oz  12 count,5.68,Fiber One,1.42,NA,fiber one streusel strawberry bars 5 count (pack of 2 ),10.95,fiber one streusel,NA,2.0,0
+282054,68,2999,fiber one strawberry streusel bars  1.42 oz  12 count,5.68,Fiber One,1.42,NA,fiber one streusel bar  strawberry (20 ct),20.99,fiber one streusel,NA,NA,0
+282888,68,3833,fiber one strawberry streusel bars  1.42 oz  12 count,5.68,Fiber One,1.42,NA,12 bar pack fiber one streusel strawberry bars,-1.0,12 bar pack,NA,NA,1
+284927,69,1707,glutino gluten free apple breakfast bars  5 count  (pack of 12),65.05,Glutino,NA,12.0,glutino  breakfast bar  apple  7.05 oz (pack of 12 ),70.17,glutino  breakfast,7.05,12.0,1
+285178,69,1958,glutino gluten free apple breakfast bars  5 count  (pack of 12),65.05,Glutino,NA,12.0,glutino gluten free breakfast bars  apple  7.05 ounce (pack of 12),68.99,glutino gluten free,7.05,12.0,1
+286512,69,3292,glutino gluten free apple breakfast bars  5 count  (pack of 12),65.05,Glutino,NA,12.0,glutino  apple breakfast bars  5 ct,84.25,glutino  apple,NA,NA,1
+301631,73,1751,kellogg's: nutri-grain apple cinnamon cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,nutrigrain apple cinnamon cereal bar  1.55 ounce -- 96 per case.,69.45,nutrigrain apple cinnamon,1.55,NA,0
+301958,73,2078,kellogg's: nutri-grain apple cinnamon cereal bar  20.80 oz,4.78,Nutri-Grain,20.80,NA,nutri-grain cereal bars  apple cinnamon  8-count bars (pack of 3),21.2,nutri-grain cereal bars,NA,3.0,0
+315200,76,2825,kellogg's nutri-grain cereal bars blueberry 8ct,2.78,Nutri-Grain,NA,NA,kellogg's  nutri-grain blueberry cereal bars  8 ct  10.4 oz,8.98,kellogg's  nutri-grain,10.4,NA,0
+317178,77,638,nature valley blueberry breakfast biscuits  1.77 oz  12 count,5.68,Nature Valley,1.77,NA,belvita breakfast biscuits  blueberry breakfast biscuits  8.8 oz,9.85,belvita breakfast biscuits,8.8,NA,0
+321189,78,484,envirokidz peanut choco drizzle cereal bars  6 oz (pack of 6),26.48,Envirokidz,6,6.0,zone perfect nutrition bars  chocolate peanut butter  8.8 oz (pack of 4),36.29,zone perfect nutrition,8.8,4.0,0
+325645,79,775,general mills cinnamon toast crunch cereal bars  0.85 oz  6 count,2.5,Cinnamon Toast Crunch,0.85,NA,big general mills milk 'n cereal bars cinnamon toast crunch 9.5oz (pack of 20),98.44,big general mills,9.5,20.0,0
+327462,79,2592,general mills cinnamon toast crunch cereal bars  0.85 oz  6 count,2.5,Cinnamon Toast Crunch,0.85,NA,general mills cinnamon toast crunch cereal bars  0.85 oz  6 count,29.88,general mills cinnamon,0.85,NA,0
+344129,83,2599,glutino gluten free blueberry breakfast bars  5 count  (pack of 12),65.05,Glutino,NA,12.0,glutino gluten free breakfast bars  blueberry  5-count boxes  7.05oz  (pack of 6),31.99,glutino gluten free,7.05,6.0,0
+344410,83,2880,glutino gluten free blueberry breakfast bars  5 count  (pack of 12),65.05,Glutino,NA,12.0,kind plus gluten free bars pomegranate blueberry pistachio plus antioxidants (pack of 8),14.95,kind plus gluten,NA,8.0,0
+344445,83,2915,glutino gluten free blueberry breakfast bars  5 count  (pack of 12),65.05,Glutino,NA,12.0,glutino  breakfast bars  blueberry  7.05oz box (pack of 2),19.65,glutino  breakfast,7.05,2.0,0
+347748,84,2053,kellogg nutri grain cereal bars cherry 8ct,2.78,Nutri-Grain,NA,NA,kellogg nutri grain cereal bars cherry 8ct,11.98,kellogg nutri grain,NA,NA,1
+356930,86,2905,health valley organic apple cobbler multigrain cereal bars  7.9 oz  (pack of 6),30.79,Health Valley,7.9,6.0,health valley organic multigrain cereal bars  strawberry cobbler  6 bars (pack of 6),25.13,health valley organic,NA,6.0,0
+357053,86,3028,health valley organic apple cobbler multigrain cereal bars  7.9 oz  (pack of 6),30.79,Health Valley,7.9,6.0,health valley organic multigrain cereal bars  blueberry cobbler  6 bars  7.9 ounce (pack of 6),28.02,health valley organic,7.9,6.0,0
+390250,94,2905,health valley organic blueberry cobbler multigrain cereal bars  7.9 oz  (pack of 6),31.2,Health Valley,7.9,6.0,health valley organic multigrain cereal bars  strawberry cobbler  6 bars (pack of 6),25.13,health valley organic,NA,6.0,0
+390373,94,3028,health valley organic blueberry cobbler multigrain cereal bars  7.9 oz  (pack of 6),31.2,Health Valley,7.9,6.0,health valley organic multigrain cereal bars  blueberry cobbler  6 bars  7.9 ounce (pack of 6),28.02,health valley organic,7.9,6.0,1
+749864,181,164,bear naked 100% pure & natural maple pecan granola  12 oz,3.68,Bear Naked,12,NA,bear naked granola  maple pecan  12 oz,4.19,bear naked granola,12,NA,1
+1213134,292,1119,udi's au naturel granola  13 oz (pack of 6),27.39,Udi's,13,6.0,udi's gluten free au naturel granola (pack of 6),39.99,udi's gluten free,NA,6.0,1
+1555251,374,1706,kellogg's special k chocolatey pretzel cereal bars  0.77 oz  12 count,4.78,Kellogg's,0.77,NA,kellogg's special k chocolatey pretzel cereal bars  0.77 oz  12 count,-1.0,kellogg's special k,0.77,NA,1
+1992990,479,2120,kellogg's nutri-grain cereal bars  apple cinnamon  8 ct,2.78,Nutri-Grain,NA,NA,gerber graduates cereal bars - apple cinnamon - 8 ct,2.88,gerber graduates cereal,NA,NA,1
+3246177,780,1642,bakery on main granola 12oz pack of 6,50.22,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,1
+5367847,1289,3327,fiber one original english muffins  6 count,-1.0,Fiber One,NA,NA,fiber one english muffins original - 6 ct,16.99,fiber one english,NA,NA,1
+5871812,1410,3327,fiber one multigrain english muffins  6 count,-1.0,Fiber One,NA,NA,fiber one english muffins original - 6 ct,16.99,fiber one english,NA,NA,1
+12395835,2977,795,nature's path organic peanut butter granola  11.5 oz (pack of 6),30.55,Nature's Path,11.5,6.0,nature's path organic peanut butter granola ( 12x11.5 oz),42.41,nature's path organic,11.5,NA,1
+12638252,3035,1642,bakery on main gourmet naturals cranberry orange cashew granola  12 oz (pack of 6),34.02,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,0
+12688232,3047,1642,bakery on main gourmet naturals fiber power triple berry granola  12 oz (pack of 6),31.66,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,0
+13033404,3130,1119,udi's gluten free cranberry granola  12 oz (pack of 6),36.08,Udi's,12,6.0,udi's gluten free au naturel granola (pack of 6),39.99,udi's gluten free,NA,6.0,1
+13035366,3130,3081,udi's gluten free cranberry granola  12 oz (pack of 6),36.08,Udi's,12,6.0,cranberry maple almond gluten free granola bars (pack of 12),-1.0,cranberry maple almond,NA,12.0,0
+13054395,3135,1285,nutritious living hi lo vanilla almond cereal  10 oz (pack of 6),31.68,Nutorious Living,10,6.0,nutritious living hi-lo vanilla almond cereal  10-ounce units (pack of 6),37.24,nutritious living hi-lo,NA,6.0,1
+13067247,3138,1642,bakery on main granola 12oz pack of 6,45.76,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,1
+13127808,3152,3893,nature's path organic macaroon crunch granola bars  7.05 oz  (pack of 6),25.68,Nature's Path,7.05,6.0,nature's path organic crunchy granola bars  macaroon crunch  7.05-ounce (pack of 6),25.56,nature's path organic,NA,6.0,1
+13187509,3167,1119,udi's naturel granola  12 oz (pack of 6),34.11,Udi's,12,6.0,udi's gluten free au naturel granola (pack of 6),39.99,udi's gluten free,NA,6.0,1
+13196362,3169,1642,bakery on main gourmet naturals fiber power cinnamon raisin granola  12 oz (pack of 6),31.66,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,1
+13302374,3194,3529,fiber one protein cranberry almond cereal  15.8 oz,3.78,General Mills,15.8,NA,fiber one protein cereal  cranberry almond  15.8 ounce,5.66,fiber one protein,15.8,NA,1
+13463990,3233,2710,sam mills buckwheat & millet nuts gluten free granola  12 oz  (pack of 6),26.64,SAM MILLS,12,6.0,sam mills gluten free strawberry and almonds granola 12 ounce (pack of 6),37.14,sam mills gluten,12,6.0,0
+13537892,3251,1642,bakery on main granola 12oz pack of 6,49.85,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,1
+13647250,3277,2710,sam mills buckwheat & millet strawberry & almonds gluten free granola  12 oz  (pack of 6),26.29,SAM MILLS,12,6.0,sam mills gluten free strawberry and almonds granola 12 ounce (pack of 6),37.14,sam mills gluten,12,6.0,1
+13721152,3295,1642,bakery on main gourmet naturals gluten free apple raisin walnut granola  12 oz  (pack of 6),34.02,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,0
+14026666,3368,3111,bear naked fruit and nut granola  12 oz,3.5,Bear Naked,12,NA,bear naked granola  fruit and nut  12 oz,3.48,bear naked granola,12,NA,1
+14545299,3493,1119,udi's gluten free original granola  12 oz (pack of 6),36.56,Udi's,12,6.0,udi's gluten free au naturel granola (pack of 6),39.99,udi's gluten free,NA,6.0,1
+14649947,3518,1642,bakery on main gourmet naturals rainforest granola  12 oz (pack of 6),34.02,Bakery on Main,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,1
+15241229,3660,1494,barbaras cereal 12oz pack of 12,73.35,Barbaras,12,12.0,2.50oz bbq pringles pack of 12,18.27,2.50oz bbq pringles,2.50,12.0,0
+15255507,3663,3277,kellogg's frosted cookies & creme pop-tarts  16 ct,3.68,Kellogg's Poptarts,NA,NA,kellogg's pop tarts frosted cookies & creme (8x50g),12.59,kellogg's pop tarts,NA,NA,0
+15256987,3664,592,nature's path organic frosted cherry pomegran toaster pastries  11 oz (pack of 6),26.29,Nature's Path,11,6.0,nature's path organic granola bars  pumpkin-n-spice  flax plus 6-count boxes (pack of 6),27.31,nature's path organic,NA,6.0,0
+15257554,3664,1159,nature's path organic frosted cherry pomegran toaster pastries  11 oz (pack of 6),26.29,Nature's Path,11,6.0,nature's path organic granola bars  pumpkin-n-spice  flax plus 6-count boxes (pack of 6),27.31,nature's path organic,NA,6.0,1
+15259073,3664,2678,nature's path organic frosted cherry pomegran toaster pastries  11 oz (pack of 6),26.29,Nature's Path,11,6.0,nature's path organic granola bars  yogurt berry strawberry  5-count bars (pack of 6),25.02,nature's path organic,NA,6.0,0
+15260288,3664,3893,nature's path organic frosted cherry pomegran toaster pastries  11 oz (pack of 6),26.29,Nature's Path,11,6.0,nature's path organic crunchy granola bars  macaroon crunch  7.05-ounce (pack of 6),25.56,nature's path organic,NA,6.0,0
+15262387,3665,1827,sprout rise organic purple berry raisin morning fruit & nut granola mix  1 oz  5 count,-1.0,SPROUT,1,NA,nature valley trail mix fruit & nut chewy granola bars  1.2 oz  6 count,-1.0,nature valley trail,1.2,NA,0
+14650172,3518,1867,bakery on main gourmet naturals rainforest granola  12 oz (pack of 6),34.02,Bakery on Main,12,6.0,gourmet appetit  banana nut bread soft-baked granola 12 oz. (pack of 2),19.99,"gourmet appetit ",12,2.0,0
+14652255,3518,3950,bakery on main gourmet naturals rainforest granola  12 oz (pack of 6),34.02,Bakery on Main,12,6.0,walden farms  drssng cf russian  12 oz (pack of 6),30.96,"walden farms ",12,6.0,0
+14668160,3522,3195,quaker real medleys blueberry hazelnut oatmeal  2.11 oz,-1.0,Quaker Oatmeal,2.11,NA,quaker breakfast cookies  oatmeal raisin  10.1 oz,4.99,quaker breakfast cookies,10.1,NA,0
+14675169,3524,1874,kellogg's pop-tarts frosted brown sugar cinnamon low fat toaster pastries  8ct,1.98,Kellogg's Poptarts,NA,NA,kellogg's pop tarts frosted brown sugar cinnamon  12 count (pack of 3),14.99,kellogg's pop tarts,NA,3.0,0
+14676963,3524,3668,kellogg's pop-tarts frosted brown sugar cinnamon low fat toaster pastries  8ct,1.98,Kellogg's Poptarts,NA,NA,kellogg's special k pastry crisps  brown sugar cinnamon  4.4-ounce,7.0,kellogg's special k,NA,NA,0
+14680571,3525,3111,bear naked fruit and nut morning power packs granola  5 count  7.5 oz,2.98,Bare Naked,7.5,NA,bear naked granola  fruit and nut  12 oz,3.48,bear naked granola,12,NA,0
+14681689,3526,64,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nutri-grain cereal bars  cherry  8-count bars (pack of 6),16.68,nutri-grain cereal bars,NA,6.0,0
+14681739,3526,114,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,arrowhead mills puffed wheat cereal 6 oz (pack of 6),19.45,arrowhead mills puffed,6,6.0,0
+14681812,3526,187,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nutri-grain cereal bars  raspberry  8-count bars (pack of 6),39.5,nutri-grain cereal bars,NA,6.0,0
+14681892,3526,267,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path hot cereal raisin spice 14.0 oz(pack of 6),44.88,nature's path hot,14.0,6.0,0
+14682030,3526,405,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,annie's organic peanutty granola bars 6.9 oz (pack of 6),33.35,annie's organic peanutty,6.9,6.0,0
+14682063,3526,438,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path organic optimum slim 14.0 oz (pack of 6),52.56,nature's path organic,14.0,6.0,0
+14682081,3526,456,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,special k cereal bars honey nut  6-count (pack of 6),36.63,special k cereal,NA,6.0,0
+14682217,3526,592,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path organic granola bars  pumpkin-n-spice  flax plus 6-count boxes (pack of 6),27.31,nature's path organic,NA,6.0,0
+14682473,3526,848,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,skout  organic apple - cinnamon trailbar 1.8 oz (pack of 12),27.33,skout  organic,1.8,12.0,0
+14682766,3526,1141,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nutri-grain cereal bars  blueberry  8-count bars (pack of 6),26.99,nutri-grain cereal bars,NA,6.0,0
+14682784,3526,1159,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path organic granola bars  pumpkin-n-spice  flax plus 6-count boxes (pack of 6),27.31,nature's path organic,NA,6.0,0
+14682910,3526,1285,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nutritious living hi-lo vanilla almond cereal  10-ounce units (pack of 6),37.24,nutritious living hi-lo,NA,6.0,0
+14682990,3526,1365,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,special k cereal bars blueberry  6-count (pack of 6),32.57,special k cereal,NA,6.0,0
+14683040,3526,1415,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,gerber cereal  oatmeal single grain  16-ounce boxes (pack of 6),42.0,"gerber cereal ",NA,6.0,0
+14683162,3526,1537,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nutri-grain cereal bars  strawberry  10.4 oz  (pack of 3),19.99,nutri-grain cereal bars,10.4,3.0,0
+14683839,3526,2214,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,arrowhead mills organic puffed kamut cereal 6 oz (pack of 2),-1.0,arrowhead mills organic,6,2.0,0
+14683913,3526,2288,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,quaker warm & crunchy granola cranberry almond 13.5 oz (pack of 6),51.53,quaker warm &,13.5,6.0,0
+14683974,3526,2349,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,fiber lemon bars 10.6 oz (pack of 6),74.98,fiber lemon bars,10.6,6.0,0
+14684038,3526,2413,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path whole o's cereal  gluten free 11.5 oz(pack of 6),49.68,nature's path whole,11.5,6.0,0
+14684122,3526,2497,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,kashi cereal bar  ripe strawberry  7.2 ounce (pack of 6),21.02,kashi cereal bar,7.2,6.0,0
+14684184,3526,2559,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path cereal  coconut chia granola og2 12.34 oz. (pack of 12),60.02,nature's path cereal,12.34,12.0,0
+14684303,3526,2678,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path organic granola bars  yogurt berry strawberry  5-count bars (pack of 6),25.02,nature's path organic,NA,6.0,0
+14684389,3526,2764,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,jimmybar how bout dem apples   1.6 oz (pack of 6),16.95,jimmybar how bout,1.6,6.0,0
+14684662,3526,3037,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,jimmybar super hip chocolate chip  1.6 oz (pack of 6),16.95,jimmybar super hip,1.6,6.0,0
+14684728,3526,3103,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,jimmybar peanut butter clutter  1.6 oz (pack of 6),16.95,jimmybar peanut butter,1.6,6.0,0
+14685002,3526,3377,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,quaker cereal bars  apple crisp 1.30 oz bars 8-count bars (pack of 6),20.02,quaker cereal bars,1.30,6.0,0
+14685055,3526,3430,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path organic crunchy granola bars  peanut choco  7.05-ounce (pack of 6),26.34,nature's path organic,NA,6.0,0
+14685518,3526,3893,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nature's path organic crunchy granola bars  macaroon crunch  7.05-ounce (pack of 6),25.56,nature's path organic,NA,6.0,0
+14685575,3526,3950,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,walden farms  drssng cf russian  12 oz (pack of 6),30.96,"walden farms ",12,6.0,0
+14685675,3526,4050,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,gerber baby cereal  oatmeal  16 ounce (pack of 6),21.36,gerber baby cereal,16,6.0,0
+14685767,3526,4142,nature's path organic crunchy maple cereal  10.6 oz (pack of 6),32.24,Nature's Path,10.6,6.0,nutri-grain cereal bars  mixed berry  8-count bars (pack of 6),32.89,nutri-grain cereal bars,NA,6.0,0
+14686348,3527,558,malt-o-meal cinnamon toasters cereal  24.3 oz,3.88,Malt-O-Meal,24.3,NA,glutino cereal apple cinnamon  gluten free 0. oz,19.18,glutino cereal apple,NA,NA,0
+14697461,3529,3341,malt-o-meal honey nut scooters cereal  25.5 oz,3.98,Malt-O-Meal,25.5,NA,chex cereal  honey nut  13.8 oz,12.79,"chex cereal ",13.8,NA,0
+14731223,3537,3783,two moms in the raw plain grain free cereal  14 oz  (pack of 6),64.0,2 MOMS IN THE RAW,14,6.0,two moms in the raw organic nut bar gluten free blueberry -- 2 oz,16.46,two moms in,2,NA,0
+14736181,3539,411,kellogg's pop-tarts wildlicious frosted wild! cherry toaster pastries  8 count,1.98,POP-TARTS,NA,NA,kellogg's pop tarts new wildlicious frosted wild! berry 16 count,11.75,kellogg's pop tarts,NA,NA,0
+14738241,3539,2471,kellogg's pop-tarts wildlicious frosted wild! cherry toaster pastries  8 count,1.98,POP-TARTS,NA,NA,kellogg's pop tarts new wildlicious frosted wild! cherry 8 count,6.95,kellogg's pop tarts,NA,NA,0
+14750471,3542,2206,kellogg's pop-tarts gone nutty! peanut butter toaster pastries  6 count  10.5 oz,1.98,Kellogg's Poptarts,10.5,NA,nature valley crunchy peanut butter granola bars  1.5 oz  6 count,-1.0,nature valley crunchy,1.5,NA,0
+14754304,3543,1874,price first frosted brown sugar cinnamon toaster pastries  6 count  11 oz,-1.0,Generic,11,NA,kellogg's pop tarts frosted brown sugar cinnamon  12 count (pack of 3),14.99,kellogg's pop tarts,NA,3.0,0
+14773363,3548,108,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,* chewy yogurt granola bars  1.23 oz bar  blueberry  12/box  8 box/carton *,10.31,* chewy yogurt,1.23,NA,0
+14773486,3548,231,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker peanut butter chewy dipps granola bars  6 bars,6.99,quaker peanut butter,NA,NA,0
+14773674,3548,419,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars variety pack  reduced sugar  15.2 oz,14.52,quaker chewy granola,15.2,NA,0
+14773752,3548,497,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,kashi trail mix chewy granola bars  18 count,38.73,kashi trail mix,NA,NA,0
+14773908,3548,653,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy s'mores granola bars 6.72 oz (pack of 24),106.03,quaker chewy s'mores,6.72,24.0,0
+14773958,3548,703,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy yogurt variety pack 30 granola bars 37oz (20 strawberry  10 blueberry),34.99,quaker chewy yogurt,37,NA,0
+14773970,3548,715,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bar  s'mores  6.72 count (pack of 12),46.4,quaker chewy granola,NA,12.0,0
+14774133,3548,878,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars  chocolate chip  18 count,4.49,quaker chewy granola,NA,NA,0
+14774697,3548,1442,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,* chewy yogurt granola bars  1.23 oz bar  strawberry  12/box  8 box/carton *,10.31,* chewy yogurt,1.23,NA,0
+14774908,3548,1653,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars 48 count variety pack,14.35,quaker chewy granola,NA,NA,0
+14774975,3548,1720,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,udi's gluten free antioxidant granola bars  chocolate chip  5 count,24.14,udi's gluten free,NA,NA,0
+14775242,3548,1987,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars variety pack  40.6 ounce,14.04,quaker chewy granola,40.6,NA,0
+14775345,3548,2090,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy chocolate chip granola bars  0.84 oz  24 count,14.99,quaker chewy chocolate,0.84,NA,0
+14775383,3548,2128,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars reduced sugar variety 6.72 oz (pack of 24),112.43,quaker chewy granola,6.72,24.0,0
+14775468,3548,2213,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars 6.72 oz (pack of 24),112.43,quaker chewy granola,6.72,24.0,0
+14775592,3548,2337,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker yogurt chewy granola bar  strawberry  6.1-ounce packages (pack of 6),23.26,quaker yogurt chewy,NA,6.0,0
+14775827,3548,2572,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars variety pack 6.72 oz (pack of 24),106.03,quaker chewy granola,6.72,24.0,0
+14775923,3548,2668,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy dipps chocolate chip granola bars -30 count,8.01,quaker chewy dipps,NA,NA,0
+14776009,3548,2754,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker granola bars chewy chocolate chip 6.1 oz,6.75,quaker granola bars,6.1,NA,0
+14776048,3548,2793,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker yogurt bars blueberry 5 count 4 pack,-1.0,quaker yogurt bars,NA,NA,0
+14776239,3548,2984,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,great value chewy granola bars  18- 0.84 oz (24g),29.99,great value chewy,0.84,NA,0
+14776279,3548,3024,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,cascadian farm organic peanut butter chip chewy granola bars  7.4 oz,10.19,cascadian farm organic,7.4,NA,0
+14776362,3548,3107,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,great value chewy granola bars  6-1.23 oz (35g) each,4.99,great value chewy,1.23,NA,0
+14776412,3548,3157,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,nature valley chewy granola bars; strawberry yogurt  1.5-oz.  16/box,75.96,nature valley chewy,NA,NA,0
+14776565,3548,3310,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy dipps granola bars  caramel nut  6.52 oz,9.46,quaker chewy dipps,6.52,NA,0
+14776572,3548,3317,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars caramel apple 8 count (pack of 2 boxes),16.99,quaker chewy granola,NA,2.0,0
+14776602,3548,3347,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars  variety pack  0.84oz bars  18 count,3.74,quaker chewy granola,0.84,NA,0
+14776691,3548,3436,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,cascadian farm chocolate chip organic chewy granola bars  7.4 oz,13.98,cascadian farm chocolate,7.4,NA,0
+14776741,3548,3486,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy dipps chocolate chip granola bars  6.5 oz (pack of 12),65.57,quaker chewy dipps,6.5,12.0,0
+14776864,3548,3609,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy granola bars sixty bar variety pack (.84 oz each),23.5,quaker chewy granola,84,NA,0
+14776867,3548,3612,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,annie's chewy gluten free granola bars  double chocolate chip  0.98 oz bars  5 count,10.95,annie's chewy gluten,0.98,NA,0
+14776945,3548,3690,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy chocolate chip granola bars 6.7 oz (pack of 12),66.15,quaker chewy chocolate,6.7,12.0,0
+14776946,3548,3691,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,nature valley yogurt strawberry & vanilla variety pack chewy granola bars  1.2 oz  12 count,-1.0,nature valley yogurt,1.2,NA,0
+14776969,3548,3714,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker yogurt strawberry granola bars 6.1 oz (pack of 24),112.43,quaker yogurt strawberry,6.1,24.0,0
+14777106,3548,3851,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy 25% less sugar granola bars variety pack  0.84 oz  24 count,12.53,quaker chewy 25%,0.84,NA,0
+14777291,3548,4036,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy yogurt strawberry granola bars 6.1 oz (pack of 12),68.67,quaker chewy yogurt,6.1,12.0,0
+14777336,3548,4081,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy variety pack granola bars 6.7 oz (pack of 4),13.99,quaker chewy variety,6.7,4.0,0
+14777366,3548,4111,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy strawberry yogurt granola bar  1.23 ounce -- 96 per case.,63.15,quaker chewy strawberry,1.23,NA,0
+14777380,3548,4125,quaker chewy yogurt strawberry granola bars  1.23 oz  5 count,2.18,Quaker Chewy,1.23,NA,quaker chewy yogurt flavored coating blueberry granola bars 6.1 oz (pack of 24),112.43,quaker chewy yogurt,6.1,24.0,0
+14779294,3549,1874,kellogg's pop-tarts frosted brown sugar cinnamon toaster pastries  14 oz,1.98,Kellogg's Poptarts,14,NA,kellogg's pop tarts frosted brown sugar cinnamon  12 count (pack of 3),14.99,kellogg's pop tarts,NA,3.0,0
+14781088,3549,3668,kellogg's pop-tarts frosted brown sugar cinnamon toaster pastries  14 oz,1.98,Kellogg's Poptarts,14,NA,kellogg's special k pastry crisps  brown sugar cinnamon  4.4-ounce,7.0,kellogg's special k,NA,NA,0
+14790824,3552,909,skinners cereal 13oz pack of 12,60.55,Skinner,13,12.0,2.50oz sc&onion pringles pack of 12,18.27,2.50oz sc&onion pringles,2.50,12.0,0
+14791409,3552,1494,skinners cereal 13oz pack of 12,60.55,Skinner,13,12.0,2.50oz bbq pringles pack of 12,18.27,2.50oz bbq pringles,2.50,12.0,0
+14813718,3557,2978,quaker maple & brown sugar instant oatmeal  1.69 oz,-1.0,Quaker Oatmeal,1.69,NA,quaker brown sugar oatmeal squares  2 pk,11.49,quaker brown sugar,NA,NA,0
+14821834,3559,2764,dorsel's pinhead oat meal  32 oz  (pack of 6),14.4,Dorsel's,32,6.0,jimmybar how bout dem apples   1.6 oz (pack of 6),16.95,jimmybar how bout,1.6,6.0,0
+14822107,3559,3037,dorsel's pinhead oat meal  32 oz  (pack of 6),14.4,Dorsel's,32,6.0,jimmybar super hip chocolate chip  1.6 oz (pack of 6),16.95,jimmybar super hip,1.6,6.0,0
+14822173,3559,3103,dorsel's pinhead oat meal  32 oz  (pack of 6),14.4,Dorsel's,32,6.0,jimmybar peanut butter clutter  1.6 oz (pack of 6),16.95,jimmybar peanut butter,1.6,6.0,0
+14823020,3559,3950,dorsel's pinhead oat meal  32 oz  (pack of 6),14.4,Dorsel's,32,6.0,walden farms  drssng cf russian  12 oz (pack of 6),30.96,"walden farms ",12,6.0,0
+14824683,3560,1448,bob's red mill rolled oats quick cereal  16 oz (pack of 4),9.97,Bob's Red Mill,16,4.0,bob's red mill honey oat  gluten free 12 oz (pack of 4),25.42,bob's red mill,12,4.0,0
+14826891,3560,3656,bob's red mill rolled oats quick cereal  16 oz (pack of 4),9.97,Bob's Red Mill,16,4.0,bob's red mill apple blueberry  gluten free 12 oz (pack of 4),25.81,bob's red mill,12,4.0,0
+14832474,3562,909,enjoy life cereal 9oz pack of 12,56.54,Enjoy Life,9,12.0,2.50oz sc&onion pringles pack of 12,18.27,2.50oz sc&onion pringles,2.50,12.0,0
+14833059,3562,1494,enjoy life cereal 9oz pack of 12,56.54,Enjoy Life,9,12.0,2.50oz bbq pringles pack of 12,18.27,2.50oz bbq pringles,2.50,12.0,0
+14844085,3565,25,new england naturals granola with superfruit berries & vanilla  12 oz (pack of 6),33.44,New England Naturals,12,6.0,kind healthy grains granola bars oats & honey with toasted coconut  5/1.2 oz (pack of 8),34.99,kind healthy grains,1.2,8.0,0
+14852428,3567,38,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,quaker breakfast cookies oatmeal raisin  6-count boxes 10.1-ounces  (pack of 6),18.54,quaker breakfast cookies,NA,6.0,0
+14852795,3567,405,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,annie's organic peanutty granola bars 6.9 oz (pack of 6),33.35,annie's organic peanutty,6.9,6.0,0
+14853161,3567,771,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,quaker chewy granola bar low fat oatmeal raisin  8-count boxes (pack of 12),47.73,quaker chewy granola,NA,12.0,0
+14853179,3567,789,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,quaker chewy granola bar  variety pack  8-count (pack of 6),14.64,quaker chewy granola,NA,6.0,0
+14853187,3567,797,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,mysupersnack soft granola bites  apple raisin  1.41 ounce (pack of 6),15.69,mysupersnack soft granola,1.41,6.0,0
+14853805,3567,1415,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,gerber cereal  oatmeal single grain  16-ounce boxes (pack of 6),42.0,"gerber cereal ",NA,6.0,0
+14854032,3567,1642,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,bakery on main cinnamon raisin fiber granola 12 oz (pack of 6),47.3,bakery on main,12,6.0,0
+14854574,3567,2184,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,clif oatmeal raisin walnut bar 68 g (pack of 6),15.99,clif oatmeal raisin,NA,6.0,0
+14854678,3567,2288,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,quaker warm & crunchy granola cranberry almond 13.5 oz (pack of 6),51.53,quaker warm &,13.5,6.0,0
+14855154,3567,2764,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,jimmybar how bout dem apples   1.6 oz (pack of 6),16.95,jimmybar how bout,1.6,6.0,0
+14855233,3567,2843,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,18 rabbits organic veritas granola 12 oz. (pack of 6),67.23,18 rabbits organic,12,6.0,0
+14855362,3567,2972,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,nature valley granola thins  10 bars (pack of 6),9.44,nature valley granola,NA,6.0,0
+14855427,3567,3037,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,jimmybar super hip chocolate chip  1.6 oz (pack of 6),16.95,jimmybar super hip,1.6,6.0,0
+14855435,3567,3045,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,ratio protein bars  granola  2.33 ounce (pack of 6),32.4,ratio protein bars,2.33,6.0,0
+14855481,3567,3091,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,annie's homegrown berry berry granola bar 6.9 oz (pack of 6),27.95,annie's homegrown berry,6.9,6.0,0
+14855493,3567,3103,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,jimmybar peanut butter clutter  1.6 oz (pack of 6),16.95,jimmybar peanut butter,1.6,6.0,0
+14855511,3567,3121,erin baker's homestyle oatmeal raisin granola  12 oz (pack of 6),26.54,Erin Baker's,12,6.0,granola bar og2 trail mi 6.2 oz (pack of 6),38.01,granola bar og2,6.2,6.0,0

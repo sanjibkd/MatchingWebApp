@@ -1,0 +1,3 @@
+matcher_name,table1_name,table2_name,matcher_string
+top10_f1_rules_matcher,RF1 OR RF2 OR RF3 OR RF4 OR RF5 OR RF6 OR RF7 OR RF8 OR RF9 OR RF10
+manual_matcher_1,manual_rule_1

@@ -1,0 +1,18 @@
+matcher_name,matcher_string
+manual_matcher,pages_title OR pages_date OR pages_publisher
+rf1,RF1
+rf_train_matcher,RF_train_1 OR RF_train_2 OR RF_train_3 OR RF_train_4 OR RF_train_5
+rf_test_matcher,RF_test_1 OR RF_test_2 OR RF_test_3 OR RF_test_4 OR RF_test_5
+rf_split_matcher,RF_split_1 OR RF_split_2 OR RF_split_3 OR RF_test_4 OR RF_split_5
+RF_split_matcher_new,RF_split_1 OR RF_split_2 OR RF_split_3 OR RF_split_4 OR RF_split_5 OR RF_split_6
+AL_RF_19_matcher,AL_RF_19
+AL_RF_10_matcher,AL_RF_10
+AL_RF_15_matcher,AL_RF_15
+AL_RF_27_matcher,AL_RF_27
+AL_RF_32_matcher,AL_RF_32
+AL_RF_1_matcher,AL_RF_1
+AL_RF_16_matcher,AL_RF_16
+AL_RF_14_matcher,AL_RF_14
+m1,pages_title
+m2,pages_date
+m3,pages_publisher

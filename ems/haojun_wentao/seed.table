@@ -1,0 +1,37 @@
+@info
+{
+    "table":{
+        "name":"seed",
+        "description":"",
+        "idAttrib":{
+            "name":"pairID",
+            "type":"INTEGER"
+        },
+        "projectName":"haojun_wentao",
+        "attributes":[
+            {
+                "name":"pairID",
+                "type":"INTEGER"
+            },
+            {
+                "name":"amazon.id",
+                "type":"INTEGER"
+            },
+            {
+                "name":"bn.id",
+                "type":"INTEGER"
+            },
+            {
+                "name":"label",
+                "type":"INTEGER"
+            }
+        ]
+    }
+}
+
+@data
+pairID:INTEGER,amazon.id:INTEGER,bn.id:INTEGER,label:INTEGER
+4,4791,526,1
+10,4663,1474,0
+18,4345,5282,0
+47,1086,4387,1
