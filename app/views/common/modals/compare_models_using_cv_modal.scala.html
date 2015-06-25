@@ -1,0 +1,124 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Compare learning-based models using cross-validation modal -->
+<div class="modal hide fade" id="compare_models_using_cv_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Compare learning-based models using cross-validation</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getFeatureNames() == null || project.getFeatureNames().isEmpty()) {
+            <p class="text-center danger"><b>No features found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty() && project.getFeatureNames() != null && !project.getFeatureNames().isEmpty()) {
+	      	<form class="form-horizontal" id="compare_models_using_cv_form"
+	      			data-target="#compare_models_using_cv_modal" method="post"
+	                action="@controllers.project.routes.MatcherController.compareModelsUsingCV(project.getName())" role="form">
+	        	
+	           	<fieldset>
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="trainset_name_cmcv"><b>Training Data</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="trainset_name_cmcv" name="trainset_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultGold())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultGold())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="table1_name_cmcv"><b>Table 1</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table1_name_cmcv" name="table1_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table2_name_cmcv"><b>Table 2</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table2_name_cmcv" name="table2_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="feature_names_cmcv"><b>Features</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="feature_names_cmcv" name="feature_names[]" multiple>
+	                       		@for(featureName <- project.getFeatureNames()) {
+	                       			<option value="@featureName">@featureName</option>
+	                       		}
+                      		</select>  
+	                   	</div>
+	                   	<div class="controls">
+            				<input type="button" id="select_all_features_cmcv" value="Select All">
+            				<input type="button" id="select_no_features_cmcv" value="Select None">
+            			</div>
+	               	</div>
+	               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="model_names_cmcv"><b>Model</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="model_names_cmcv" name="model_names[]" multiple>
+	                       		<option value="NB">Naive Bayes</option>
+	                       		<option value="IBK">K-Nearest Neighbors</option>
+	                       		<option value="J48">Decision Tree</option>
+	                       		<option value="SMO">Support Vector Machine (SMO)</option>
+	                       		<option value="RF">Random Forest</option>
+	                       		<option value="ABM1">AdaBoostM1</option>
+	                       		<option value="STACKING">Stacking</option>
+	                       		<option value="LB">Logit Boost</option>
+	                       		<option value="GBRT">Gradient Boosting Trees</option>
+                      		</select>  
+	                   	</div>
+	                   	<div class="controls">
+            				<input type="button" id="select_all_models_cmcv" value="Select All">
+            				<input type="button" id="select_no_models_cmcv" value="Select None">
+            			</div>
+	               	</div>
+	               	
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="num_folds_cmcv"><b>Number of cross-validation folds</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="num_folds_cmcv" name="num_folds" value="10" required>
+	                   	</div>
+	               	</div>
+	               	        
+               	</fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="compare_models_using_cv_form" class="btn btn-primary" type="submit">Compare</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

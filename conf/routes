@@ -174,6 +174,9 @@ GET    /project/:projectName/saveAllMatchers      controllers.project.RuleContro
 # Delete Matcher
 POST    /project/:projectName/deleteMatcher      controllers.project.MatcherController.deleteMatcher(projectName)
 
+# Compare models using cross-validation
+POST    /project/:projectName/compareModels     controllers.project.MatcherController.compareModelsUsingCV(projectName)
+
 # Matching
 POST    /project/:projectName/doMatch     	controllers.project.RuleController.doMatch(projectName)
 POST    /project/:projectName/doMatchDebug     	controllers.project.RuleController.doMatchDebug(projectName)

@@ -1,2 +1,8 @@
 matcher_name,table1_name,table2_name,matcher_string
 RF1_matcher,RF1_1 OR RF1_2 OR RF1_3 OR RF1_4 OR RF1_5 OR RF1_6 OR RF1_7 OR RF1_8 OR RF1_9 OR RF1_10
+color_in_pn_psd_pld_mathcer,color_in_pn_rule OR color_in_psd_rule OR color_in_pld_rule
+RF2_matcher,RF2_1 OR RF2_2 OR RF2_3 OR RF2_4 OR RF2_5 OR RF2_6 OR RF2_7 OR RF2_8 OR RF2_9 OR RF2_10
+matcher2,RF3_1
+matcher3,RF3_1 OR RF3_2 OR RF3_3 OR RF3_4 OR RF3_5 OR RF3_6
+RF3_matcher,RF3_1 OR RF3_2 OR RF3_3 OR RF3_4 OR RF3_5 OR RF3_6 OR RF3_7 OR RF3_8 OR RF3_9 OR RF3_10
+matcher4,RF4_1 OR RF_4_2

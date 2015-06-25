@@ -243,6 +243,12 @@
          	<li><a data-toggle="modal" href="#delete_matcher_modal">Delete Matcher</a></li>
          }
          <li class="divider"></li>
+         @if(project.getTableNames().isEmpty() || project.getFeatureNames().isEmpty()) {
+         	<li class="disabled"><a href="#">Compare Learning-Based Matchers Using Cross-Validation</a></li>
+         }
+         @if(!project.getTableNames().isEmpty() && !project.getFeatureNames().isEmpty()) {
+         	<li><a data-toggle="modal" href="#compare_models_using_cv_modal">Compare Learning-Based Matchers Using Cross-Validation</a></li>
+         }
          <li class="disabled"><a href="#">Learn Matcher Using Supervised Learning (e.g. SVM)</a></li>
          <li class="disabled"><a href="#">Learn Matcher Using Unsupervised Learning</a></li>
       </ul>

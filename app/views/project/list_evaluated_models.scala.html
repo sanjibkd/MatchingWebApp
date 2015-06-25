@@ -1,0 +1,65 @@
+@(modelNames : List[String], precisions : List[Double], recalls : List[Double],
+	f1s : List[Double], accuracies : List[Double], tps : List[Long],
+	fps : List[Long], tns : List[Long], fns : List[Long], 
+	fprs : List[Double], fnrs : List[Double], times : List[Double],
+	modelOptions: List[String], numTrainInstances : Long, numMatches : Long,
+	numNonMatches : Long, numFeatures : Int, statusMessage: String)
+	
+<div id="list_evaluated_models">
+	<div id = "evaluated_models_status">
+		@if(statusMessage != null && !statusMessage.isEmpty()) {
+    		<pre ><p>@statusMessage</p></pre>
+		}
+	</div>
+		<h3>Models evaluated using cross validation (@modelNames.size())</h3>
+		<h5>Number of train instances: @numTrainInstances</h5>
+		<h5>Number of matching pairs in train: @numMatches</h5>
+		<h5>Number of non-matching pairs in train: @numNonMatches</h5>
+		<h5>Number of features used: @numFeatures</h5>
+            @if(modelNames == null || modelNames.isEmpty()) {
+                <p class="text-center danger"><b>No models evaluated</b></p>
+            }
+            
+            @if(modelNames != null && !modelNames.isEmpty()) {
+            <div>
+            <table id="models_cv_table" class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Model Name</th>
+                        <th>Precision (%)</th>
+                        <th>Recall (%)</th>
+                        <th>F1 (%)</th>
+                        <th>Accuracy (%)</th>
+                        <th>True Positives</th>
+                        <th>False Positives</th>
+                        <th>True Negatives</th>
+                        <th>False Negatives</th>
+                        <th>False Positive Rate</th>
+                        <th>False Negative Rate</th>
+                        <th>Run Time (secs)</th>
+                        <th>Model Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(i <- 0 to modelNames.size()-1) {
+                    <tr>
+                        <td><input type="hidden" name="model_cv_@i" value="@modelNames.get(i)">@modelNames.get(i)</td>
+                        <td>@precisions.get(i)</td>
+                        <td>@recalls.get(i)</td>
+                        <td>@f1s.get(i)</td>
+                        <td>@accuracies.get(i)</td>
+                        <td>@tps.get(i)</td>
+                        <td>@fps.get(i)</td>
+                        <td>@tns.get(i)</td>
+                        <td>@fns.get(i)</td>
+                        <td>@fprs.get(i)</td>
+                        <td>@fnrs.get(i)</td>
+                        <td>@times.get(i)</td>
+                        <td>@modelOptions.get(i)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+            }
+</div>

@@ -43,6 +43,7 @@ $(document).ready(function(){
 	$('#browse_functions_table').tablesorter();
 	$('#rules_table').tablesorter();
 	$('#rules_table_al').tablesorter();
+	$('#models_cv_table').tablesorter();
 	
 	/**** Blocking ****/
 	$('#table1_name').on('change', function()  {
@@ -894,20 +895,44 @@ $(document).ready(function(){
 	    }
 	});
 	
+	/**** Select all features during learning rules using active learning ****/
 	$('#select_all_features_al').click(function() {
 	    $('#feature_names_al option').prop('selected', true);
 	});
 	
+	/**** Select no features during learning rules using active learning ****/
 	$('#select_no_features_al').click(function() {
 	    $('#feature_names_al option').prop('selected', false);
 	});
 	
+	/**** Select all features during learning rules using training data ****/
 	$('#select_all_features_td').click(function() {
 	    $('#feature_names_td option').prop('selected', true);
 	});
 	
+	/**** Select no features during learning rules using training data ****/
 	$('#select_no_features_td').click(function() {
 	    $('#feature_names_td option').prop('selected', false);
+	});
+	
+	/**** Select all features during comparing models using cross validation ****/
+	$('#select_all_features_cmcv').click(function() {
+	    $('#feature_names_cmcv option').prop('selected', true);
+	});
+	
+	/**** Select no features during comparing models using cross validation ****/
+	$('#select_no_features_cmcv').click(function() {
+	    $('#feature_names_cmcv option').prop('selected', false);
+	});
+	
+	/**** Select all models during comparing models using cross validation ****/
+	$('#select_all_models_cmcv').click(function() {
+	    $('#model_names_cmcv option').prop('selected', true);
+	});
+	
+	/**** Select no models during comparing models using cross validation ****/
+	$('#select_no_models_cmcv').click(function() {
+	    $('#model_names_cmcv option').prop('selected', false);
 	});
 	
 	/**** Learning options for supervised learning of rules ****/
