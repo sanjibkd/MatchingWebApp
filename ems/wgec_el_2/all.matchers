@@ -6,3 +6,8 @@ matcher2,RF3_1
 matcher3,RF3_1 OR RF3_2 OR RF3_3 OR RF3_4 OR RF3_5 OR RF3_6
 RF3_matcher,RF3_1 OR RF3_2 OR RF3_3 OR RF3_4 OR RF3_5 OR RF3_6 OR RF3_7 OR RF3_8 OR RF3_9 OR RF3_10
 matcher4,RF4_1 OR RF_4_2
+pn_exact_match_matcher,pn_exact_match_rule
+pn_psd_pld_exact_match_matcher,pn_psd_pld_exact_match
+pn_pld_exact_match_matcher,pn_pld_exact_match_rule
+RF1_matcher_null,RF43 OR RF47 OR RF117 OR RF287 OR RF431 OR RF486 OR RF517 OR RF587 OR RF658 OR RF762
+RFN_matcher,RFN_1 OR RFN_2 OR RFN_3 OR RFN_4 OR RFN_5 OR RFN_6 OR RFN_7 OR RFN_8 OR RFN_9 OR RFN_10

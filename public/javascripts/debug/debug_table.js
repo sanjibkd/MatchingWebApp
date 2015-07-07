@@ -126,13 +126,24 @@ function createItemBox(item) {
 
 	itemBox =   '			<div class="item-box">' +
 				'					<div class="item-box-header">' +
-				'						' + tableName + ' item' +
+				'						' + tableName + ' item (' + rows[0][0] + ': ' + rows[0][1] + ')' +
 				'					</div>' +
 				'					<div class="item-box-body">' +
 				'						<table class="table table-bordered table-condensed table-hover tablesorter">' +
 				'							<tbody>';
-												for (var i = 0; i < rows.length; i++) {
+												for (var i = 1; i < rows.length; i++) {
 													row = rows[i];
+													foundNull = 0;
+													for (var j = 0; j < row.length; j++) {
+														if (row[j] == 'null') {
+															foundNull = 1;
+															break;
+														}
+													}
+													if (foundNull == 1) {
+														continue;
+													}
+													
 													itemBox = itemBox + 
 				'										<tr>';
 														for (var j = 0; j < row.length; j++) {

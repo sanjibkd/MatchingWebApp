@@ -26,3 +26,4 @@ ABS_DIFF,Absolute difference of two numeric values,com.walmart.productgenome.mat
 REL_DIFF,"Relative difference between two numeric values. Mathematically, REL_DIFF(a,b) = |a-b| / (a+b)",com.walmart.productgenome.matching.models.rules.functions.RelativeDifference
 EXTRACT_COLOR_AND_MATCH,extracts color from the specified attribute and computes Jaccard score on the sets of colors extracted,com.walmart.productgenome.matching.models.rules.functions.ExtractColorAndMatch
 EXTRACT_COLOR_AND_MATCH_VARIANT,extracts color from the specified attribute and computes Jaccard score on the sets of colors extracted,com.walmart.productgenome.matching.models.rules.functions.ExtractColorAndMatchVariant
+EXTRACT_COLOR_AND_MATCH_VARIANT2,extracts color from the specified attribute and computes Jaccard score on the sets of colors extracted,com.walmart.productgenome.matching.models.rules.functions.ExtractColorAndMatchVariant2
