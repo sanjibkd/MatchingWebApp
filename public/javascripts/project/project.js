@@ -44,6 +44,7 @@ $(document).ready(function(){
 	$('#rules_table').tablesorter();
 	$('#rules_table_al').tablesorter();
 	$('#models_cv_table').tablesorter();
+	$('#feature_stats_table').tablesorter();
 	
 	/**** Blocking ****/
 	$('#table1_name').on('change', function()  {
@@ -933,6 +934,16 @@ $(document).ready(function(){
 	/**** Select no models during comparing models using cross validation ****/
 	$('#select_no_models_cmcv').click(function() {
 	    $('#model_names_cmcv option').prop('selected', false);
+	});
+	
+	/**** Select all features when computing feature stats ****/
+	$('#select_all_features_cfc').click(function() {
+	    $('#feature_names_cfc option').prop('selected', true);
+	});
+	
+	/**** Select no features when computing feature costs ****/
+	$('#select_no_features_cfc').click(function() {
+	    $('#feature_names_cfc option').prop('selected', false);
 	});
 	
 	/**** Learning options for supervised learning of rules ****/

@@ -144,6 +144,13 @@
          @if(!project.getTableNames().isEmpty() && !project.getFunctionNames().isEmpty()) {
          	<li><a data-toggle="modal" href="#auto_generate_features_modal">Automatically Generate Features</a></li>
          }
+         <li class="divider"></li>
+         @if(project.getFeatureNames().isEmpty()) {
+         	<li class="disabled"><a href="#">Compute Feature Costs</a></li>
+         }
+         @if(!project.getFeatureNames().isEmpty()) {
+         	<li><a data-toggle="modal" href="#compute_feature_costs_modal">Compute Feature Costs</a></li>
+         }
       </ul>
    </li>
    <li class="dropdown">

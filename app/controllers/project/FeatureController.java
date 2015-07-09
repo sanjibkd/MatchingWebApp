@@ -5,7 +5,9 @@ import static play.data.Form.form;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.walmart.productgenome.matching.daos.ProjectDao;
 import com.walmart.productgenome.matching.daos.RuleDao;
@@ -15,13 +17,25 @@ import com.walmart.productgenome.matching.models.data.AttributePair;
 import com.walmart.productgenome.matching.models.data.Project;
 import com.walmart.productgenome.matching.models.data.Table;
 import com.walmart.productgenome.matching.models.rules.Feature;
+import com.walmart.productgenome.matching.service.ConfusionMatrix;
 import com.walmart.productgenome.matching.service.FeatureService;
+import com.walmart.productgenome.matching.service.FeatureStatistics;
 import com.walmart.productgenome.matching.service.FunctionService;
+import com.walmart.productgenome.matching.service.RuleService;
+import com.walmart.productgenome.matching.service.TableService;
+import com.walmart.productgenome.matching.service.RuleService.RuleBasedModel;
 
 import play.Logger;
 import play.data.DynamicForm;
+import play.mvc.Call;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
+import play.twirl.api.Html;
+import views.html.common.common_main;
+import views.html.common.common_topnav;
+import views.html.project.project_main_topbar;
+import views.html.project.list_feature_stats;
 
 public class FeatureController extends Controller {
 	
@@ -154,4 +168,96 @@ public class FeatureController extends Controller {
 		return redirect(controllers.project.routes.ProjectController.showProject(projectName));
 	}
 	
+	public static Result computeFeatureCosts(String projectName) {
+		DynamicForm form = form().bindFromRequest();
+		Logger.info("PARAMETERS : " + form.data().toString());
+		String table1Name = form.get("table1_name");
+		String table2Name = form.get("table2_name");
+		String pairsTableName = form.get("tuple_pairs_table_name");
+		String[] featureNames = request().body().asFormUrlEncoded().get("feature_names[]");
+
+		Project project = ProjectDao.open(projectName);
+		try {
+			Table table1 = TableDao.open(projectName, table1Name);
+			Table table2 = TableDao.open(projectName, table2Name);
+			Table pairsTable = TableDao.open(projectName, pairsTableName);
+			List<Feature> features = new ArrayList<Feature>();
+			for (String f : featureNames) {
+				features.add(project.findFeatureByName(f));
+			}
+			Map<String, FeatureStatistics> featureStatsMap = FeatureService.computeFeatureCosts(
+					projectName, pairsTable, table1, table2, features);
+			
+			if (null != featureStatsMap && !featureStatsMap.isEmpty()) {
+				long numTuplePairs = pairsTable.getSize();
+				String statusMessage = "Successfully computed costs of " +
+						featureStatsMap.size() + " features for " + numTuplePairs +
+						" tuple pairs in table " + pairsTableName;
+				return showFeatureStats(project, featureStatsMap, numTuplePairs,
+						statusMessage);
+			}
+		}
+		catch (IOException e) {
+			ProjectController.statusMessage = "Error: " + e.getMessage();
+		}
+		catch (Exception e) {
+			ProjectController.statusMessage = "Error: " + e.getMessage();
+		}
+		return redirect(controllers.project.routes.ProjectController.showProject(projectName));
+	}
+	
+	private static Result showFeatureStats(Project project,
+			Map<String, FeatureStatistics> featureStatsMap, long numTuplePairs,
+			String statusMessage) {
+
+		String pageTitle = "EMS: Feature Statistics";
+		String projectName = project.getName();
+		Html topBar = project_main_topbar.render(projectName);
+		Html topNav = common_topnav.render(project);
+
+		List<String> featureNames = new ArrayList<String>();
+		List<Long> counts0 = new ArrayList<Long>();
+		List<Long> counts1 = new ArrayList<Long>();
+		List<Long> countsNull = new ArrayList<Long>();
+		List<Long> bucketCounts1 = new ArrayList<Long>();
+		List<Long> bucketCounts2 = new ArrayList<Long>();
+		List<Long> bucketCounts3 = new ArrayList<Long>();
+		List<Long> bucketCounts4 = new ArrayList<Long>();
+		List<Long> bucketCounts5 = new ArrayList<Long>();
+		List<Long> avgFeatureCostPerTuple = new ArrayList<Long>();
+		List<Long> avgFeatureCostPerTupleExcludingNull = new ArrayList<Long>();
+		
+		for (String f : featureStatsMap.keySet()) {
+			FeatureStatistics featureStats = featureStatsMap.get(f);
+			featureNames.add(f);
+			counts0.add(featureStats.getCount0());
+			counts1.add(featureStats.getCount1());
+			countsNull.add(featureStats.getCountNull());
+			long[] bucketCounts = featureStats.getBucketCounts();
+			bucketCounts1.add(bucketCounts[0]);
+			bucketCounts2.add(bucketCounts[1]);
+			bucketCounts3.add(bucketCounts[2]);
+			bucketCounts4.add(bucketCounts[3]);
+			bucketCounts5.add(bucketCounts[4]);
+			avgFeatureCostPerTuple.add(featureStats.getAvgFeatureCostPerTuple()/1000);
+			avgFeatureCostPerTupleExcludingNull.add(featureStats.getAvgFeatureCostPerTupleExcludingNull()/1000);
+		}
+
+		Html content = list_feature_stats.render(featureNames, counts0, counts1,
+				countsNull, bucketCounts1, bucketCounts2, bucketCounts3,
+				bucketCounts4, bucketCounts5, avgFeatureCostPerTuple,
+				avgFeatureCostPerTupleExcludingNull, numTuplePairs,
+				statusMessage);
+
+		List<Call> dynamicJs = new ArrayList<Call>();
+		dynamicJs.add(controllers.project.routes.ProjectController.javascriptRoutes());
+		dynamicJs.add(controllers.routes.Assets.at("javascripts/project/project.js"));
+
+		List<Call> dynamicCss = new ArrayList<Call>();
+		dynamicCss.add(controllers.routes.Assets.at("stylesheets/project/project.css"));
+
+		Html page = common_main.render(
+				pageTitle, topBar, topNav, content, dynamicCss, dynamicJs);
+		return ok(page);
+	}
 }

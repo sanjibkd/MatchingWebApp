@@ -7,11 +7,14 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import play.Logger;
 import play.data.DynamicForm;
@@ -68,6 +71,8 @@ import com.walmart.productgenome.matching.service.recommender.FunctionRecommende
 
 public class RuleController extends Controller {
 
+	public static final int TOP_F1_RULES_COUNT = 30;
+	
 	private static ActiveLearner al;
 	private static Table labeledPairs;
 	private static List<Object> pairIds;
@@ -746,6 +751,7 @@ public class RuleController extends Controller {
 		return precCov;
 	}
 
+	/*
 	private static Result showLearnedRules(Project project,
 			Map<String, String> rules, String ruleNamePrefix, String table1Name,
 			String table2Name, String statusMessage) {
@@ -784,7 +790,19 @@ public class RuleController extends Controller {
 				pageTitle, topBar, topNav, content, dynamicCss, dynamicJs);
 		return ok(page);
 	}
-
+	 */
+	
+	private static Set<String> getUniqueFeaturesInRule(String rule) {
+		Set<String> features = new HashSet<String>();
+		String[] terms = rule.split(" AND ");
+		for (String t: terms) {
+			String[] vals = t.split(" ");
+			String featureName = vals[0].trim();
+			features.add(featureName);
+		}
+		return features;
+	}
+	
 	private static Result showLearnedRules2(Project project,
 			Map<String, ConfusionMatrix> ruleEvaluations, String ruleNamePrefix, String table1Name,
 			String table2Name, String statusMessage) {
@@ -800,7 +818,17 @@ public class RuleController extends Controller {
 		List<Double> recalls = new ArrayList<Double>();
 		List<Double> f1s = new ArrayList<Double>();
 		List<Double> accuracies = new ArrayList<Double>();
-
+		List<Long> tps = new ArrayList<Long>();
+		List<Long> fps = new ArrayList<Long>();
+		List<Long> tns = new ArrayList<Long>();
+		List<Long> fns = new ArrayList<Long>();
+		List<Double> fprs = new ArrayList<Double>();
+		List<Double> fnrs = new ArrayList<Double>();
+		List<Integer> numTermsInRule = new ArrayList<Integer>();
+		List<Integer> numUniqueFeaturesInRule = new ArrayList<Integer>();
+		
+		SortedMap<Double, Set<String>> f1ToRule = new TreeMap<Double, Set<String>>(Collections.reverseOrder());
+		
 		int i = 0;
 		for (String r : ruleEvaluations.keySet()) {
 			ConfusionMatrix confusionMatrix = ruleEvaluations.get(r);
@@ -813,16 +841,17 @@ public class RuleController extends Controller {
 			}
 
 			long falsePositives = confusionMatrix.getFalsePositives();
-			double precision = 100.0 * truePositives / (truePositives + falsePositives);
-
-			long falseNegatives = confusionMatrix.getFalseNegatives();
-			double recall = 100.0 * truePositives / (truePositives + falseNegatives);
-
-			double f1 = (2 * precision * recall) / (precision + recall);
 			long trueNegatives = confusionMatrix.getTrueNegatives();
+			long falseNegatives = confusionMatrix.getFalseNegatives();
+			
+			double precision = 100.0 * truePositives / (truePositives + falsePositives);
+			double recall = 100.0 * truePositives / (truePositives + falseNegatives);
+			double f1 = (2 * precision * recall) / (precision + recall);
 			double accuracy = 100.0 * (truePositives + trueNegatives) /
 					(truePositives + trueNegatives + falsePositives + falseNegatives);
-
+			double fpr = 100.0 * falsePositives / (falsePositives + trueNegatives);
+			double fnr = 100.0 * falseNegatives / (truePositives + falseNegatives);
+			
 			ruleStrings.add(r);
 			ruleNames.add(ruleNamePrefix+i);
 
@@ -831,24 +860,42 @@ public class RuleController extends Controller {
 			recalls.add(Double.valueOf(df.format(recall)));
 			f1s.add(Double.valueOf(df.format(f1)));
 			accuracies.add(Double.valueOf(df.format(accuracy)));
-
-			/*precisions.add(Math.round(10000 * precision)/100.0);
-			else {
-				precisions.add(precRecall[0]);
+			tps.add(truePositives);
+			fps.add(falsePositives);
+			tns.add(trueNegatives);
+			fns.add(falseNegatives);
+			fprs.add(Double.valueOf(df.format(fpr)));
+			fnrs.add(Double.valueOf(df.format(fnr)));
+			numTermsInRule.add(r.split(" AND ").length);
+			Set<String> features = getUniqueFeaturesInRule(r);
+			numUniqueFeaturesInRule.add(features.size());
+			if (!f1ToRule.containsKey(f1)) {
+				f1ToRule.put(f1, new HashSet<String>());
 			}
-			if (!Double.isNaN(precRecall[1])) {
-				recalls.add(Math.round(10000 * precRecall[1])/100.00);
-			}
-			else {
-				recalls.add(precRecall[1]);
-			}
-			 */
+			f1ToRule.get(f1).add(r);
 			i++;
 		}
 
+		Map<Integer, Set<String>> ruleCountsOfFeatures = getRuleCountsOfFeatures(f1ToRule);
+		List<Integer> ruleCounts = new ArrayList<Integer>();
+		List<String> featureSets = new ArrayList<String>();
+		
+		StringBuilder sb = new StringBuilder();
+		for (int c: ruleCountsOfFeatures.keySet()) {
+			Set<String> features = ruleCountsOfFeatures.get(c);
+			for (String f: features) {
+				sb.append(f);
+				sb.append(", ");
+			}
+			ruleCounts.add(c);
+			featureSets.add(sb.toString());
+			sb.setLength(0);
+		}
+		
 		Html content = list_rules.render(ruleNames, ruleStrings, precisions,
-				recalls, f1s, accuracies, projectName, table1Name, table2Name,
-				statusMessage);
+				recalls, f1s, accuracies, tps, fps, tns, fns, fprs, fnrs,
+				numTermsInRule, numUniqueFeaturesInRule, projectName, table1Name,
+				table2Name, statusMessage, ruleCounts, featureSets);
 
 		List<Call> dynamicJs = new ArrayList<Call>();
 		dynamicJs.add(controllers.project.routes.ProjectController.javascriptRoutes());
@@ -860,6 +907,43 @@ public class RuleController extends Controller {
 		Html page = common_main.render(
 				pageTitle, topBar, topNav, content, dynamicCss, dynamicJs);
 		return ok(page);
+	}
+
+	private static Map<Integer, Set<String>> getRuleCountsOfFeatures(
+			SortedMap<Double, Set<String>> f1ToRule) {
+		Logger.info("Size of f1ToRule: " + f1ToRule.size());
+		Map<String, Integer> ruleCountsOfFeatures = new HashMap<String, Integer>();
+		int i = 0;
+		for (Double f1: f1ToRule.keySet()) {
+			Set<String> rules = f1ToRule.get(f1);
+			for (String rule: rules) {
+				Set<String> features = getUniqueFeaturesInRule(rule);
+				for (String f: features) {
+					if (ruleCountsOfFeatures.containsKey(f)) {
+						int count = ruleCountsOfFeatures.get(f) + 1;
+						ruleCountsOfFeatures.put(f, count);
+					}
+					else {
+						ruleCountsOfFeatures.put(f, 1);
+					}
+				}
+			}
+			i++;
+			if (i == TOP_F1_RULES_COUNT) {
+				break;
+			}
+		}
+		Logger.info("Size of ruleCountsOfFeatures: " + ruleCountsOfFeatures.size());
+		Map<Integer, Set<String>> invRuleCountsOfFeatures = new HashMap<Integer, Set<String>>();
+		for (int c : ruleCountsOfFeatures.values()) {
+			invRuleCountsOfFeatures.put(c, new HashSet<String>());
+		}
+		for (String f: ruleCountsOfFeatures.keySet()) {
+			int c = ruleCountsOfFeatures.get(f);
+			invRuleCountsOfFeatures.get(c).add(f);
+		}
+		Logger.info("Size of invRuleCountsOfFeatures: " + invRuleCountsOfFeatures.size());
+		return invRuleCountsOfFeatures;
 	}
 
 	public static Result addRules(String projectName, int numRules) {

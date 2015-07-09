@@ -117,6 +117,9 @@ POST    /project/:projectName/deleteFeature      controllers.project.FeatureCont
 # Auto Generate Features
 POST    /project/:projectName/autoGenFeatures     controllers.project.FeatureController.autoGenerateFeatures(projectName)
 
+# Compute Feature Costs
+POST    /project/:projectName/computeFeatureCosts     controllers.project.FeatureController.computeFeatureCosts(projectName)
+
 # Add Rule
 POST    /project/:projectName/addRule     controllers.project.RuleController.addRule(projectName)
 POST    /project/:projectName/addRules     controllers.project.RuleController.addRules(projectName, numRules : Int)

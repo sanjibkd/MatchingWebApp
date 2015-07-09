@@ -1,0 +1,57 @@
+@(featureNames : List[String], counts0 : List[Long], counts1 : List[Long],
+	countsNull : List[Long], bucketCounts1 : List[Long], bucketCounts2 : List[Long],
+	bucketCounts3 : List[Long], bucketCounts4 : List[Long], bucketCounts5 : List[Long], 
+	avgFeatureCostsPerTuple : List[Long], avgFeatureCostsPerTupleExcludingNull : List[Long],
+	numTuplePairs : Long, statusMessage : String)
+	
+<div id="list_feature_stats">
+	<div id = "feature_stats_status">
+		@if(statusMessage != null && !statusMessage.isEmpty()) {
+    		<pre ><p>@statusMessage</p></pre>
+		}
+	</div>
+		<h3>Statistics for features (@featureNames.size())</h3>
+		<h5>Number of tuple pairs: @numTuplePairs</h5>
+            @if(featureNames == null || featureNames.isEmpty()) {
+                <p class="text-center danger"><b>No features</b></p>
+            }
+            
+            @if(featureNames != null && !featureNames.isEmpty()) {
+            <div>
+            <table id="feature_stats_table" class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Feature Name</th>
+                        <th>0</th>
+                        <th>(0-0.2]</th>
+                        <th>(0.2-0.4]</th>
+                        <th>(0.4-0.6]</th>
+                        <th>(0.6-0.8]</th>
+                        <th>(0.8-1.0)</th>
+                        <th>1</th>
+                        <th>Missing</th>
+                        <th>Avg. cost/tuple (in micro sec)</th>
+                        <th>Avg. cost/tuple excluding missing values (in micro sec)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(i <- 0 to featureNames.size()-1) {
+                    <tr>
+                        <td><input type="hidden" name="feature_name_@i" value="@featureNames.get(i)">@featureNames.get(i)</td>
+                        <td>@counts0.get(i)</td>
+                        <td>@bucketCounts1.get(i)</td>
+                        <td>@bucketCounts2.get(i)</td>
+                        <td>@bucketCounts3.get(i)</td>
+                        <td>@bucketCounts4.get(i)</td>
+                        <td>@bucketCounts5.get(i)</td>
+                        <td>@counts1.get(i)</td>
+                        <td>@countsNull.get(i)</td>
+                        <td>@avgFeatureCostsPerTuple.get(i)</td>
+                        <td>@avgFeatureCostsPerTupleExcludingNull.get(i)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+            }
+</div>

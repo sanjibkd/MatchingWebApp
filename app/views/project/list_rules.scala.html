@@ -1,7 +1,10 @@
 @(ruleNames : List[String], ruleStrings : List[String],
 	precisions : List[Double], recalls : List[Double], f1s : List[Double],
-	accuracies : List[Double], projectName : String, table1Name : String,
-	table2Name : String, statusMessage : String)
+	accuracies : List[Double], tps : List[Long], fps : List[Long], tns : List[Long],
+	fns : List[Long], fprs : List[Double], fnrs : List[Double], numTermsInRule: List[Integer],
+	numUniqueFeaturesInRule : List[Integer], projectName : String, table1Name : String,
+	table2Name : String, statusMessage : String, ruleCounts : List[Integer],
+	featureSets : List[String])
 	
 <div id="list_rules">
 	<div id = "learned_rules_status">
@@ -29,6 +32,14 @@
                         <th>Recall (%)</th>
                         <th>F1 (%)</th>
                         <th>Accuracy (%)</th>
+                        <th>True Positives</th>
+                        <th>False Positives</th>
+                        <th>True Negatives</th>
+                        <th>False Negatives</th>
+                        <th>FPR (%)</th>
+                        <th>FNR (%)</th>
+                        <th>No. of Terms</th>
+                        <th>No. of Unique Features</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +52,14 @@
                         <td>@recalls.get(i)</td>
                         <td>@f1s.get(i)</td>
                         <td>@accuracies.get(i)</td>
+                        <td>@tps.get(i)</td>
+                        <td>@fps.get(i)</td>
+                        <td>@tns.get(i)</td>
+                        <td>@fns.get(i)</td>
+                        <td>@fprs.get(i)</td>
+                        <td>@fnrs.get(i)</td>
+                        <td>@numTermsInRule.get(i)</td>
+                        <td>@numUniqueFeaturesInRule.get(i)</td>
                     </tr>
                     }
                 </tbody>
@@ -51,6 +70,25 @@
             </form>
             <div>
             	<button id="add_rules_btn" form="select_rules_form" class="btn btn-danger" type="submit">Add selected rules to project</button>
+            </div>
+            
+            <div>
+            <table id="rule_counts_table" class="table table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>Rule Count</th>
+                        <th>Features</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(i <- 0 to ruleCounts.size()-1) {
+                    <tr>
+                        <td>@ruleCounts.get(i)</td>
+                        <td>@featureSets.get(i)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
             </div>
             }
 </div>
