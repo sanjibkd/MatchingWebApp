@@ -1,5 +1,5 @@
 matcher_name,table1_name,table2_name,matcher_string
-RF1_matcher,RF1_1 OR RF1_2 OR RF1_3 OR RF1_4 OR RF1_5 OR RF1_6 OR RF1_7 OR RF1_8 OR RF1_9 OR RF1_10
+RF1_matcher,RF1_1 OR RF1_2 OR RF1_3 OR RF1_4 OR RF1_5 OR RF1_6 OR RF1_7 OR RF1_8 OR RF1_9 OR RF1_10 OR upc_norm_exact_match_rule
 color_in_pn_psd_pld_mathcer,color_in_pn_rule OR color_in_psd_rule OR color_in_pld_rule
 RF2_matcher,RF2_1 OR RF2_2 OR RF2_3 OR RF2_4 OR RF2_5 OR RF2_6 OR RF2_7 OR RF2_8 OR RF2_9 OR RF2_10
 matcher2,RF3_1
@@ -10,4 +10,14 @@ pn_exact_match_matcher,pn_exact_match_rule
 pn_psd_pld_exact_match_matcher,pn_psd_pld_exact_match
 pn_pld_exact_match_matcher,pn_pld_exact_match_rule
 RF1_matcher_null,RF43 OR RF47 OR RF117 OR RF287 OR RF431 OR RF486 OR RF517 OR RF587 OR RF658 OR RF762
-RFN_matcher,RFN_1 OR RFN_2 OR RFN_3 OR RFN_4 OR RFN_5 OR RFN_6 OR RFN_7 OR RFN_8 OR RFN_9 OR RFN_10
+RFN_matcher,RFN_1 OR RFN_2 OR RFN_3 OR RFN_4 OR RFN_5 OR RFN_6 OR RFN_7 OR RFN_8 OR RFN_9 OR RFN_10 OR upc_norm_exact_match_rule OR mpn_norm_exact_match_rule OR walmart_mpn_in_vendor_pn_rule
+upc_norm_exact_match_matcher,upc_norm_exact_match_rule
+RFN_UPC_matcher,RFN_UPC_1 OR RFN_UPC_2 OR RFN_UPC_3 OR RFN_UPC_4 OR RFN_UPC_5 OR RFN_UPC_6 OR RFN_UPC_7 OR RFN_UPC_8 OR RFN_UPC_9 OR RFN_UPC_10 OR upc_norm_exact_match_rule
+UPC_OR_MPN_NORM_EXACT_MATCHER,upc_norm_exact_match_rule OR mpn_norm_exact_match_rule
+walmart_mpn_in_vendor_pn_matcher,walmart_mpn_in_vendor_pn_rule
+RF7_matcher,RF7_1 OR RF7_2 OR RF7_3 OR RF7_4 OR RF7_5 OR RF7_6 OR RF7_7 OR RF7_7 OR RF7_8 OR RF7_9 OR RF7_10
+RF7_NORM_UPC_MATCHER,RF7_1 OR RF7_2 OR RF7_3 OR RF7_4 OR RF7_5 OR RF7_6 OR RF7_7 OR RF7_7 OR RF7_8 OR RF7_9 OR RF7_10 OR upc_norm_exact_match_rule
+RF7_NORM_MPN_MATCHER,RF7_1 OR RF7_2 OR RF7_3 OR RF7_4 OR RF7_5 OR RF7_6 OR RF7_7 OR RF7_8 OR RF7_9 OR RF7_10 OR mpn_norm_exact_match_rule
+RF7_NORM_MPN_UPC_MATCHER,RF7_1 OR RF7_2 OR RF7_3 OR RF7_4 OR RF7_5 OR RF7_6 OR RF7_7 OR RF7_8 OR RF7_9 OR RF7_10 OR upc_norm_exact_match_rule OR mpn_norm_exact_match_rule
+NORM_MPN_UPC_MPN_IN_PN_MATCHER,upc_norm_exact_match_rule OR mpn_norm_exact_match_rule OR walmart_mpn_in_vendor_pn_rule
+RF7_NORM_UPC_MPN_MPN_IN_PN_MATCHER,RF7_1 OR RF7_2 OR RF7_3 OR RF7_4 OR RF7_5 OR RF7_6 OR RF7_7 OR RF7_8 OR RF7_9 OR RF7_10 OR upc_norm_exact_match_rule OR mpn_norm_exact_match_rule OR walmart_mpn_in_vendor_pn_rule

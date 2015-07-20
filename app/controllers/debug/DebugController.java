@@ -47,6 +47,7 @@ import com.walmart.productgenome.matching.models.rules.Feature;
 import com.walmart.productgenome.matching.models.rules.Matcher;
 import com.walmart.productgenome.matching.models.rules.Rule;
 import com.walmart.productgenome.matching.models.rules.Term;
+import com.walmart.productgenome.matching.service.FeatureService;
 import com.walmart.productgenome.matching.service.debug.Debug;
 import com.walmart.productgenome.matching.service.debug.MatchingSummary;
 import com.walmart.productgenome.matching.service.skyline.Skyline;
@@ -175,8 +176,15 @@ public class DebugController extends Controller {
 		project = ProjectDao.open(projectName);
 		matcher = project.findMatcherByName(matcherName);
 
+		String featuresTableName = labeledDataName + "_features";
+		List<Feature> features = project.getFeatures();
+		Table featuresTable = FeatureService.generateFeatures(featuresTableName,
+				projectName, candset, table1, table2, features, true);
 		try {
-			matches = MatchingDao.match(projectName, candset, table1, table2, matcherName, matchesName, itemPairAudits, null, null);
+			
+			matches = MatchingDao.match(projectName, candset, featuresTable,
+					table1, table2, matcherName, matchesName, itemPairAudits,
+					null, null);
 			evalSummary = EvaluateDao.evaluateWithGold("tmp", projectName, matches, labeledDataName);  
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -188,7 +196,7 @@ public class DebugController extends Controller {
 		candsetAttr1 = candset.getAttributes().get(1);
 		candsetAttr2 = candset.getAttributes().get(2);
 
-		generateFeatures();
+		generateFeatures(featuresTable);
 
 		return showPairs();
 	}
@@ -443,15 +451,21 @@ public class DebugController extends Controller {
 			ObjectNode matching = Json.newObject();
 			matching.put("total-pairs", candset.getSize());
 			matching.put("match-size", matchingSummary.getTotalMatches());
-			matching.put("rule-count", matcher.getNumRules());
+			matching.put("gold-size", evalSummary.getActualPositives().size());
+			// matching.put("rule-count", matcher.getNumRules());
 
 			ObjectNode rules = Json.newObject();
 			for (Rule rule: matcher.getRules()) {
+				ObjectNode ruleStats = Json.newObject();
+				int matches = 0;
+				int fps = 0;
 				if (matchingSummary.getTotalMatchesByRule().containsKey(rule.getName())) {
-					rules.put(rule.getName(), matchingSummary.getTotalMatchesByRule().get(rule.getName()));
-				} else {
-					rules.put(rule.getName(), 0);
+					matches = matchingSummary.getTotalMatchesByRule().get(rule.getName());
+					fps = getIdsForPrecisionErrorsByRuleName(rule.getName()).size();
 				}
+				ruleStats.put("matches", matches);
+				ruleStats.put("fps", fps);
+				rules.put(rule.getName(), ruleStats);
 			}    
 			summary.put("matching", matching);
 			summary.put("rulesSummary", rules);
@@ -488,6 +502,9 @@ public class DebugController extends Controller {
 		case NONMATCHED:
 			ids = candset.getAllIdsInOrder();
 			ids.removeAll(getAllMatchedIds());
+			break;
+		case GOLD:
+			ids = convertIdPairsToCandSetIds(evalSummary.getActualPositives());
 			break;
 		default:
 			break;
@@ -526,6 +543,30 @@ public class DebugController extends Controller {
 		return ok(Json.toJson(ids));
 	}
 
+	private static List<Object> getIdsForMatchesByRuleName(String ruleName) {
+		List<Object> ids = new ArrayList<Object>();
+		for (Map.Entry<Tuple, ItemPairAudit> entry : itemPairAudits.entrySet()) {
+			Tuple tuple = entry.getKey();
+			ItemPairAudit itemPairAudit = entry.getValue();
+			if (itemPairAudit.getMatchingRuleNames().contains(ruleName)) {
+				ids.add(tuple.getAttributeValue(candset.getIdAttribute()));
+			}
+		}
+		return ids;
+	}
+	
+	private static List<Object> getIdsForPrecisionErrorsByRuleName(String ruleName) {
+		List<Object> ids = getIdsForMatchesByRuleName(ruleName);
+		List<Object> precisionErrorIds = convertIdPairsToCandSetIds(evalSummary.getFalsePositives());
+		ids.retainAll(precisionErrorIds);
+		return ids;
+	}
+	
+	public static Result getPrecisionErrorIdsByRuleName(String ruleName) {
+		List<Object> ids = getIdsForPrecisionErrorsByRuleName(ruleName);
+		return ok(Json.toJson(ids));
+	}
+	
 	public static Result getIdsByRuleName(String ruleName) {
 
 		List<Object> ids = new ArrayList<Object>();
@@ -634,7 +675,8 @@ public class DebugController extends Controller {
 						controllers.debug.routes.javascript.DebugController.getIdsByErrorStatus(),
 						controllers.debug.routes.javascript.DebugController.getIdsByRuleName(),
 						controllers.debug.routes.javascript.DebugController.getIdsBySkyline(),
-						controllers.debug.routes.javascript.DebugController.getOperationMode()
+						controllers.debug.routes.javascript.DebugController.getOperationMode(),
+						controllers.debug.routes.javascript.DebugController.getPrecisionErrorIdsByRuleName()
 						)
 				);
 	}
@@ -677,7 +719,7 @@ public class DebugController extends Controller {
 	}
 
 	private enum SelectStatus {
-		ALL, MATCHED, NONMATCHED
+		ALL, MATCHED, NONMATCHED, GOLD
 	}
 
 	private enum GoldStatus {
@@ -747,6 +789,28 @@ public class DebugController extends Controller {
 		System.out.println("DONE GENERATNIG FEATURES");
 	}
 
+	private static void generateFeatures(Table featuresTable) {
+
+		System.out.println("STARTED GENERATING FEATURES");
+
+		generatedFeatures = new LinkedHashMap<Object, Map<String, Float>>();
+
+		List<Feature> features = project.getFeatures();
+
+		for(Tuple ftuple: featuresTable.getAllTuples()) {
+			Map<String, Float> generatedFeature = new LinkedHashMap<String, Float>();
+			for (Feature feature: features) {
+				String featureName = feature.getName();
+				Attribute attribute = featuresTable.getAttributeByName(featureName);
+				Float score = (Float) ftuple.getAttributeValue(attribute);
+				generatedFeature.put(feature.getName(), score);
+			}
+			generatedFeatures.put(ftuple.getAttributeValue(featuresTable.getIdAttribute()), generatedFeature);
+		}
+
+		System.out.println("DONE GENERATNIG FEATURES");
+	}
+	
 	private static List<Feature> allFeaturesInRules() {
 		// Note: Heuristics. We will use all the features
 		// used in the rules.

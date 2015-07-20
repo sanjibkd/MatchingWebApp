@@ -56,17 +56,21 @@ function getSummaryHtml(summary, mode) {
 
 function getRuleSummaryHtml(rulesSum) {
 
-	html = 		'		Rule summary:' +
-				'		<table class="table table-bordered table-condensed table-hover tablesorter">';
+	html = 		'		Rule summary (' + Object.keys(rulesSum).length + ' rules):' + 
+				'		<table class="table table-bordered table-condensed table-hover tablesorter">' +
+				'		<tr><th>Rule</th><th>Prec. Errors / Matches</th></tr>';
 							for (ruleName in rulesSum) {
 									html = html +
 				'					<tr>' +
+				'						<td><div style="width: 150px; word-wrap: break-word">' + ruleName + '</div></td>' +
 				'						<td> ' +
+				'							<span class="virtual_link fp_selector" value="' + ruleName + '">' +
+				'								' + rulesSum[ruleName]['fps'] +
+				'							</span>' + ' / ' +
 				'							<span class="virtual_link rule_selector" value="' + ruleName + '">' +
-				'								' + ruleName + ' matches ' +
+				'								' + rulesSum[ruleName]['matches'] +
 				'							</span>' +
 				'						</td>' +
-				'						<td> ' + rulesSum[ruleName] + '</td>' + 
 				'					</tr>';
 							}
 						html = html +
@@ -84,13 +88,13 @@ function getMatchingSummaryHtml(matching) {
 				'						<td>' + matching["total-pairs"] + '</td>' +
 				'					</tr>' +
 				'					<tr>' +
-				'						<td><span class="virtual_link status_selector" value="MATCHED" label="Matched pairs">Total matches</span>: </td>' +
-				'						<td>' + matching["match-size"] + '</td>' +
+				'						<td><span class="virtual_link status_selector" value="GOLD" label="Actually matching pairs">Actual matches</span>: </td>' +
+				'						<td>' + matching["gold-size"] + '</td>' +
 				'					</tr>' +
 				'					' +
 				'					<tr>' +
-				'						<td>Total rules: </td>' +
-				'						<td>' + matching["rule-count"] + '</td>' +
+				'						<td><span class="virtual_link status_selector" value="MATCHED" label="Matched pairs">Predicted matches</span>: </td>' +
+				'						<td>' + matching["match-size"] + '</td>' +
 				'					</tr>' +
 				'					' +
 				'				</tbody>' +

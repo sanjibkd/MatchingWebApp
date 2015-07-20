@@ -47,6 +47,7 @@ POST /debugGetTuplesForIds				controllers.debug.DebugController.getTuplesForIds(
 GET /debugGetMatchingSummaryJson		controllers.debug.DebugController.getMatchingSummaryJson()
 POST /debugQuery						controllers.debug.DebugController.getDebugQueryResults()
 GET /debugGetOperationMode				controllers.debug.DebugController.getOperationMode()
+GET /debugGetPrecisionErrorIdsByRuleName	controllers.debug.DebugController.getPrecisionErrorIdsByRuleName(ruleName: String)
 
 # Project
 POST    /createNewProject						controllers.project.ProjectController.createNewProject()

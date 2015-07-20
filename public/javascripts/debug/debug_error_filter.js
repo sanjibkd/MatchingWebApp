@@ -28,7 +28,25 @@ function setIdsByErrorStatus(status) {
 			}
 		});
 }
- 
+
+$(document).on("click", ".fp_selector", function(event) {
+	ruleName = $(this).attr("value");
+	setPrecisionErrorIdsByRuleName(ruleName);
+});
+
+function setPrecisionErrorIdsByRuleName(ruleName) {
+	debugJsRoutes.controllers.debug.DebugController.getPrecisionErrorIdsByRuleName(ruleName).ajax({
+			success : function(data) { 
+				window.ids = eval(data);   
+				prepareFirstTablePage();
+				updateHeaderMessage("Precision Errors by " + ruleName + ": " + window.ids.length + " item pairs");
+		    },
+		    error: function(xhr, status, error) {
+				$('body').html(xhr.responseText);
+			}
+		});
+}
+
 function getGoldFilterHtml() {
 	return  '<div class="goldFilterContainer">' +
 			'	<div class="goldFilterHeader">' +

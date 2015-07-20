@@ -845,6 +845,11 @@ public class RuleController extends Controller {
 			long falseNegatives = confusionMatrix.getFalseNegatives();
 			
 			double precision = 100.0 * truePositives / (truePositives + falsePositives);
+			
+			//apply filter - prune out rules with precision below 80%
+			if (precision < 80.0) {
+				continue;
+			}
 			double recall = 100.0 * truePositives / (truePositives + falseNegatives);
 			double f1 = (2 * precision * recall) / (precision + recall);
 			double accuracy = 100.0 * (truePositives + trueNegatives) /

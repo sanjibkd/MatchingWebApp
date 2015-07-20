@@ -1,6 +1,6 @@
 .item-pair-row {
 	width: 100%;
-	height: calc(300px + 25px);
+	height: calc(400px + 25px);
 }
 
 .item-box {
@@ -9,13 +9,13 @@
 	width: 31%;
 	margin: 1%;
 	float: left;
-	height: 300px;
+	height: 400px;
 	background-color: white;
 }
 
 .item-box-body {
 	overflow-y: auto;
-	height:260px;
+	height:360px;
 }
 
 .item-box-header {
@@ -108,4 +108,8 @@ input[type="radio"] {
 
 .queryTextArea {
 	height: 20px;
+}
+
+.tree li ul > li {
+    display: none;
 }

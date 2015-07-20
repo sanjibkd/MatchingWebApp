@@ -145,8 +145,9 @@ function createItemBox(item) {
 													}
 													
 													itemBox = itemBox + 
-				'										<tr>';
-														for (var j = 0; j < row.length; j++) {
+				'										<tr>' +
+				'											<td><div style="width: 100px; word-wrap: break-word">' + row[0] + '</div></td>';
+														for (var j = 1; j < row.length; j++) {
 															itemBox = itemBox + 
 															'<td>' + row[j] + '</td>';
 														}
@@ -181,12 +182,21 @@ function createAuditBox(audit, features) {
 	// Note: I am using MatchStatus class values here.
 
 	auditRules = audit["rules"];
-		
+	
+	numMatchingRules = 0;
+	for (ruleName in auditRules) {
+		rule = auditRules[ruleName];
+		ruleStatus = rule["match-status"];
+		if (ruleStatus == "MATCH") {
+			numMatchingRules = numMatchingRules + 1;
+		}
+	}
+	
 	auditBox =  '' +
 	'				<div class="item-box">' +
 	'					<div class="item-box-header">' +
 	'						<span>' +
-	'						Matching Details' +
+	'						Matching Details (' + numMatchingRules + ' rules match)' +
 	'						</span>' +
 						createFeatureTooptip(features) + 
 	'					</div>' +

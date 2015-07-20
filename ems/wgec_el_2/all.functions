@@ -27,3 +27,6 @@ REL_DIFF,"Relative difference between two numeric values. Mathematically, REL_DI
 EXTRACT_COLOR_AND_MATCH,extracts color from the specified attribute and computes Jaccard score on the sets of colors extracted,com.walmart.productgenome.matching.models.rules.functions.ExtractColorAndMatch
 EXTRACT_COLOR_AND_MATCH_VARIANT,extracts color from the specified attribute and computes Jaccard score on the sets of colors extracted,com.walmart.productgenome.matching.models.rules.functions.ExtractColorAndMatchVariant
 EXTRACT_COLOR_AND_MATCH_VARIANT2,extracts color from the specified attribute and computes Jaccard score on the sets of colors extracted,com.walmart.productgenome.matching.models.rules.functions.ExtractColorAndMatchVariant2
+NORM_EX_MATCH,normalize upc and then do an exact match,com.walmart.productgenome.matching.models.rules.functions.NormalizeAndMatchUPC
+NORM_EX_MATCH_MPN,normalize mpn and then do an exact match,com.walmart.productgenome.matching.models.rules.functions.NormalizeAndMatchMPN
+B_CONTAINS_A,The attribute value of A is contained in attribute value of B,com.walmart.productgenome.matching.models.rules.functions.BContainsA
