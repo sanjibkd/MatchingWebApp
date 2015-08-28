@@ -1,5 +1,5 @@
 $(document).on("click", ".summary", function(event){
-		if (mode == 1 || mode == 2) {
+		if (mode == 1 || mode == 2 || mode == 4) {
 	        summaryJson = getMatchingSummaryJson();
 			handleFacetOpen();
 	    	$("#facets").append(getSummaryHtml(summaryJson)); 

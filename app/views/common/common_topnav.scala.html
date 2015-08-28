@@ -252,9 +252,11 @@
          <li class="divider"></li>
          @if(project.getTableNames().isEmpty() || project.getFeatureNames().isEmpty()) {
          	<li class="disabled"><a href="#">Compare Learning-Based Matchers Using Cross-Validation</a></li>
+         	<li class="disabled"><a href="#">Compare Learning-Based Matchers Using Train-Test Evaluation</a></li>
          }
          @if(!project.getTableNames().isEmpty() && !project.getFeatureNames().isEmpty()) {
          	<li><a data-toggle="modal" href="#compare_models_using_cv_modal">Compare Learning-Based Matchers Using Cross-Validation</a></li>
+         	<li><a data-toggle="modal" href="#compare_models_using_train_test_modal">Compare Learning-Based Matchers Using Train-Test Evaluation</a></li>
          }
          <li class="disabled"><a href="#">Learn Matcher Using Supervised Learning (e.g. SVM)</a></li>
          <li class="disabled"><a href="#">Learn Matcher Using Unsupervised Learning</a></li>
@@ -310,6 +312,13 @@
          }
          @if(!project.getMatchingSummaryNames().isEmpty()) {
          	<li><a data-toggle="modal" href="#matching_details_using_results_modal">Using existing results</a></li>
+         }
+         <li class="divider"></li>
+         @if(project.getTableNames().isEmpty() || project.getFeatureNames().isEmpty()) {
+         	<li class="disabled"><a href="#">Debug a Model Using Train-Test Evaluation</a></li>
+         }
+         @if(!project.getTableNames().isEmpty() && !project.getFeatureNames().isEmpty()) {
+         	<li><a data-toggle="modal" href="#debug_model_train_test_modal">Debug a Model Using Train-Test Evaluation</a></li>
          }
          <!--<li><a data-toggle="modal" href="#">Candidate set view</a></li>-->
    	</ul>

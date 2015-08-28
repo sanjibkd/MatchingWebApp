@@ -847,11 +847,17 @@ public class RuleController extends Controller {
 			double precision = 100.0 * truePositives / (truePositives + falsePositives);
 			
 			//apply filter - prune out rules with precision below 80%
-			if (precision < 80.0) {
+			if (precision < 90.0) {
 				continue;
 			}
 			double recall = 100.0 * truePositives / (truePositives + falseNegatives);
 			double f1 = (2 * precision * recall) / (precision + recall);
+			
+			//apply another filter - prune out rules with f1 below 10%
+			if (f1 < 10.0) {
+				continue;
+			}
+			
 			double accuracy = 100.0 * (truePositives + trueNegatives) /
 					(truePositives + trueNegatives + falsePositives + falseNegatives);
 			double fpr = 100.0 * falsePositives / (falsePositives + trueNegatives);

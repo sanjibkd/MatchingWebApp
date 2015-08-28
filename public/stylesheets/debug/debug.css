@@ -103,7 +103,11 @@ input[type="radio"] {
 }
 
 .features-tooltip {
-	float: right;
+	float: center;
+}
+
+.features-tooltip-left {
+	float: left;
 }
 
 .queryTextArea {

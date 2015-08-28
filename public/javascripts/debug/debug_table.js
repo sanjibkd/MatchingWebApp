@@ -14,6 +14,9 @@ function createTableForTuples(tuples) {
 		    case 3: 
 		    	html = html + getRowForMode3(tuple);
 		    	break;
+		    case 4: 
+		    	html = html + getRowForMode4(tuple);
+		    	break;
 		    default:
 		        //alert("Invalid operation mode");
 		}
@@ -71,6 +74,28 @@ function getRowForMode3(tuple) {
 	featureBox = createFeatureBox(features);
 			
 	html = createPairRow(itemBox1 + itemBox2 + featureBox, matchStatus);
+	
+	return html;
+}
+
+function getRowForMode4(tuple) {
+
+	item1 = tuple["item1"];
+	item2 = tuple["item2"];
+	audit = tuple["audit"];
+	gold = tuple["gold"];
+	features = tuple["features"];
+	matchStatus = audit["match-status"];
+	matchProb = audit["match-prob"];
+	nonMatchProb = audit["non-match-prob"];
+	entropy = audit["entropy"];
+	inGold = gold["gold-match-status"];
+	
+	itemBox1 = createItemBox(item1);
+	itemBox2 = createItemBox(item2);
+	auditBox = createFeaturesAuditBox(features, matchProb, nonMatchProb, entropy);
+			
+	html = createPairRowWithGold(itemBox1 + itemBox2 + auditBox, matchStatus, inGold);
 	
 	return html;
 }
@@ -259,6 +284,24 @@ function createAuditBox(audit, features) {
 	return auditBox;
 }
 
+function createFeaturesAuditBox(features, matchProb, nonMatchProb, entropy) {
+	auditBox =  '' +
+	'				<div class="item-box">' +
+	'					<div class="item-box-header">' +
+	'						<span> Matching Details </span>' +
+						createFeatureTooptip(features) +
+	'					</div>' +
+	'					<div class="item-box-body">' +
+	'						<div>' +		
+	'							<ul> Match probability: ' +  matchProb + '</ul>' +
+	'							<ul> Non-Match probability:  '+ nonMatchProb + '</ul>' +
+	'							<ul> Voting entropy: ' + entropy + '</ul>' + 
+	'						</div>' +	
+	'					</div>' +
+	'				</div>';								
+	return auditBox;
+}
+
 function createFeatureTable(features) {
 	content = '' +
 	'	<table class="table table-bordered table-condensed table-hover tablesorter">' + 
@@ -285,6 +328,22 @@ function createFeatureTooptip(features) {
 	
 	content = content + 
 	'<span class="features-tooltip virtual_link"' + 
+	'	data-trigger="hover">' +
+	'	Feature scores' + 
+	'</span>';
+		
+	return content;
+}
+
+function createFeatureTooltipLeft(features) {
+
+	content = '' +
+	'<div class="features-popover" style="display: none">' + 
+		createFeatureTable(features) + 
+	'</div>';
+	
+	content = content + 
+	'<span class="features-tooltip-left virtual_link"' + 
 	'	data-trigger="hover">' +
 	'	Feature scores' + 
 	'</span>';

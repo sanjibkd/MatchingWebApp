@@ -1,0 +1,34 @@
+@info
+{
+    "table":{
+        "name":"test1",
+        "description":"",
+        "idAttrib":{
+            "name":"pairID",
+            "type":"INTEGER"
+        },
+        "projectName":"wgec_el_30k",
+        "attributes":[
+            {
+                "name":"pairID",
+                "type":"INTEGER"
+            },
+            {
+                "name":"A.id",
+                "type":"TEXT"
+            },
+            {
+                "name":"B.id",
+                "type":"TEXT"
+            },
+            {
+                "name":"label",
+                "type":"INTEGER"
+            }
+        ]
+    }
+}
+
+@data
+pairID:INTEGER,A.id:TEXT,B.id:TEXT,label:INTEGER
+36229,39112640,39112640#TCP Global Corp,1

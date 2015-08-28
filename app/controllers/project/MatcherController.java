@@ -162,6 +162,63 @@ public class MatcherController extends Controller {
 				statusMessage);
 	}
 
+	public static Result compareModelsUsingTrainTest(String projectName) {
+		DynamicForm form = form().bindFromRequest();
+		Logger.info("PARAMETERS : " + form.data().toString());
+		String table1Name = form.get("table1_name");
+		String table2Name = form.get("table2_name");
+		String trainsetName = form.get("trainset_name");
+		String testsetName = form.get("testset_name");
+		String[] featureNames = request().body().asFormUrlEncoded().get("feature_names[]");
+		String[] modelNames = request().body().asFormUrlEncoded().get("model_names[]");
+
+		Project project = ProjectDao.open(projectName);
+		List<Feature> features = new ArrayList<Feature>();
+		for (String f : featureNames) {
+			features.add(project.findFeatureByName(f));
+		}
+		int numFeatures = features.size();
+		
+		String statusMessage = "";
+		Map<String, ConfusionMatrix> modelEvaluations = new HashMap<String, ConfusionMatrix>();
+		try {
+			Table table1 = TableDao.open(projectName, table1Name);
+			Table table2 = TableDao.open(projectName, table2Name);
+			Table trainPairsTable = TableDao.open(projectName, trainsetName);
+			Table testPairsTable = TableDao.open(projectName, testsetName);
+			
+			String trainFeaturesTableName = trainsetName + "_features";
+			String testFeaturesTableName = testsetName + "_features";
+			Table trainFeaturesTable = FeatureService.generateFeatures(trainFeaturesTableName,
+					projectName, trainPairsTable, table1, table2, features, true);
+			Table testFeaturesTable = FeatureService.generateFeatures(testFeaturesTableName,
+					projectName, testPairsTable, table1, table2, features, true);
+			modelEvaluations = MatcherService.evaluateModelsUsingTrainTest(trainFeaturesTable,
+					testFeaturesTable, modelNames);
+
+			if (modelEvaluations != null && !modelEvaluations.isEmpty()) {
+				int numModelsEvaluated = modelEvaluations.size();
+				if (numModelsEvaluated == 1) {
+					statusMessage = "Successfully evaluated 1 model using "
+							+ "train-test evaluation\n";
+				}
+				else {
+					statusMessage = "Successfully evaluated " + numModelsEvaluated +
+							" models using train-test evaluation\n";
+				}
+			}
+		}
+		catch (IOException e) {
+			ProjectController.statusMessage = "Error: " + e.getMessage();
+		}
+		catch (Exception e) {
+			ProjectController.statusMessage = "Error: " + e.getMessage();
+		}
+		return showEvaluatedModels(project, modelEvaluations,
+				numFeatures,
+				statusMessage);
+	}
+	
 	private static Result showEvaluatedModels(Project project,
 			Map<String, ConfusionMatrix> modelEvaluations, int numFeatures,
 			String statusMessage) {

@@ -2,16 +2,24 @@ package controllers.debug;
 
 import static play.data.Form.form;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Pattern;
+
+import javax.json.JsonException;
+import javax.json.stream.JsonParsingException;
+
+import org.apache.commons.csv.CSVRecord;
 
 import play.Logger;
 import play.Routes;
@@ -77,7 +85,7 @@ public class DebugController extends Controller {
 	private static Map<Object, Map<String, Float>> generatedFeatures;
 	private static MatchingSummary matchingSummary;
 	private static EvaluationSummary evalSummary;
-	private static int operationMode;// 1: both eval and matching present. 2: only matching present 3: neither are present.
+	private static int operationMode;// 1: both eval and matching present. 2: only matching present 3: neither are present 4: model
 
 	public static Result getIndex(String projectName, String table1Name, 
 			String table2Name, String candsetName, String matcherName, String goldName) {
@@ -181,7 +189,7 @@ public class DebugController extends Controller {
 		Table featuresTable = FeatureService.generateFeatures(featuresTableName,
 				projectName, candset, table1, table2, features, true);
 		try {
-			
+
 			matches = MatchingDao.match(projectName, candset, featuresTable,
 					table1, table2, matcherName, matchesName, itemPairAudits,
 					null, null);
@@ -243,6 +251,149 @@ public class DebugController extends Controller {
 		candsetAttr2 = candset.getAttributes().get(2);
 
 		generateFeatures();
+
+		return showPairs();
+	}
+
+	private static List<Feature> getFeatures(Project project, String[] featureNames) {
+		List<Feature> features = new ArrayList<Feature>();
+		for (String s: featureNames) {
+			features.add(project.findFeatureByName(s));
+		}
+		return features;
+	}
+
+	private static void saveErrors(String path, Set<IdPair> errors, int count) {
+
+		BufferedWriter errorsBw;
+		try {
+			errorsBw = new BufferedWriter(new FileWriter(path));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		List<Attribute> attributesA = table1.getAttributes();
+		List<Attribute> attributesB = table2.getAttributes();
+
+		int i = 0;
+		for (IdPair idp: errors) {
+			try {
+				errorsBw.write("Tuple pair #" + (i + 1));
+				errorsBw.newLine();
+				errorsBw.write("-------------------------");
+				errorsBw.newLine();
+				Object id1 = idp.getId1();
+				Object id2 = idp.getId2();
+
+				errorsBw.write("Walmart item (id: " + id1 + ")");
+				errorsBw.newLine();
+				errorsBw.newLine();
+
+				Tuple tupleA = table1.getTuple(id1);
+				for (Attribute a: attributesA) {
+					Object val = tupleA.getAttributeValue(a);
+					if (null == val) {
+						continue;
+					}
+					errorsBw.write(a.getName() + ": ");
+					errorsBw.write(String.valueOf(val));
+					errorsBw.newLine();
+					errorsBw.newLine();
+				}
+				errorsBw.write("-----------------------------------------");
+				errorsBw.newLine();
+				errorsBw.write("Vendor item (id: " + id2 + ")");
+				errorsBw.newLine();
+				errorsBw.newLine();
+
+				Tuple tupleB = table2.getTuple(id2);
+				for (Attribute a: attributesB) {
+					Object val = tupleB.getAttributeValue(a);
+					if (null == val) {
+						continue;
+					}
+					errorsBw.write(a.getName() + ": ");
+					errorsBw.write(String.valueOf(val));
+					errorsBw.newLine();
+					errorsBw.newLine();
+				}
+
+				errorsBw.newLine();
+				errorsBw.newLine();
+				errorsBw.write("-----------------------------------------");
+				errorsBw.newLine();
+				errorsBw.write("-----------------------------------------");
+				errorsBw.newLine();
+				errorsBw.newLine();
+				errorsBw.newLine();
+
+				i++;
+				if (i == count) {
+					break;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static Result debugModelUsingTrainTest(String projectName) {
+
+		DynamicForm form = form().bindFromRequest();
+		Logger.info("PARAMETERS : " + form.data().toString());
+		String table1Name = form.get("table1_name");
+		String table2Name = form.get("table2_name");
+		String trainsetName = form.get("trainset_name");
+		String testsetName = form.get("testset_name");
+		String[] featureNames = request().body().asFormUrlEncoded().get("feature_names[]");
+		String modelName = form.get("model_name");
+
+		operationMode = 4;
+		readTables(projectName, table1Name, table2Name, testsetName);
+
+		String matchesName = "matches";
+
+		itemPairAudits = new HashMap<Tuple, ItemPairAudit>();
+		project = ProjectDao.open(projectName);
+
+		String trainFeaturesTableName = trainsetName + "_features";
+		String testFeaturesTableName = testsetName + "_features";
+		List<Feature> features = getFeatures(project, featureNames);
+
+		Table testFeaturesTable = FeatureService.generateFeatures(testFeaturesTableName,
+				projectName, candset, table1, table2, features, true);
+		try {
+			Table trainPairsTable = TableDao.open(projectName, trainsetName);
+			Table trainFeaturesTable = FeatureService.generateFeatures(trainFeaturesTableName,
+					projectName, trainPairsTable, table1, table2, features, true);
+
+			matches = MatchingDao.match(projectName, candset, testFeaturesTable,
+					table1, table2, modelName, trainFeaturesTable, matchesName, itemPairAudits,
+					null, null);
+			evalSummary = EvaluateDao.evaluateWithGold("tmp", projectName, matches, testsetName);
+
+			long timestamp = System.currentTimeMillis();
+			String falsePositivesPath = "/Users/sdas7/Documents/sample_false_positives_" + timestamp + ".txt";
+			String falseNegativesPath = "/Users/sdas7/Documents/sample_false_negatives_" + timestamp + ".txt";
+			//saveErrors(falsePositivesPath, evalSummary.getFalsePositives(), 50);
+			//saveErrors(falseNegativesPath, evalSummary.getFalseNegatives(), 50);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		matchingSummary = Debug.getMatchingSummary(itemPairAudits);
+
+		candsetAttr1 = candset.getAttributes().get(1);
+		candsetAttr2 = candset.getAttributes().get(2);
+
+		generateFeatures(testFeaturesTable);
 
 		return showPairs();
 	}
@@ -355,11 +506,11 @@ public class DebugController extends Controller {
 			tupleJson.put("item2", getItemJson(item2, table2.getName(), table2.getAttributes()));
 			tupleJson.put("features", getFeaturesJson(itemPairId));
 
-			if (operationMode == 1 || operationMode == 2) {
+			if (operationMode == 1 || operationMode == 2 || operationMode == 4) {
 				tupleJson.put("audit", getAuditInfoJson(itemPairAudits.get(tuple)));
 			}
 
-			if (operationMode == 1) {
+			if (operationMode == 1 || operationMode == 4) {
 				tupleJson.put("gold", getGoldInfoJson(tuple));
 			}
 
@@ -394,32 +545,39 @@ public class DebugController extends Controller {
 
 		ObjectNode itemJson = Json.newObject();
 		itemJson.put("match-status", String.valueOf(itemPairAudit.getStatus()));
-
+		double[] classProbabilities = itemPairAudit.getClassProbabilities();
+		if (null != classProbabilities) {
+			itemJson.put("match-prob", String.valueOf(classProbabilities[0]));
+			itemJson.put("non-match-prob", String.valueOf(classProbabilities[1]));
+		}
+		itemJson.put("entropy", String.valueOf(itemPairAudit.getVotingEntropy()));
 		ObjectNode rulesJson = Json.newObject();
 
-		for (RuleAudit ruleAudit: itemPairAudit.getRuleAuditValues()) {
+		List<RuleAudit> ruleAuditValues = itemPairAudit.getRuleAuditValues();
+		if (null != ruleAuditValues) {
+			for (RuleAudit ruleAudit: ruleAuditValues) {
 
-			ObjectNode ruleJson = Json.newObject();
-			ObjectNode termsJson = Json.newObject();
+				ObjectNode ruleJson = Json.newObject();
+				ObjectNode termsJson = Json.newObject();
 
-			ruleJson.put("match-status", String.valueOf(ruleAudit.getStatus()));
+				ruleJson.put("match-status", String.valueOf(ruleAudit.getStatus()));
 
-			int termId = 1;
-			for (TermAudit termAudit: ruleAudit.getTermAuditValues()) {
-				ObjectNode termJson = Json.newObject();
-				termJson.put("match-status", String.valueOf(termAudit.getStatus()));
-				termJson.put("feature1", termAudit.getTerm().getFeature1().getName()); 
-				termJson.put("operand", termAudit.getTerm().getRelop().getName()); 
-				termJson.put("threshold", df.format(termAudit.getTerm().getValue())); 
-				termJson.put("calculated", df.format(termAudit.getCalculatedScore()));
-				termsJson.put(String.valueOf(termId), termJson);
-				termId += 1;
+				int termId = 1;
+				for (TermAudit termAudit: ruleAudit.getTermAuditValues()) {
+					ObjectNode termJson = Json.newObject();
+					termJson.put("match-status", String.valueOf(termAudit.getStatus()));
+					termJson.put("feature1", termAudit.getTerm().getFeature1().getName()); 
+					termJson.put("operand", termAudit.getTerm().getRelop().getName()); 
+					termJson.put("threshold", df.format(termAudit.getTerm().getValue())); 
+					termJson.put("calculated", df.format(termAudit.getCalculatedScore()));
+					termsJson.put(String.valueOf(termId), termJson);
+					termId += 1;
+				}
+
+				ruleJson.put("terms", termsJson);
+				rulesJson.put(ruleAudit.getRule().getName(), ruleJson);
 			}
-
-			ruleJson.put("terms", termsJson);
-			rulesJson.put(ruleAudit.getRule().getName(), ruleJson);
 		}
-
 		itemJson.put("rules", rulesJson);
 
 		return itemJson;
@@ -471,6 +629,23 @@ public class DebugController extends Controller {
 			summary.put("rulesSummary", rules);
 		}
 
+		if (operationMode == 4) {
+			ObjectNode eval = Json.newObject();
+			eval.put("precision", df.format(evalSummary.getPrecision()));
+			eval.put("recall", df.format(evalSummary.getRecall()));
+			eval.put("F1", df.format(evalSummary.getF1()));
+			eval.put("FP", evalSummary.getFalsePositives().size());
+			eval.put("FN", evalSummary.getFalseNegatives().size());
+			summary.put("eval", eval);
+
+			ObjectNode matching = Json.newObject();
+			matching.put("total-pairs", candset.getSize());
+			matching.put("match-size", matchingSummary.getTotalMatches());
+			matching.put("gold-size", evalSummary.getActualPositives().size());
+
+			summary.put("matching", matching);
+		}
+
 		return ok(summary);    
 	}
 
@@ -481,7 +656,10 @@ public class DebugController extends Controller {
 		ObjectNode features = Json.newObject();
 
 		for (Entry<String, Float> fd: generatedFeatures.get(itemPairId).entrySet()) {
-			features.put(fd.getKey(), df.format(fd.getValue()));      
+			float fdVal = fd.getValue();
+			if (fdVal != -1) {
+				features.put(fd.getKey(), df.format(fdVal));
+			}
 		}
 		return features;
 	}
@@ -554,19 +732,19 @@ public class DebugController extends Controller {
 		}
 		return ids;
 	}
-	
+
 	private static List<Object> getIdsForPrecisionErrorsByRuleName(String ruleName) {
 		List<Object> ids = getIdsForMatchesByRuleName(ruleName);
 		List<Object> precisionErrorIds = convertIdPairsToCandSetIds(evalSummary.getFalsePositives());
 		ids.retainAll(precisionErrorIds);
 		return ids;
 	}
-	
+
 	public static Result getPrecisionErrorIdsByRuleName(String ruleName) {
 		List<Object> ids = getIdsForPrecisionErrorsByRuleName(ruleName);
 		return ok(Json.toJson(ids));
 	}
-	
+
 	public static Result getIdsByRuleName(String ruleName) {
 
 		List<Object> ids = new ArrayList<Object>();
@@ -795,7 +973,14 @@ public class DebugController extends Controller {
 
 		generatedFeatures = new LinkedHashMap<Object, Map<String, Float>>();
 
-		List<Feature> features = project.getFeatures();
+		List<Attribute> featureAttributes = featuresTable.getAttributes();
+		List<Feature> features = new ArrayList<Feature>();
+		for (Attribute a: featureAttributes) {
+			Feature f = project.findFeatureByName(a.getName());
+			if (null != f) {
+				features.add(f);
+			}
+		}
 
 		for(Tuple ftuple: featuresTable.getAllTuples()) {
 			Map<String, Float> generatedFeature = new LinkedHashMap<String, Float>();
@@ -810,7 +995,7 @@ public class DebugController extends Controller {
 
 		System.out.println("DONE GENERATNIG FEATURES");
 	}
-	
+
 	private static List<Feature> allFeaturesInRules() {
 		// Note: Heuristics. We will use all the features
 		// used in the rules.

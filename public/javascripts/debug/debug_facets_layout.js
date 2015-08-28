@@ -11,6 +11,7 @@ function getOperatingMode() {
 		1: Using matching and eval results.
 		2: Using matching results.
 		3: No matching or eval is done
+		4: Using matching and eval results for a model
 	*/
 	
 	debugJsRoutes.controllers.debug.DebugController.getOperationMode().ajax({
@@ -103,6 +104,18 @@ function getFacetsHeader() {
 			'			    	</a>';
 	}
 	
+	if (mode == 4) {
+		html = html +
+			'			   		<a role="menuitem" tabindex="-1" href="javascript:{}" ' +
+			'			    		class="summary">' +
+			'			    		Matching Summary' +
+			'			    	</a>' +
+			'			   	 	<a role="menuitem" tabindex="-1" href="javascript:{}" ' +
+			'			    		class="status-filter">' +
+			'			    		Filter by matching prediction' +
+			'			    	</a>';
+	}
+	
 	if (mode == 1) {
 		html = html +	
 			'			    	<a role="menuitem" tabindex="-1" href="javascript:{}" ' +
@@ -117,7 +130,7 @@ function getFacetsHeader() {
 			'			    		Filter by feature and threshold' +
 			'			    	</a>';
 			
-	if (mode == 1 || mode == 2 || mode == 3) {
+	if (mode == 1 || mode == 2 || mode == 3 || mode == 4) {
 		html = html + 	
 			'			    	<a role="menuitem" tabindex="-1" href="javascript:{}" ' +
 			'			    		class="sim-filter">' +

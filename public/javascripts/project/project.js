@@ -936,6 +936,26 @@ $(document).ready(function(){
 	    $('#model_names_cmcv option').prop('selected', false);
 	});
 	
+	/**** Select all features during comparing models using train test evaluation ****/
+	$('#select_all_features_cmtt').click(function() {
+	    $('#feature_names_cmtt option').prop('selected', true);
+	});
+	
+	/**** Select no features during comparing models using train test evaluation ****/
+	$('#select_no_features_cmtt').click(function() {
+	    $('#feature_names_cmtt option').prop('selected', false);
+	});
+	
+	/**** Select all models during comparing models using train test evaluation ****/
+	$('#select_all_models_cmtt').click(function() {
+	    $('#model_names_cmtt option').prop('selected', true);
+	});
+	
+	/**** Select no models during comparing models using train test evaluation ****/
+	$('#select_no_models_cmtt').click(function() {
+	    $('#model_names_cmtt option').prop('selected', false);
+	});
+	
 	/**** Select all features when computing feature stats ****/
 	$('#select_all_features_cfc').click(function() {
 	    $('#feature_names_cfc option').prop('selected', true);
@@ -944,6 +964,16 @@ $(document).ready(function(){
 	/**** Select no features when computing feature costs ****/
 	$('#select_no_features_cfc').click(function() {
 	    $('#feature_names_cfc option').prop('selected', false);
+	});
+	
+	/**** Select all features when debugging a model using train test evaluation ****/
+	$('#select_all_features_dmtt').click(function() {
+	    $('#feature_names_dmtt option').prop('selected', true);
+	});
+	
+	/**** Select no features when debugging a model using train test evaluation ****/
+	$('#select_no_features_dmtt').click(function() {
+	    $('#feature_names_dmtt option').prop('selected', false);
 	});
 	
 	/**** Learning options for supervised learning of rules ****/

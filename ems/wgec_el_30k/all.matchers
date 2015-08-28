@@ -1,0 +1,7 @@
+matcher_name,table1_name,table2_name,matcher_string
+color_in_pn_matcher,colors_in_pn_match_rule
+upc_exact_match_matcher,upc_exact_match_rule
+RF1_matcher,RF1_1 OR RF1_2 OR RF1_3 OR RF1_4 OR RF1_5 OR RF1_6 OR RF1_7 OR RF1_8 OR RF1_9 OR RF1_10 OR RF1_11 OR RF1_12 OR RF1_13 OR RF1_14 OR RF1_15 OR RF1_16 OR RF1_17 OR RF1_18 OR RF1_19 OR RF1_20 OR ex1
+RF2_matcher,RF2_1 OR RF2_2 OR RF2_3 OR RF2_4 OR RF2_5 OR RF2_6 OR RF2_7 OR RF2_8 OR RF2_9 OR RF2_10 OR RF2_11 OR RF2_12 OR RF2_13 OR RF2_14 OR RF2_15 OR RF2_16 OR RF2_17 OR RF2_18 OR RF2_19 OR RF2_20
+exact_match_matcher,exact_match_rule
+ex_matcher,ex1

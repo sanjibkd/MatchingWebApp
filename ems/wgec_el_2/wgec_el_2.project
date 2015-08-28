@@ -2,16 +2,10 @@
 {
     "project":{
         "name":"wgec_el_2",
-        "description":"walmart and vendor electronics",
-        "createdOn":"6/9/15 1:36 PM",
-        "lastModifiedOn":"7/1/15 12:11 PM",
+        "description":"",
+        "createdOn":"7/29/15 2:54 PM",
+        "lastModifiedOn":"8/18/15 10:22 PM",
         "tables":[
-            {
-                "name":"test"
-            },
-            {
-                "name":"train"
-            },
             {
                 "name":"vendor"
             },
@@ -19,10 +13,13 @@
                 "name":"walmart"
             },
             {
-                "name":"wv_candset"
+                "name":"train"
             },
             {
-                "name":"trainPnPsdPld"
+                "name":"test"
+            },
+            {
+                "name":"Copy of test"
             }
         ],
         "functions":[
@@ -102,13 +99,16 @@
                 "name":"REL_DIFF"
             },
             {
+                "name":"NORM_EX_MATCH"
+            },
+            {
+                "name":"NORM_EX_MATCH_MPN"
+            },
+            {
+                "name":"B_CONTAINS_A"
+            },
+            {
                 "name":"EXTRACT_COLOR_AND_MATCH"
-            },
-            {
-                "name":"EXTRACT_COLOR_AND_MATCH_VARIANT"
-            },
-            {
-                "name":"EXTRACT_COLOR_AND_MATCH_VARIANT2"
             }
         ],
         "features":[
@@ -183,9 +183,6 @@
             },
             {
                 "name":"walmart_vendor_Manufacturer_Part_Number_Manufacturer_Part_Number_LEVENSHTEIN"
-            },
-            {
-                "name":"walmart_vendor_Manufacturer_Part_Number_Manufacturer_Part_Number_EXACT_MATCH"
             },
             {
                 "name":"walmart_vendor_Manufacturer_Part_Number_Manufacturer_Part_Number_JARO_SIMILARITY"
@@ -347,189 +344,162 @@
                 "name":"walmart_vendor_Product_Short_Description_Product_Short_Description_SOFT_TF_IDF"
             },
             {
-                "name":"walmart_vendor_Type_Type_JACCARD"
+                "name":"upc_norm_exact_match"
             },
             {
-                "name":"walmart_vendor_Type_Type_TRIGRAM"
+                "name":"mpn_norm_exact_match"
             },
             {
-                "name":"walmart_vendor_Type_Type_MONGE_ELKAN"
-            },
-            {
-                "name":"walmart_vendor_Type_Type_COSINE"
-            },
-            {
-                "name":"walmart_vendor_Type_Type_NEEDLEMAN_WUNCH_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Type_Type_SMITH_WATERMAN_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Type_Type_SMITH_WATERMAN_GOTOH_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_JACCARD"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_TRIGRAM"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_MONGE_ELKAN"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_COSINE"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_NEEDLEMAN_WUNCH_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_SMITH_WATERMAN_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Size_Size_SMITH_WATERMAN_GOTOH_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_JACCARD"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_TRIGRAM"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_MONGE_ELKAN"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_COSINE"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_NEEDLEMAN_WUNCH_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_SMITH_WATERMAN_SIMILARITY"
-            },
-            {
-                "name":"walmart_vendor_Rack_Size_Rack_Size_SMITH_WATERMAN_GOTOH_SIMILARITY"
+                "name":"MPN_Ex"
             },
             {
                 "name":"color_in_pn"
             },
             {
-                "name":"color_in_psd"
-            },
-            {
-                "name":"color_in_pld"
-            },
-            {
-                "name":"color_in_pn_variant"
-            },
-            {
-                "name":"color_in_psd_variant"
-            },
-            {
-                "name":"color_in_pld_variant"
-            },
-            {
-                "name":"color_in_pn_variant2"
-            },
-            {
-                "name":"color_in_psd_variant2"
-            },
-            {
-                "name":"color_in_pld_variant2"
+                "name":"pn_colors_jac"
             }
         ],
         "rules":[
             {
-                "name":"RF1_6"
-            },
-            {
-                "name":"RF1_2"
-            },
-            {
-                "name":"RF1_10"
-            },
-            {
-                "name":"RF1_1"
-            },
-            {
-                "name":"RF1_5"
-            },
-            {
-                "name":"RF1_8"
-            },
-            {
-                "name":"RF1_9"
-            },
-            {
-                "name":"RF1_3"
-            },
-            {
-                "name":"RF1_4"
+                "name":"RF1_12"
             },
             {
                 "name":"RF1_7"
             },
             {
-                "name":"rule1"
+                "name":"RF1_6"
             },
             {
-                "name":"color_in_pn_rule"
+                "name":"RF1_14"
             },
             {
-                "name":"color_in_psd_rule"
+                "name":"RF1_4"
             },
             {
-                "name":"color_in_pld_rule"
+                "name":"RF1_5"
             },
             {
-                "name":"RF2_1"
+                "name":"RF1_3"
             },
             {
-                "name":"RF2_2"
+                "name":"RF1_15"
+            },
+            {
+                "name":"RF1_8"
+            },
+            {
+                "name":"RF1_10"
+            },
+            {
+                "name":"RF1_18"
+            },
+            {
+                "name":"RF1_17"
+            },
+            {
+                "name":"RF1_11"
+            },
+            {
+                "name":"RF1_9"
+            },
+            {
+                "name":"RF1_2"
+            },
+            {
+                "name":"RF1_19"
+            },
+            {
+                "name":"RF1_20"
+            },
+            {
+                "name":"RF1_16"
+            },
+            {
+                "name":"RF1_13"
+            },
+            {
+                "name":"RF1_1"
+            },
+            {
+                "name":"RF2_15"
+            },
+            {
+                "name":"RF2_19"
             },
             {
                 "name":"RF2_3"
             },
             {
-                "name":"RF2_4"
+                "name":"RF2_16"
             },
             {
-                "name":"RF2_5"
-            },
-            {
-                "name":"RF2_6"
+                "name":"RF2_18"
             },
             {
                 "name":"RF2_7"
             },
             {
-                "name":"RF2_8"
+                "name":"RF2_11"
             },
             {
-                "name":"RF2_9"
+                "name":"RF2_2"
+            },
+            {
+                "name":"RF2_12"
+            },
+            {
+                "name":"RF2_20"
+            },
+            {
+                "name":"RF2_4"
+            },
+            {
+                "name":"RF2_6"
+            },
+            {
+                "name":"RF2_5"
+            },
+            {
+                "name":"RF2_1"
+            },
+            {
+                "name":"RF2_17"
+            },
+            {
+                "name":"RF2_13"
             },
             {
                 "name":"RF2_10"
             },
             {
+                "name":"RF2_14"
+            },
+            {
+                "name":"RF2_9"
+            },
+            {
+                "name":"RF2_8"
+            },
+            {
                 "name":"RF3_1"
             },
             {
-                "name":"RF3_2"
+                "name":"RF3_17"
             },
             {
-                "name":"RF3_3"
+                "name":"RF3_15"
             },
             {
-                "name":"RF3_4"
+                "name":"RF3_11"
             },
             {
-                "name":"RF3_5"
+                "name":"RF3_10"
             },
             {
-                "name":"RF3_6"
+                "name":"RF3_14"
             },
             {
-                "name":"RF3_7"
+                "name":"RF3_16"
             },
             {
                 "name":"RF3_8"
@@ -538,22 +508,97 @@
                 "name":"RF3_9"
             },
             {
-                "name":"RF3_10"
+                "name":"RF3_19"
+            },
+            {
+                "name":"RF3_12"
+            },
+            {
+                "name":"RF3_18"
+            },
+            {
+                "name":"RF3_3"
+            },
+            {
+                "name":"RF3_13"
+            },
+            {
+                "name":"RF3_7"
+            },
+            {
+                "name":"RF3_5"
+            },
+            {
+                "name":"RF3_4"
+            },
+            {
+                "name":"RF3_20"
+            },
+            {
+                "name":"RF3_2"
+            },
+            {
+                "name":"RF3_6"
+            },
+            {
+                "name":"RF4_12"
+            },
+            {
+                "name":"RF4_3"
+            },
+            {
+                "name":"RF4_15"
+            },
+            {
+                "name":"RF4_10"
+            },
+            {
+                "name":"RF4_14"
+            },
+            {
+                "name":"RF4_5"
+            },
+            {
+                "name":"RF4_18"
+            },
+            {
+                "name":"RF4_19"
+            },
+            {
+                "name":"RF4_4"
+            },
+            {
+                "name":"RF4_11"
+            },
+            {
+                "name":"RF4_20"
+            },
+            {
+                "name":"RF4_9"
+            },
+            {
+                "name":"RF4_2"
+            },
+            {
+                "name":"RF4_8"
+            },
+            {
+                "name":"RF4_16"
+            },
+            {
+                "name":"RF4_17"
+            },
+            {
+                "name":"RF4_13"
+            },
+            {
+                "name":"RF4_6"
             },
             {
                 "name":"RF4_1"
             },
             {
-                "name":"RF_4_2"
-            },
-            {
-                "name":"pn_exact_match_rule"
-            },
-            {
-                "name":"pn_psd_pld_exact_match"
-            },
-            {
-                "name":"pn_pld_exact_match_rule"
+                "name":"RF4_7"
             }
         ],
         "matchers":[
@@ -561,31 +606,13 @@
                 "name":"RF1_matcher"
             },
             {
-                "name":"color_in_pn_psd_pld_mathcer"
-            },
-            {
                 "name":"RF2_matcher"
-            },
-            {
-                "name":"matcher2"
-            },
-            {
-                "name":"matcher3"
             },
             {
                 "name":"RF3_matcher"
             },
             {
-                "name":"matcher4"
-            },
-            {
-                "name":"pn_exact_match_matcher"
-            },
-            {
-                "name":"pn_psd_pld_exact_match_matcher"
-            },
-            {
-                "name":"pn_pld_exact_match_matcher"
+                "name":"RF4_matcher"
             }
         ],
         "evaluationSummaries":[
@@ -593,7 +620,7 @@
         "defaults":{
             "table1":"walmart",
             "table2":"vendor",
-            "candset":"wv_candset",
+            "candset":"",
             "matches":"",
             "gold":"train"
         }

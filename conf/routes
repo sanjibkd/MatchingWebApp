@@ -48,6 +48,7 @@ GET /debugGetMatchingSummaryJson		controllers.debug.DebugController.getMatchingS
 POST /debugQuery						controllers.debug.DebugController.getDebugQueryResults()
 GET /debugGetOperationMode				controllers.debug.DebugController.getOperationMode()
 GET /debugGetPrecisionErrorIdsByRuleName	controllers.debug.DebugController.getPrecisionErrorIdsByRuleName(ruleName: String)
+POST /debugModelTrainTest				controllers.debug.DebugController.debugModelUsingTrainTest(projectName: String)
 
 # Project
 POST    /createNewProject						controllers.project.ProjectController.createNewProject()
@@ -179,7 +180,10 @@ GET    /project/:projectName/saveAllMatchers      controllers.project.RuleContro
 POST    /project/:projectName/deleteMatcher      controllers.project.MatcherController.deleteMatcher(projectName)
 
 # Compare models using cross-validation
-POST    /project/:projectName/compareModels     controllers.project.MatcherController.compareModelsUsingCV(projectName)
+POST    /project/:projectName/compareModelsCV     controllers.project.MatcherController.compareModelsUsingCV(projectName)
+
+# Compare models using cross-validation
+POST    /project/:projectName/compareModelsTrainTest     controllers.project.MatcherController.compareModelsUsingTrainTest(projectName)
 
 # Matching
 POST    /project/:projectName/doMatch     	controllers.project.RuleController.doMatch(projectName)
