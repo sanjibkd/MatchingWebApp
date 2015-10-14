@@ -544,6 +544,9 @@ public class DebugController extends Controller {
 		DecimalFormat df = new DecimalFormat("##.##");
 
 		ObjectNode itemJson = Json.newObject();
+		if (null == itemPairAudit) {
+			return itemJson;
+		}
 		itemJson.put("match-status", String.valueOf(itemPairAudit.getStatus()));
 		double[] classProbabilities = itemPairAudit.getClassProbabilities();
 		if (null != classProbabilities) {
@@ -930,7 +933,9 @@ public class DebugController extends Controller {
 	// TODO: This will be expensive....It should be handled by a dictionary.
 	// The discrepancy between types is causing all these problems.
 	private static boolean isMatchingInGOLD(Tuple tuple) {
-
+		if (null == evalSummary) {
+			return false;
+		}
 		for (IdPair idPair: evalSummary.getActualPositives()) {
 			if (tuple.getAttributeValue(candsetAttr1).equals(idPair.getId1())
 					&& tuple.getAttributeValue(candsetAttr2).equals(idPair.getId2())){ 
