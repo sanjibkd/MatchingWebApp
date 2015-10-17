@@ -4,22 +4,22 @@
         "name":"CS784_IS_X",
         "description":"enriched dataset after extraction",
         "createdOn":"10/11/15 3:38 PM",
-        "lastModifiedOn":"10/13/15 9:02 PM",
+        "lastModifiedOn":"10/15/15 8:58 AM",
         "tables":[
             {
-                "name":"walmart_X"
+                "name":"labeled_325"
             },
             {
                 "name":"vendor_X"
             },
             {
-                "name":"labeled_325"
-            },
-            {
-                "name":"vendor_X_clean"
+                "name":"walmart_X"
             },
             {
                 "name":"walmart_X_clean"
+            },
+            {
+                "name":"vendor_X_clean"
             }
         ],
         "functions":[
@@ -287,43 +287,19 @@
                 "name":"LENGTH_X_REL_DIFF"
             },
             {
-                "name":"WIDTH_X_TRIGRAM"
-            },
-            {
                 "name":"WIDTH_X_LEVENSHTEIN"
             },
             {
                 "name":"WIDTH_X_EXACT_MATCH"
             },
             {
-                "name":"WIDTH_X_JARO"
-            },
-            {
-                "name":"WIDTH_X_JARO_WINKLER"
-            },
-            {
-                "name":"WIDTH_X_SOUNDEX"
-            },
-            {
                 "name":"WIDTH_X_REL_DIFF"
-            },
-            {
-                "name":"HEIGHT_X_TRIGRAM"
             },
             {
                 "name":"HEIGHT_X_LEVENSHTEIN"
             },
             {
                 "name":"HEIGHT_X_EXACT_MATCH"
-            },
-            {
-                "name":"HEIGHT_X_JARO"
-            },
-            {
-                "name":"HEIGHT_X_JARO_WINKLER"
-            },
-            {
-                "name":"HEIGHT_X_SOUNDEX"
             },
             {
                 "name":"HEIGHT_X_REL_DIFF"
@@ -486,6 +462,15 @@
             },
             {
                 "name":"LENGTH_X_ABS_DIFF"
+            },
+            {
+                "name":"LCD_EXACT_MATCH"
+            },
+            {
+                "name":"WIDTH_X_ABS_DIFF"
+            },
+            {
+                "name":"HEIGHT_X_ABS_DIFF"
             }
         ],
         "rules":[
@@ -497,6 +482,12 @@
             },
             {
                 "name":"color_x_ex"
+            },
+            {
+                "name":"LCD_X_ex"
+            },
+            {
+                "name":"model_x_ex"
             }
         ],
         "matchers":[
@@ -508,6 +499,12 @@
             },
             {
                 "name":"color_x_ex"
+            },
+            {
+                "name":"LCD_X_ex"
+            },
+            {
+                "name":"model_x_ex"
             }
         ],
         "evaluationSummaries":[

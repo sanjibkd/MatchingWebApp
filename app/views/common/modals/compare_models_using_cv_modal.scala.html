@@ -87,11 +87,30 @@
 	                   	<label class="control-label" for="model_names_cmcv"><b>Model</b></label>  
 	                   	<div class="controls">  
 	                       	<select id="model_names_cmcv" name="model_names[]" multiple>
+	                       		<option value="RF">Random Forest</option>
+	                       		<option value="J48_1">J48 Default (-C 0.25 -M 2)</option>
+	                       		<option value="J48_2">J48 (-C 0.25 -M 5)</option>
+	                       		<option value="J48_3">J48 (-C 0.25 -M 10)</option>
+	                       		<option value="J48_4">J48 (-C 0.1 -M 2)</option>
+	                       		<option value="J48_5">J48 (-C 0.1 -M 5)</option>
+	                       		<option value="J48_6">J48 (-C 0.1 -M 10)</option>
+	                       		<option value="J48_7">J48 (-C 0.5 -M 2)</option>
+	                       		<option value="J48_8">J48 (-C 0.5 -M 5)</option>
+	                       		<option value="J48_9">J48 (-C 0.5 -M 10)</option>
+	                       		<option value="SMO1">SMO Default (-N 0 -K Poly -E 1)</option>
+	                       		<option value="SMO2">SMO (-N 1 -K Poly -E 1)</option>
+	                       		<option value="SMO3">SMO (-N 2 -K Poly -E 1)</option>
+	                       		<option value="SMO4">SMO (-N 0 -K Poly -E 2)</option>
+	                       		<option value="SMO5">SMO (-N 1 -K Poly -E 2)</option>
+	                       		<option value="SMO6">SMO (-N 2 -K Poly -E 2)</option>
+	                       		<option value="SMO7">SMO (-N 0 -K RBF -G 0.01)</option>
+	                       		<option value="SMO8">SMO (-N 1 -K Poly -G 0.01)</option>
+	                       		<option value="SMO9">SMO (-N 2 -K Poly -G 0.01)</option>
+	                       		<option value="SMO10">SMO (-N 0 -K RBF -G 0.1)</option>
+	                       		<option value="SMO11">SMO (-N 1 -K Poly -G 0.1)</option>
+	                       		<option value="SMO12">SMO (-N 2 -K Poly -G 0.1)</option>
 	                       		<option value="NB">Naive Bayes</option>
 	                       		<option value="IBK">K-Nearest Neighbors</option>
-	                       		<option value="J48">Decision Tree</option>
-	                       		<option value="SMO">Support Vector Machine (SMO)</option>
-	                       		<option value="RF">Random Forest</option>
 	                       		<option value="ABM1">AdaBoostM1</option>
 	                       		<option value="STACKING">Stacking</option>
 	                       		<option value="LB">Logit Boost</option>
@@ -105,9 +124,21 @@
 	               	</div>
 	               	
 	               	<div class="control-group">        
+	                   	<label class="control-label" for="num_runs_cmcv"><b>Number of runs of cross-validation</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="num_runs_cmcv" name="num_runs" value="10" required>
+	                   	</div>
+                   	</div>
+                   	<div class="control-group">
 	                   	<label class="control-label" for="num_folds_cmcv"><b>Number of cross-validation folds</b></label>  
 	                   	<div class="controls">  
                            	<input type="text" id="num_folds_cmcv" name="num_folds" value="10" required>
+	                   	</div>
+                   	</div>
+                   	<div class="control-group">
+	                   	<label class="control-label" for="threshold_cmcv"><b>Matching threshold</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="threshold_cmcv" name="matching_threshold" value="0.5" required>
 	                   	</div>
 	               	</div>
 	               	        

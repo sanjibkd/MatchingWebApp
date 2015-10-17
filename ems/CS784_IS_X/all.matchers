@@ -2,3 +2,5 @@ matcher_name,table1_name,table2_name,matcher_string
 brand_x_ex,brand_x_ex
 brand_x_color_x_ex,brand_x_color_x_ex
 color_x_ex,color_x_ex
+LCD_X_ex,LCD_X_ex
+model_x_ex,model_x_ex

@@ -1649,9 +1649,11 @@ public class RuleController extends Controller {
 		if (null != featureName && !"null".equals(featureName) &&
 				null != projectName && !"null".equals(projectName)) {
 			Project project = ProjectDao.open(projectName);
-			Feature feature = project.findFeatureByName(featureName);
-			if (null != feature) {
-				functionName = feature.getFunction().getName();
+			if (null != project) {
+				Feature feature = project.findFeatureByName(featureName);
+				if (null != feature) {
+					functionName = feature.getFunction().getName();
+				}
 			}
 		}	
 		ObjectNode result = Json.newObject();

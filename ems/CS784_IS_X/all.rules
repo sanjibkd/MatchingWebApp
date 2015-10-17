@@ -2,3 +2,5 @@ rule_name,rule_string
 brand_x_ex,BRAND_X_EXACT_MATCH == 1.0
 brand_x_color_x_ex,BRAND_X_EXACT_MATCH == 1.0 AND COLOR_X_EXACT_MATCH == 1.0
 color_x_ex,COLOR_X_EXACT_MATCH == 1.0
+LCD_X_ex,LCD_EXACT_MATCH != 0.0
+model_x_ex,MODEL_X_JACCARD == 1.0

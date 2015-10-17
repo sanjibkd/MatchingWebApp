@@ -117,9 +117,11 @@ public class MatcherController extends Controller {
 		String trainsetName = form.get("trainset_name");
 		String[] featureNames = request().body().asFormUrlEncoded().get("feature_names[]");
 		String[] modelNames = request().body().asFormUrlEncoded().get("model_names[]");
-
+		
+		int numRuns = Integer.parseInt(form.get("num_runs"));
 		int numFolds = Integer.parseInt(form.get("num_folds"));
-
+		double matchingThreshold = Double.parseDouble(form.get("matching_threshold"));
+		
 		Project project = ProjectDao.open(projectName);
 		List<Feature> features = new ArrayList<Feature>();
 		for (String f : featureNames) {
@@ -136,9 +138,12 @@ public class MatcherController extends Controller {
 			String trainFeaturesTableName = trainsetName + "_features";
 			Table trainFeaturesTable = FeatureService.generateFeatures(trainFeaturesTableName,
 					projectName, trainPairsTable, table1, table2, features, true);
+			/*
 			modelEvaluations = MatcherService.evaluateModelsUsingCV(trainFeaturesTable,
 					modelNames, numFolds);
-
+			*/
+			modelEvaluations = MatcherService.evaluateModelsUsingCVWithMatchingThreshold(trainFeaturesTable,
+					modelNames, numRuns, numFolds, matchingThreshold);
 			if (modelEvaluations != null && !modelEvaluations.isEmpty()) {
 				int numModelsEvaluated = modelEvaluations.size();
 				if (numModelsEvaluated == 1) {
@@ -273,7 +278,9 @@ public class MatcherController extends Controller {
 				
 				DecimalFormat df = new DecimalFormat("#.##");
 				precisions.add(Double.valueOf(df.format(precision)));
-				recalls.add(Double.valueOf(df.format(recall)));
+				if (!Double.isNaN(recall)) {
+					recalls.add(Double.valueOf(df.format(recall)));
+				}
 				f1s.add(Double.valueOf(df.format(f1)));
 				accuracies.add(Double.valueOf(df.format(accuracy)));
 				tps.add(truePositives);
