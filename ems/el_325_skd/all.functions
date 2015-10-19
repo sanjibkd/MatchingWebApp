@@ -25,3 +25,4 @@ SOFT_TF_IDF,"Soft TF-IDF similarity metric. A variant of TF-IDF similarity metri
 ABS_DIFF,Absolute difference of two numeric values,com.walmart.productgenome.matching.models.rules.functions.AbsoluteDifference
 REL_DIFF,"Relative difference between two numeric values. Mathematically, REL_DIFF(a,b) = |a-b| / (a+b)",com.walmart.productgenome.matching.models.rules.functions.RelativeDifference
 NORM_EXACT_MATCH_MPN,Normalised Exact Match for MPN,com.walmart.productgenome.matching.models.rules.functions.NormalizeAndMatchMPN
+BRAND_ALI,Ali's Brand Module,com.walmart.productgenome.matching.models.rules.functions.BrandAli
