@@ -1,0 +1,6 @@
+rule_name,rule_string
+brand_x_ex,BRAND_X_EXACT_MATCH == 1.0
+color_x_ex,COLOR_X_EXACT_MATCH == 1.0
+upc_ex,UPC_UPC_X_EXACT_MATCH == 1.0
+mpn_ex,Manufacturer_Part_Number_MPN_X_EXACT_MATCH == 1.0
+mpn_norm_ex,MPN_MPN_X_NORM_EX == 1.0

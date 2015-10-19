@@ -4,16 +4,22 @@
         "name":"el_325_skd",
         "description":"extracted and cleaned data",
         "createdOn":"10/15/15 9:08 AM",
-        "lastModifiedOn":"10/15/15 10:12 AM",
+        "lastModifiedOn":"10/17/15 10:35 PM",
         "tables":[
             {
-                "name":"walmart"
+                "name":"labeled_325"
             },
             {
                 "name":"vendor"
             },
             {
-                "name":"labeled_325"
+                "name":"walmart"
+            },
+            {
+                "name":"vendor_clean"
+            },
+            {
+                "name":"walmart_clean"
             }
         ],
         "functions":[
@@ -468,17 +474,53 @@
             },
             {
                 "name":"PRINT_COLOR_X_JARO_WINKLER"
+            },
+            {
+                "name":"UPC_UPC_X_TRIGRAM"
+            },
+            {
+                "name":"UPC_UPC_X_LEVENSHTEIN"
+            },
+            {
+                "name":"UPC_UPC_X_EXACT_MATCH"
+            },
+            {
+                "name":"UPC_UPC_X_JARO"
+            },
+            {
+                "name":"UPC_UPC_X_JARO_WINKLER"
+            },
+            {
+                "name":"Manufacturer_Part_Number_MPN_X_TRIGRAM"
+            },
+            {
+                "name":"Manufacturer_Part_Number_MPN_X_LEVENSHTEIN"
+            },
+            {
+                "name":"Manufacturer_Part_Number_MPN_X_EXACT_MATCH"
+            },
+            {
+                "name":"Manufacturer_Part_Number_MPN_X_JARO"
+            },
+            {
+                "name":"Manufacturer_Part_Number_MPN_X_JARO_WINKLER"
             }
         ],
         "rules":[
+            {
+                "name":"brand_x_ex"
+            }
         ],
         "matchers":[
+            {
+                "name":"brand_x_ex"
+            }
         ],
         "evaluationSummaries":[
         ],
         "defaults":{
-            "table1":"walmart",
-            "table2":"vendor",
+            "table1":"walmart_clean",
+            "table2":"vendor_clean",
             "candset":"",
             "matches":"",
             "gold":"labeled_325"

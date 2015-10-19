@@ -277,9 +277,17 @@ public class MatcherController extends Controller {
 				modelNames.add(m);
 				
 				DecimalFormat df = new DecimalFormat("#.##");
+				if (Double.isNaN(precision)) {
+					precision = -1.0;	
+				}
 				precisions.add(Double.valueOf(df.format(precision)));
-				if (!Double.isNaN(recall)) {
-					recalls.add(Double.valueOf(df.format(recall)));
+				
+				if (Double.isNaN(recall)) {
+					recall = -1.0;	
+				}
+				recalls.add(Double.valueOf(df.format(recall)));
+				if (Double.isNaN(f1)) {
+					f1 = -1.0;	
 				}
 				f1s.add(Double.valueOf(df.format(f1)));
 				accuracies.add(Double.valueOf(df.format(accuracy)));
