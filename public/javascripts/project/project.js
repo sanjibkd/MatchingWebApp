@@ -966,6 +966,16 @@ $(document).ready(function(){
 	    $('#feature_names_cfc option').prop('selected', false);
 	});
 	
+	/**** Select all features when computing feature vectors ****/
+	$('#select_all_features_cfv').click(function() {
+	    $('#feature_names_cfv option').prop('selected', true);
+	});
+	
+	/**** Select no features when computing feature vectors ****/
+	$('#select_no_features_cfv').click(function() {
+	    $('#feature_names_cfv option').prop('selected', false);
+	});
+	
 	/**** Select all features when debugging a model using train test evaluation ****/
 	$('#select_all_features_dmtt').click(function() {
 	    $('#feature_names_dmtt option').prop('selected', true);

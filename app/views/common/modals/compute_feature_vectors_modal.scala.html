@@ -1,0 +1,99 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Compute feature vectors modal -->
+<div class="modal hide fade" id="compute_feature_vectors_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Compute costs of features</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getFeatureNames() == null || project.getFeatureNames().isEmpty()) {
+            <p class="text-center danger"><b>No features found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty() && project.getFeatureNames() != null && !project.getFeatureNames().isEmpty()) {
+	      	<form class="form-horizontal" id="compute_feature_vectors_form"
+	      			data-target="#compute_feature_vectors_modal" method="post"
+	                action="@controllers.project.routes.FeatureController.computeFeatureVectors(project.getName())" role="form">
+	        	
+	           	<fieldset>
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="tuple_pairs_table_cfv"><b>Tuple Pairs Table</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="tuple_pairs_table_cfv" name="tuple_pairs_table_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultCandset())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultCandset())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="table1_cfv"><b>Table 1</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table1_cfv" name="table1_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table2_cfv"><b>Table 2</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table2_cfv" name="table2_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="features_names_cfv"><b>Features</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="feature_names_cfv" name="feature_names[]" multiple>
+	                       		@for(featureName <- project.getFeatureNames()) {
+	                       			<option value="@featureName">@featureName</option>
+	                       		}
+                      		</select>  
+	                   	</div>
+	                   	<div class="controls">
+            				<input type="button" id="select_all_features_cfv" value="Select All">
+            				<input type="button" id="select_no_features_cfv" value="Select None">
+            			</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="feature_table_name_cfv"><b>Feature Table Name</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="feature_table_name_cfv" name="feature_table_name" required>
+	                   	</div>
+                   	</div>
+               	</fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="compute_feature_vectors_form" class="btn btn-primary" type="submit">Compute</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

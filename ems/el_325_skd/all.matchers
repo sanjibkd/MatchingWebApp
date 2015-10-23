@@ -5,3 +5,32 @@ upc_ex,upc_ex
 mpn_ex,mpn_ex
 mpn_norm_ex,mpn_norm_ex
 brand_ali,brand_ali
+manual_matcher,manual_rule
+lcd_ex,LCD_ex
+manual_matcher_2,upc_ex OR mpn_norm_ex OR color_lcd OR pn_color OR brand_color_lwh
+color_skd,color_skd
+length_skd,length_skd
+width_skd,width_skd
+height_skd,height_skd
+upc_do_not_match,upc_do_not_match
+upc_skd,upc_skd
+mpn_do_not_match,mpn_do_not_match
+mpn_skd,mpn_skd
+upc_mpn_skd,upc_skd OR mpn_skd
+material_jac,material_jac
+weight_x_ex,weight_x_ex
+weight_do_not_match,weight_do_not_match
+material_skd,material_skd
+weight_skd,weight_skd
+package_quantity_skd,package_quantity_skd
+model_skd,model_skd
+size_skd,size_skd
+screen_size_skd,screen_size_skd
+lcd_skd,lcd_skd
+print_color_skd,print_color_skd
+page_yield_skd,page_yield_skd
+product_type_skd,product_type_skd
+product_name_skd,product_name_skd
+pld_skd,pld_skd
+score0,score0
+score10,score10

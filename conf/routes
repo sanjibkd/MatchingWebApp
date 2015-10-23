@@ -122,6 +122,9 @@ POST    /project/:projectName/autoGenFeatures     controllers.project.FeatureCon
 # Compute Feature Costs
 POST    /project/:projectName/computeFeatureCosts     controllers.project.FeatureController.computeFeatureCosts(projectName)
 
+# Compute Feature Vectors
+POST    /project/:projectName/computeFeatureVectors     controllers.project.FeatureController.computeFeatureVectors(projectName)
+
 # Add Rule
 POST    /project/:projectName/addRule     controllers.project.RuleController.addRule(projectName)
 POST    /project/:projectName/addRules     controllers.project.RuleController.addRules(projectName, numRules : Int)

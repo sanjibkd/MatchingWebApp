@@ -6,12 +6,15 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.walmart.productgenome.matching.daos.ProjectDao;
 import com.walmart.productgenome.matching.daos.RuleDao;
 import com.walmart.productgenome.matching.daos.TableDao;
+import com.walmart.productgenome.matching.models.DefaultType;
 import com.walmart.productgenome.matching.models.data.Attribute;
 import com.walmart.productgenome.matching.models.data.AttributePair;
 import com.walmart.productgenome.matching.models.data.Project;
@@ -196,6 +199,41 @@ public class FeatureController extends Controller {
 				return showFeatureStats(project, featureStatsMap, numTuplePairs,
 						statusMessage);
 			}
+		}
+		catch (IOException e) {
+			ProjectController.statusMessage = "Error: " + e.getMessage();
+		}
+		catch (Exception e) {
+			ProjectController.statusMessage = "Error: " + e.getMessage();
+		}
+		return redirect(controllers.project.routes.ProjectController.showProject(projectName));
+	}
+	
+	public static Result computeFeatureVectors(String projectName) {
+		DynamicForm form = form().bindFromRequest();
+		Logger.info("PARAMETERS : " + form.data().toString());
+		String table1Name = form.get("table1_name");
+		String table2Name = form.get("table2_name");
+		String pairsTableName = form.get("tuple_pairs_table_name");
+		String[] featureNames = request().body().asFormUrlEncoded().get("feature_names[]");
+		String featureTableName = form.get("feature_table_name");
+		
+		Project project = ProjectDao.open(projectName);
+		try {
+			Table table1 = TableDao.open(projectName, table1Name);
+			Table table2 = TableDao.open(projectName, table2Name);
+			Table pairsTable = TableDao.open(projectName, pairsTableName);
+			List<Feature> features = new ArrayList<Feature>();
+			for (String f : featureNames) {
+				features.add(project.findFeatureByName(f));
+			}
+			Set<DefaultType> defaultTypes = new HashSet<DefaultType>();
+			Table featureTable = FeatureService.generateFeatures(featureTableName,
+					projectName, pairsTable, table1, table2, features, true);
+			// save the feature table - this automatically updates and saves the project
+			TableDao.save(featureTable, defaultTypes, true);
+			ProjectController.statusMessage = "Successfully created feature table " + featureTableName + " with " + featureTable.getSize() +
+								" feature vectors.";
 		}
 		catch (IOException e) {
 			ProjectController.statusMessage = "Error: " + e.getMessage();

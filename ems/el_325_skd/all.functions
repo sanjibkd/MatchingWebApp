@@ -26,3 +26,21 @@ ABS_DIFF,Absolute difference of two numeric values,com.walmart.productgenome.mat
 REL_DIFF,"Relative difference between two numeric values. Mathematically, REL_DIFF(a,b) = |a-b| / (a+b)",com.walmart.productgenome.matching.models.rules.functions.RelativeDifference
 NORM_EXACT_MATCH_MPN,Normalised Exact Match for MPN,com.walmart.productgenome.matching.models.rules.functions.NormalizeAndMatchMPN
 BRAND_ALI,Ali's Brand Module,com.walmart.productgenome.matching.models.rules.functions.BrandAli
+COLOR_SKD,Module for matching colors,com.walmart.productgenome.matching.models.rules.functions.ColorSkd
+LENGTH_SKD,Module for matching lengths,com.walmart.productgenome.matching.models.rules.functions.LengthSkd
+WIDTH_SKD,Module for matching widths,com.walmart.productgenome.matching.models.rules.functions.WidthSkd
+HEIGHT_SKD,Module for matching heights,com.walmart.productgenome.matching.models.rules.functions.HeightSkd
+UPC_SKD,Module for matching upcs,com.walmart.productgenome.matching.models.rules.functions.UpcSkd
+MPN_SKD,Module for matching mpns,com.walmart.productgenome.matching.models.rules.functions.MpnSkd
+MATERIAL_SKD,Module for matching materials,com.walmart.productgenome.matching.models.rules.functions.MaterialSkd
+WEIGHT_SKD,Module for matching weights,com.walmart.productgenome.matching.models.rules.functions.WeightSkd
+PACKAGE_QUANTITY_SKD,Module for matching package quantities,com.walmart.productgenome.matching.models.rules.functions.PackageQuantitySkd
+MODEL_SKD,Module for matching models,com.walmart.productgenome.matching.models.rules.functions.ModelSkd
+SIZE_SKD,Module for matching sizes,com.walmart.productgenome.matching.models.rules.functions.SizeSkd
+SCREEN_SIZE,Module for matching screen sizes,com.walmart.productgenome.matching.models.rules.functions.ScreenSizeSkd
+LCD_SKD,Module for matching laptop compartment dimensions,com.walmart.productgenome.matching.models.rules.functions.LcdSkd
+PRINT_COLOR_SKD,Module for matching print colors,com.walmart.productgenome.matching.models.rules.functions.PrintColorSkd
+PAGE_YIELD,Module for matching page yields,com.walmart.productgenome.matching.models.rules.functions.PageYieldSkd
+PRODUCT_TYPE_SKD,Module for matching product types,com.walmart.productgenome.matching.models.rules.functions.ProductTypeSkd
+PRODUCT_NAME_SKD,Module for matching product names,com.walmart.productgenome.matching.models.rules.functions.ProductNameSkd
+PLD_SKD,Module for matching product long descriptions,com.walmart.productgenome.matching.models.rules.functions.PldSkd

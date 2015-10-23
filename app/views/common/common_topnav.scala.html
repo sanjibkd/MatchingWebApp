@@ -151,6 +151,12 @@
          @if(!project.getFeatureNames().isEmpty()) {
          	<li><a data-toggle="modal" href="#compute_feature_costs_modal">Compute Feature Costs</a></li>
          }
+         @if(project.getFeatureNames().isEmpty()) {
+         	<li class="disabled"><a href="#">Compute Feature Vectors</a></li>
+         }
+         @if(!project.getFeatureNames().isEmpty()) {
+         	<li><a data-toggle="modal" href="#compute_feature_vectors_modal">Compute Feature Vectors</a></li>
+         }
       </ul>
    </li>
    <li class="dropdown">
