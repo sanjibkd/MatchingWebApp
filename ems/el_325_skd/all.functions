@@ -44,3 +44,4 @@ PAGE_YIELD,Module for matching page yields,com.walmart.productgenome.matching.mo
 PRODUCT_TYPE_SKD,Module for matching product types,com.walmart.productgenome.matching.models.rules.functions.ProductTypeSkd
 PRODUCT_NAME_SKD,Module for matching product names,com.walmart.productgenome.matching.models.rules.functions.ProductNameSkd
 PLD_SKD,Module for matching product long descriptions,com.walmart.productgenome.matching.models.rules.functions.PldSkd
+VARIATION_SKD,Module for checking variations,com.walmart.productgenome.matching.models.rules.functions.VariationSkd
