@@ -1,0 +1,88 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- View pairs modal -->
+<div class="modal hide fade" id="view_pairs_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Output pairs into a file</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty()) {
+	      	<form class="form-horizontal" id="view_pairs_form"
+	      			data-target="#view_pairs_modal" method="post"
+	                action="@controllers.project.routes.ToolsController.viewPairs(project.getName())" role="form">
+	        	
+	           	<fieldset>
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="tuple_pairs_table_vp"><b>Tuple Pairs Table</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="tuple_pairs_table_vp" name="tuple_pairs_table_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultCandset())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultCandset())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	           		<div class="control-group">        
+	                   	<label class="control-label" for="table1_vp"><b>Table 1</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table1_vp" name="table1_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable1())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table2_vp"><b>Table 2</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table2_vp" name="table2_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                        		@if(tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName" selected>@tableName</option>
+	                               	}
+	                               	@if(!tableName.equals(project.getDefaultTable2())) {
+	                               		<option value="@tableName">@tableName</option>
+	                               	}
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="output_file"><b>Output File Name</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="output_file" name="output_file_name" required>
+	                   	</div>
+                   	</div>
+                   	<div class="control-group">        
+	                   	<label class="control-label" for="pair_ids_list"><b>Pair IDs (comma-separated)</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="pair_ids_list" name="pair_ids_list" required>
+	                   	</div>
+                   	</div>
+               	</fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="view_pairs_form" class="btn btn-primary" type="submit">Output</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

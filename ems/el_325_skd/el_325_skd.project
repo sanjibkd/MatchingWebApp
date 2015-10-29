@@ -4,8 +4,20 @@
         "name":"el_325_skd",
         "description":"extracted and cleaned data",
         "createdOn":"10/15/15 9:08 AM",
-        "lastModifiedOn":"10/22/15 9:45 PM",
+        "lastModifiedOn":"10/26/15 8:53 PM",
         "tables":[
+            {
+                "name":"feature_table_skd"
+            },
+            {
+                "name":"feature_table_skd_2"
+            },
+            {
+                "name":"feature_table_skd_3"
+            },
+            {
+                "name":"labeled_295"
+            },
             {
                 "name":"labeled_325"
             },
@@ -13,16 +25,13 @@
                 "name":"vendor"
             },
             {
-                "name":"walmart"
-            },
-            {
                 "name":"vendor_clean"
             },
             {
-                "name":"walmart_clean"
+                "name":"walmart"
             },
             {
-                "name":"feature_table_skd"
+                "name":"walmart_clean"
             }
         ],
         "functions":[
@@ -160,6 +169,9 @@
             },
             {
                 "name":"PLD_SKD"
+            },
+            {
+                "name":"VARIATION_SKD"
             }
         ],
         "features":[
@@ -636,6 +648,9 @@
             },
             {
                 "name":"PLD_SKD"
+            },
+            {
+                "name":"VARIATION_SKD"
             }
         ],
         "rules":[
@@ -779,6 +794,12 @@
             },
             {
                 "name":"score10"
+            },
+            {
+                "name":"color_skd_fp"
+            },
+            {
+                "name":"variation_skd"
             }
         ],
         "matchers":[
@@ -886,6 +907,12 @@
             },
             {
                 "name":"score10"
+            },
+            {
+                "name":"color_skd_fp"
+            },
+            {
+                "name":"variation_skd"
             }
         ],
         "evaluationSummaries":[

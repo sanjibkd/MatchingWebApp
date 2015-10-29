@@ -195,3 +195,6 @@ POST    /project/:projectName/doMatchDebug     	controllers.project.RuleControll
 # Evaluate
 POST    /project/:name/evaluateGold     	controllers.project.EvaluationController.evaluateWithGold(name)
 POST    /project/:name/evaluateLabeledData     	controllers.project.EvaluationController.evaluateWithLabeledData(name)
+
+# View pairs
+POST    /project/:projectName/viewPairs     controllers.project.ToolsController.viewPairs(projectName)
