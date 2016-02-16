@@ -1,0 +1,60 @@
+@(project: com.walmart.productgenome.matching.models.data.Project)
+
+<!-- Split table modal -->
+<div class="modal hide fade" id="split_table_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+        <h4 class="modal-title">Split a table into two</h4>
+      </div>
+      <div class="modal-body">
+      	@if(project.getTableNames() == null || project.getTableNames().isEmpty()) {
+            <p class="text-center danger"><b>No tables found</b></p>
+        }
+        @if(project.getTableNames() != null && !project.getTableNames().isEmpty()) {
+	      	<form class="form-horizontal" id="split_table_form"
+	      			data-target="#split_table_modal" method="post"
+	                action="@controllers.project.routes.TableController.splitTable(project.getName())"
+	                role="form">
+	        	
+	           	<fieldset>
+	               	<div class="control-group">        
+	                   	<label class="control-label" for="table_name_split"><b>Table Name</b></label>  
+	                   	<div class="controls">  
+	                       	<select id="table_name_split" name="table_name">
+	                        	@for(tableName <- project.getTableNames()) {
+	                               	<option value="@tableName">@tableName</option>
+	                           	}
+	                        </select>  
+	                   	</div>
+	               	</div>
+	               	<div class="control-group">
+                       <label class="control-label" for="split_1_name"><b>Split 1 Name</b></label>
+                       <div class="controls">
+                           <input type="text" id="split_1_name" name="split_name_1" required>
+                       </div>
+                   </div>
+                   <div class="control-group">
+                       <label class="control-label" for="split_2_name"><b>Split 2 Name</b></label>
+                       <div class="controls">
+                           <input type="text" id="split_2_name" name="split_name_2" required>
+                       </div>
+                   </div>
+                   <div class="control-group">        
+	                   	<label class="control-label" for="split_ratio"><b>Split Ratio</b></label>  
+	                   	<div class="controls">  
+                           	<input type="text" id="split_ratio" name="split_ratio" value="0.5" required>
+	                   	</div>
+	               	</div>
+	            </fieldset> 
+	        </form>
+      	}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button form="split_table_form" class="btn btn-primary" type="submit">Split</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

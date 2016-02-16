@@ -19,6 +19,7 @@ import com.walmart.productgenome.matching.daos.TableDao;
 import com.walmart.productgenome.matching.models.DefaultType;
 import com.walmart.productgenome.matching.models.data.Project;
 import com.walmart.productgenome.matching.models.data.Table;
+import com.walmart.productgenome.matching.service.FeatureService;
 import com.walmart.productgenome.matching.service.TableService;
 
 public class TableController extends Controller {
@@ -194,6 +195,33 @@ public class TableController extends Controller {
 			Table table = TableDao.open(projectName, tableName);
 			TableDao.deleteTable(table);
 			ProjectController.statusMessage = String.format("Successfully deleted " +
+					"Table %s.", tableName);
+		}
+		catch(IOException ioe) {
+			ProjectController.statusMessage = "Error: " + ioe.getMessage();
+		}
+		return redirect(controllers.project.routes.ProjectController.showProject(projectName));
+	}
+	
+	public static Result splitTable(String projectName) {
+		DynamicForm form = form().bindFromRequest();
+		Logger.info("PARAMETERS : " + form.data().toString());
+		String tableName = form.get("table_name");
+		String split1Name = form.get("split_name_1");
+		String split2Name = form.get("split_name_2");
+		String splitRatioStr = form.get("split_ratio");
+		
+		try {
+			Double splitRatio = Double.parseDouble(splitRatioStr);
+			Table table = TableDao.open(projectName, tableName);
+			Set<DefaultType> defaultTypes = new HashSet<DefaultType>();
+			Table[] splitTables = TableService.splitTable(table,
+					split1Name, split2Name, splitRatio);
+			// save the split tables - this automatically updates and saves the project
+			for (Table t: splitTables) {
+				TableDao.save(t, defaultTypes, true);
+			}
+			ProjectController.statusMessage = String.format("Successfully split " +
 					"Table %s.", tableName);
 		}
 		catch(IOException ioe) {

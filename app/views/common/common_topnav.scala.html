@@ -48,6 +48,10 @@
          @if(!project.getTableNames().isEmpty()) {
          	<li><a data-toggle="modal" href="#delete_table_modal">Delete Table</a></li>
          }
+         <li class="divider"></li>
+         @if(!project.getTableNames().isEmpty()) {
+         	<li><a data-toggle="modal" href="#split_table_modal">Split Table</a></li>
+         }
       </ul>
    </li>
    <li class="dropdown">

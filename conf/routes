@@ -76,6 +76,9 @@ GET    /project/:projectName/saveAllTables      controllers.project.ProjectContr
 # Delete Table
 POST    /project/:projectName/deleteTable      controllers.project.TableController.deleteTable(projectName)
 
+# Delete Table
+POST    /project/:projectName/splitTable      controllers.project.TableController.splitTable(projectName)
+
 # Blocking
 POST    /project/:projectName/block     controllers.project.ProjectController.block(projectName)
 POST    /project/:projectName/blockMulti     controllers.project.ProjectController.blockMultiAttribute(projectName)
