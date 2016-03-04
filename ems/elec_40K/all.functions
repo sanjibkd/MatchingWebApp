@@ -24,3 +24,5 @@ TF_IDF,"TF-IDF similarity metric. Typically used to consider the relevance of pa
 SOFT_TF_IDF,"Soft TF-IDF similarity metric. A variant of TF-IDF similarity metric that uses soft token-matching. Specifically, tokens are considered a partial match if they get a good score using an inner string comparator. The inner string comparator is the Jaro-Winkler similarity metric with a threshold of 0.9. Good for long strings (e.g., product descriptions, product reviews).",com.walmart.productgenome.matching.models.rules.functions.SoftTfIdfSimilarityFunction
 ABS_DIFF,Absolute difference of two numeric values,com.walmart.productgenome.matching.models.rules.functions.AbsoluteDifference
 REL_DIFF,"Relative difference between two numeric values. Mathematically, REL_DIFF(a,b) = |a-b| / (a+b)",com.walmart.productgenome.matching.models.rules.functions.RelativeDifference
+EXACT_MATCH_NUMERIC,exact match for numeric strings,com.walmart.productgenome.matching.models.rules.functions.ExactMatchNumeric
+EXACT_MATCH_ALPHA_NUMERIC,exact match for alpha numeric strings,com.walmart.productgenome.matching.models.rules.functions.ExactMatchAlphaNumeric

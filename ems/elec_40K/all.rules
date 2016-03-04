@@ -1,0 +1,5 @@
+rule_name,rule_string
+exact_match_rule,PN_Ex != 0.0 AND PSD_Ex != 0.0 AND PLD_Ex != 0.0 AND Brand_EXACT_MATCH != 0.0 AND Manufacturer_EXACT_MATCH != 0.0 AND Color_EXACT_MATCH != 0.0 AND Actual_Color_EXACT_MATCH != 0.0 AND Assembled_Product_Length_EXACT_MATCH != 0.0 AND Assembled_Product_Width_EXACT_MATCH != 0.0 AND Assembled_Product_Height_EXACT_MATCH != 0.0 AND PT_Ex != 0.0
+pn_exact_match_rule,PN_Ex != 0.0
+pld_exan_rule,PLD_Exan != 0.0
+pn_pld_ex_rule,PN_Ex != 0.0 AND PLD_Exan != 0.0 AND APL_Exn != 0.0 AND Actual_Color_EXACT_MATCH != 0.0

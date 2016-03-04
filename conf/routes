@@ -41,8 +41,8 @@ GET /debugGetIdsByMatchingStatus		controllers.debug.DebugController.getIdsByMatc
 GET /debugGetIdsByErrorStatus			controllers.debug.DebugController.getIdsByErrorStatus(status: String)
 GET /debugGetIdsByRuleName				controllers.debug.DebugController.getIdsByRuleName(ruleName: String)
 POST /debugGetIdsBySkyline				controllers.debug.DebugController.getIdsBySkyline()
-GET /debugGetAllRuleNames					controllers.debug.DebugController.getAllRuleNames()
-GET /debugGetAllFeatureNames					controllers.debug.DebugController.getAllFeatureNames()
+GET /debugGetAllRuleNames				controllers.debug.DebugController.getAllRuleNames()
+GET /debugGetAllFeatureNames			controllers.debug.DebugController.getAllFeatureNames()
 POST /debugGetTuplesForIds				controllers.debug.DebugController.getTuplesForIds()
 GET /debugGetMatchingSummaryJson		controllers.debug.DebugController.getMatchingSummaryJson()
 POST /debugQuery						controllers.debug.DebugController.getDebugQueryResults()
@@ -201,3 +201,4 @@ POST    /project/:name/evaluateLabeledData     	controllers.project.EvaluationCo
 
 # View pairs
 POST    /project/:projectName/viewPairs     controllers.project.ToolsController.viewPairs(projectName)
+POST /cleanLabeledPairsUsingMatcher		controllers.project.ToolsController.cleanLabeledPairsUsingMatcher(projectName: String)

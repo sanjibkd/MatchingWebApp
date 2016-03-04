@@ -1,0 +1,5 @@
+matcher_name,table1_name,table2_name,matcher_string
+exact_match_matcher,exact_match_rule
+pn_exact_match_matcher,pn_exact_match_rule
+pld_exan_matcher,pld_exan_rule
+pl_pld_ex_matcher,pn_pld_ex_rule

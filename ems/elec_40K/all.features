@@ -50,3 +50,8 @@ PT_Ex,EXACT_MATCH,Product_Type,TEXT,Product_Type,TEXT
 PN_Ex,EXACT_MATCH,Product_Name,TEXT,Product_Name,TEXT
 PSD_Ex,EXACT_MATCH,Product_Short_Description,TEXT,Product_Short_Description,TEXT
 PLD_Ex,EXACT_MATCH,Product_Long_Description,TEXT,Product_Long_Description,TEXT
+PN_Me,MONGE_ELKAN,Product_Name,TEXT,Product_Name,TEXT
+APL_Exn,EXACT_MATCH_NUMERIC,Assembled_Product_Length,TEXT,Assembled_Product_Length,TEXT
+APW_Exn,EXACT_MATCH_NUMERIC,Assembled_Product_Width,TEXT,Assembled_Product_Width,TEXT
+APH_Exn,EXACT_MATCH_NUMERIC,Assembled_Product_Height,TEXT,Assembled_Product_Height,TEXT
+PLD_Exan,EXACT_MATCH_ALPHA_NUMERIC,Product_Long_Description,TEXT,Product_Long_Description,TEXT

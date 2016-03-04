@@ -71,7 +71,7 @@ public class BrowserController extends Controller {
       table = copyTable;      
     }
 
-    tableStats = ExplorerDriver.getTableStats(table, 100, 100);
+    tableStats = ExplorerDriver.getTableStats(table, 20000, 20000);
 
     return showBrowser();
   }

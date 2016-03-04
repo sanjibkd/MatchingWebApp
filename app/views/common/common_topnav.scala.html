@@ -330,6 +330,13 @@
          @if(!project.getTableNames().isEmpty() && !project.getFeatureNames().isEmpty()) {
          	<li><a data-toggle="modal" href="#debug_model_train_test_modal">Debug a Model Using Train-Test Evaluation</a></li>
          }
+         <li class="divider"></li>
+         @if(project.getTableNames().isEmpty() || project.getMatcherNames().isEmpty()) {
+         	<li class="disabled"><a href="#">Clean Labeled Pairs Using a Matcher</a></li>
+         }
+         @if(!project.getTableNames().isEmpty() && !project.getMatcherNames().isEmpty()) {
+         	<li><a data-toggle="modal" href="#clean_labeled_pairs_matcher_modal">Clean Labeled Pairs Using a Matcher</a></li>
+         }
          <!--<li><a data-toggle="modal" href="#">Candidate set view</a></li>-->
    	</ul>
  </li>

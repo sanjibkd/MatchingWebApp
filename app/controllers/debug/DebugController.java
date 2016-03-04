@@ -208,7 +208,7 @@ public class DebugController extends Controller {
 
 		return showPairs();
 	}
-
+	
 	public static Result postIndexOnFly(String projectName) {
 
 		DynamicForm form = form().bindFromRequest();
@@ -349,7 +349,8 @@ public class DebugController extends Controller {
 		String testsetName = form.get("testset_name");
 		String[] featureNames = request().body().asFormUrlEncoded().get("feature_names[]");
 		String modelName = form.get("model_name");
-
+		double matchingThreshold = Double.parseDouble(form.get("matching_threshold"));
+		
 		operationMode = 4;
 		readTables(projectName, table1Name, table2Name, testsetName);
 
@@ -371,7 +372,7 @@ public class DebugController extends Controller {
 
 			matches = MatchingDao.match(projectName, candset, testFeaturesTable,
 					table1, table2, modelName, trainFeaturesTable, matchesName, itemPairAudits,
-					null, null);
+					null, null, matchingThreshold);
 			evalSummary = EvaluateDao.evaluateWithGold("tmp", projectName, matches, testsetName);
 
 			long timestamp = System.currentTimeMillis();
