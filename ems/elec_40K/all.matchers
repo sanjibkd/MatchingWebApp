@@ -3,3 +3,4 @@ exact_match_matcher,exact_match_rule
 pn_exact_match_matcher,pn_exact_match_rule
 pld_exan_matcher,pld_exan_rule
 pl_pld_ex_matcher,pn_pld_ex_rule
+pn_pld_soft_ex_matcher,pn_pld_soft_ex1 OR pn_pld_soft_ex2

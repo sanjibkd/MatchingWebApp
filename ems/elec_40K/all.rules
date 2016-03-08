@@ -3,3 +3,5 @@ exact_match_rule,PN_Ex != 0.0 AND PSD_Ex != 0.0 AND PLD_Ex != 0.0 AND Brand_EXAC
 pn_exact_match_rule,PN_Ex != 0.0
 pld_exan_rule,PLD_Exan != 0.0
 pn_pld_ex_rule,PN_Ex != 0.0 AND PLD_Exan != 0.0 AND APL_Exn != 0.0 AND Actual_Color_EXACT_MATCH != 0.0
+pn_pld_soft_ex1,Product_Name_SOFT_TF_IDF == 1.0 AND Product_Long_Description_SOFT_TF_IDF == 1.0 AND Actual_Color_EXACT_MATCH != 0.0 AND APL_Exn != 0.0
+pn_pld_soft_ex2,Product_Name_SOFT_TF_IDF == 1.0 AND Product_Long_Description_SOFT_TF_IDF == -1.0 AND Actual_Color_EXACT_MATCH != 0.0

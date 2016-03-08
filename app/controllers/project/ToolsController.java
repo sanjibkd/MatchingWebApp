@@ -79,6 +79,10 @@ public class ToolsController extends Controller {
 		String errorType = form.get("error_type");
 		String outputLabeledPairsName= form.get("output_labeled_pairs");
 	
+		Logger.info("params: " + table1Name + ", " + table2Name + ", "
+				+ inputLabeledPairsName + ", " + matcherName + ", "
+				+ actionType + ", " + errorType + ", " + outputLabeledPairsName);
+		
 		try {
 			Table table1 = TableDao.open(projectName, table1Name);
 			Table table2 = TableDao.open(projectName, table2Name);
@@ -93,15 +97,23 @@ public class ToolsController extends Controller {
 			List<Feature> features = project.getFeatures();
 			Table featuresTable = FeatureService.generateFeatures(featuresTableName,
 					projectName, inputLabeledPairsTable, table1, table2, features, true);
+			Logger.info("Generated feature vectors");
 			Table matches = MatchingDao.match(projectName, inputLabeledPairsTable, featuresTable,
 					table1, table2, matcherName, matchesName, itemPairAudits,
 					null, null);
+			Logger.info("Generated matches");
 			EvaluationSummary  evalSummary = EvaluateDao.evaluateWithGold("tmp",
 					projectName, matches, inputLabeledPairsName);
-			long n = ToolsService.cleanLabeledPairs(projectName, inputLabeledPairsTable,
+			Logger.info("Generated evaluation summary");
+			Table outputPairsTable = ToolsService.cleanLabeledPairs(projectName, inputLabeledPairsTable,
 					outputLabeledPairsName, evalSummary, errorType, actionType);
+			Logger.info("Generated cleaned table");
+			// save the table - this automatically updates the project but does not save it
+			Set<DefaultType> defaultTypes = new HashSet<DefaultType>();
+			boolean saveToDisk = true;
+			TableDao.save(outputPairsTable, defaultTypes, saveToDisk);
 			ProjectController.statusMessage = "Successfully created table " +
-					outputLabeledPairsName + "with " + n + " tuples";
+					outputLabeledPairsName + " with " + outputPairsTable.getSize() + " tuples";
 		}
 		catch (IOException e) {
 			ProjectController.statusMessage = "Error: " + e.getMessage();
