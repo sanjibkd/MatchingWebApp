@@ -55,3 +55,8 @@ APL_Exn,EXACT_MATCH_NUMERIC,Assembled_Product_Length,TEXT,Assembled_Product_Leng
 APW_Exn,EXACT_MATCH_NUMERIC,Assembled_Product_Width,TEXT,Assembled_Product_Width,TEXT
 APH_Exn,EXACT_MATCH_NUMERIC,Assembled_Product_Height,TEXT,Assembled_Product_Height,TEXT
 PLD_Exan,EXACT_MATCH_ALPHA_NUMERIC,Product_Long_Description,TEXT,Product_Long_Description,TEXT
+mpn_in_pn,BContainsA,Manufacturer_Part_Number,TEXT,Product_Name,TEXT
+mpn_in_pld,BContainsA,Manufacturer_Part_Number,TEXT,Product_Long_Description,TEXT
+PN_Ref,Refurbished,Product_Name,TEXT,Product_Name,TEXT
+color_in_pn,BContainsA,Color,TEXT,Product_Name,TEXT
+actual_color_in_pn,BContainsA,Actual_Color,TEXT,Product_Name,TEXT

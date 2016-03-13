@@ -26,3 +26,5 @@ ABS_DIFF,Absolute difference of two numeric values,com.walmart.productgenome.mat
 REL_DIFF,"Relative difference between two numeric values. Mathematically, REL_DIFF(a,b) = |a-b| / (a+b)",com.walmart.productgenome.matching.models.rules.functions.RelativeDifference
 EXACT_MATCH_NUMERIC,exact match for numeric strings,com.walmart.productgenome.matching.models.rules.functions.ExactMatchNumeric
 EXACT_MATCH_ALPHA_NUMERIC,exact match for alpha numeric strings,com.walmart.productgenome.matching.models.rules.functions.ExactMatchAlphaNumeric
+BContainsA,B contains A,com.walmart.productgenome.matching.models.rules.functions.BContainsA
+Refurbished,checks if products are refurbished,com.walmart.productgenome.matching.models.rules.functions.Refurbished

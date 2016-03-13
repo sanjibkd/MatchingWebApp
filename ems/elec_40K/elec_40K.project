@@ -4,16 +4,61 @@
         "name":"elec_40K",
         "description":"40K electronics pairs",
         "createdOn":"2/12/16 2:28 PM",
-        "lastModifiedOn":"2/12/16 6:39 PM",
+        "lastModifiedOn":"3/10/16 4:04 PM",
         "tables":[
             {
-                "name":"walmart"
+                "name":"labeled_pairs"
+            },
+            {
+                "name":"test"
+            },
+            {
+                "name":"train"
+            },
+            {
+                "name":"train1"
+            },
+            {
+                "name":"train2"
             },
             {
                 "name":"vendor"
             },
             {
-                "name":"labeled_pairs"
+                "name":"walmart"
+            },
+            {
+                "name":"train1r"
+            },
+            {
+                "name":"train1c"
+            },
+            {
+                "name":"train2r"
+            },
+            {
+                "name":"train2c"
+            },
+            {
+                "name":"trainr"
+            },
+            {
+                "name":"trainc"
+            },
+            {
+                "name":"train1rr"
+            },
+            {
+                "name":"train1cc"
+            },
+            {
+                "name":"train2rr"
+            },
+            {
+                "name":"train1r3"
+            },
+            {
+                "name":"train2r3"
             }
         ],
         "functions":[
@@ -91,22 +136,247 @@
             },
             {
                 "name":"REL_DIFF"
+            },
+            {
+                "name":"EXACT_MATCH_NUMERIC"
+            },
+            {
+                "name":"EXACT_MATCH_ALPHA_NUMERIC"
+            },
+            {
+                "name":"BContainsA"
+            },
+            {
+                "name":"Refurbished"
             }
         ],
         "features":[
+            {
+                "name":"Product_Name_JACCARD"
+            },
+            {
+                "name":"Product_Name_COSINE"
+            },
+            {
+                "name":"Product_Name_TF_IDF"
+            },
+            {
+                "name":"Product_Name_SOFT_TF_IDF"
+            },
+            {
+                "name":"Product_Short_Description_JACCARD"
+            },
+            {
+                "name":"Product_Short_Description_COSINE"
+            },
+            {
+                "name":"Product_Short_Description_TF_IDF"
+            },
+            {
+                "name":"Product_Short_Description_SOFT_TF_IDF"
+            },
+            {
+                "name":"Product_Long_Description_JACCARD"
+            },
+            {
+                "name":"Product_Long_Description_COSINE"
+            },
+            {
+                "name":"Product_Long_Description_TF_IDF"
+            },
+            {
+                "name":"Product_Long_Description_SOFT_TF_IDF"
+            },
+            {
+                "name":"Product_Type_JACCARD"
+            },
+            {
+                "name":"Product_Type_COSINE"
+            },
+            {
+                "name":"Brand_TRIGRAM"
+            },
+            {
+                "name":"Brand_LEVENSHTEIN"
+            },
+            {
+                "name":"Brand_EXACT_MATCH"
+            },
+            {
+                "name":"Brand_JARO"
+            },
+            {
+                "name":"Brand_JARO_WINKLER"
+            },
+            {
+                "name":"Brand_SOUNDEX"
+            },
+            {
+                "name":"Manufacturer_TRIGRAM"
+            },
+            {
+                "name":"Manufacturer_LEVENSHTEIN"
+            },
+            {
+                "name":"Manufacturer_EXACT_MATCH"
+            },
+            {
+                "name":"Manufacturer_JARO"
+            },
+            {
+                "name":"Manufacturer_JARO_WINKLER"
+            },
+            {
+                "name":"Manufacturer_SOUNDEX"
+            },
+            {
+                "name":"Color_TRIGRAM"
+            },
+            {
+                "name":"Color_LEVENSHTEIN"
+            },
+            {
+                "name":"Color_EXACT_MATCH"
+            },
+            {
+                "name":"Color_JARO"
+            },
+            {
+                "name":"Color_JARO_WINKLER"
+            },
+            {
+                "name":"Color_SOUNDEX"
+            },
+            {
+                "name":"Actual_Color_TRIGRAM"
+            },
+            {
+                "name":"Actual_Color_LEVENSHTEIN"
+            },
+            {
+                "name":"Actual_Color_EXACT_MATCH"
+            },
+            {
+                "name":"Actual_Color_JARO"
+            },
+            {
+                "name":"Actual_Color_JARO_WINKLER"
+            },
+            {
+                "name":"Actual_Color_SOUNDEX"
+            },
+            {
+                "name":"Assembled_Product_Length_LEVENSHTEIN"
+            },
+            {
+                "name":"Assembled_Product_Length_EXACT_MATCH"
+            },
+            {
+                "name":"Assembled_Product_Length_REL_DIFF"
+            },
+            {
+                "name":"Assembled_Product_Width_LEVENSHTEIN"
+            },
+            {
+                "name":"Assembled_Product_Width_EXACT_MATCH"
+            },
+            {
+                "name":"Assembled_Product_Width_REL_DIFF"
+            },
+            {
+                "name":"Assembled_Product_Height_LEVENSHTEIN"
+            },
+            {
+                "name":"Assembled_Product_Height_EXACT_MATCH"
+            },
+            {
+                "name":"Assembled_Product_Height_REL_DIFF"
+            },
+            {
+                "name":"PT_Ex"
+            },
+            {
+                "name":"PN_Ex"
+            },
+            {
+                "name":"PSD_Ex"
+            },
+            {
+                "name":"PLD_Ex"
+            },
+            {
+                "name":"PN_Me"
+            },
+            {
+                "name":"APL_Exn"
+            },
+            {
+                "name":"APW_Exn"
+            },
+            {
+                "name":"APH_Exn"
+            },
+            {
+                "name":"PLD_Exan"
+            },
+            {
+                "name":"mpn_in_pn"
+            },
+            {
+                "name":"mpn_in_pld"
+            },
+            {
+                "name":"PN_Ref"
+            },
+            {
+                "name":"color_in_pn"
+            }
         ],
         "rules":[
+            {
+                "name":"exact_match_rule"
+            },
+            {
+                "name":"pn_exact_match_rule"
+            },
+            {
+                "name":"pld_exan_rule"
+            },
+            {
+                "name":"pn_pld_ex_rule"
+            },
+            {
+                "name":"pn_pld_soft_ex1"
+            },
+            {
+                "name":"pn_pld_soft_ex2"
+            }
         ],
         "matchers":[
+            {
+                "name":"exact_match_matcher"
+            },
+            {
+                "name":"pn_exact_match_matcher"
+            },
+            {
+                "name":"pld_exan_matcher"
+            },
+            {
+                "name":"pl_pld_ex_matcher"
+            },
+            {
+                "name":"pn_pld_soft_ex_matcher"
+            }
         ],
         "evaluationSummaries":[
         ],
         "defaults":{
             "table1":"walmart",
             "table2":"vendor",
-            "candset":"labeled_pairs",
+            "candset":"train1r3",
             "matches":"",
-            "gold":"labeled_pairs"
+            "gold":"train2r3"
         }
     }
 }
